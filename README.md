@@ -4,5 +4,12 @@ Progetto Ingegneria del Software - anno 2025/2026 :
 
 Istruzioni per l'utilizzo:
 
--- Entrare nella cartella GestioneBiblioteca o usare un IDE per accedere al progetto
--- Digitare da terminale: mvn clean javafx:run per lanciare il programma
+Clonare il repository 
+
+    git clone https://github.com/laywork22/gestione_biblioteca_2025
+
+Entrare nel repository Clonare
+
+    cd PATH/TO/CLONED/REPO/ 
+
+
