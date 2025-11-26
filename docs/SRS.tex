@@ -1,0 +1,272 @@
+\documentclass[a4paper,12pt,oneside,openany]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{ragged2e}
+\usepackage{float}
+\usepackage{enumitem} % Per liste compatte
+
+\renewcommand{\arraystretch}{1.3} 
+\setlength{\tabcolsep}{8pt}
+
+% Comando personalizzato per la scheda di dettaglio requisito
+\newcommand{\requisito}[5]{
+    \noindent\textbf{Nome requisito}: #1 \\
+    \textbf{Prefisso identificativo}: #2 \\
+    \textbf{Priorità}: #3 \\
+    \textbf{Input}: #4 \\
+    \textbf{Output}: #5 \par
+    \vspace{0.5cm}
+    \hrule
+    \vspace{0.5cm}
+}
+
+\begin{document}
+	
+\begin{titlepage}
+    \centering
+    \vspace*{4cm}
+    
+    {\Huge \textbf{Documento di specifica dei requisiti}}\\
+    \vspace{0.5cm}
+    {\Huge \textbf{libraryManager 1.0}\par}
+    
+    \vspace{1.5cm}
+    {\Large 1° Dicembre 2025\par}
+    
+    \vfill 
+    
+    \textbf{\textit{Gruppo 12}}\\
+    \textit{Emiddio Ferrentino}\\
+    \textit{Antonio D'Urso}\\
+    \textit{Letizia Argenio}\\
+    \textit{Rosa Genovese}\par
+    
+    \vspace{2cm} 
+\end{titlepage}
+	
+\tableofcontents
+	
+\chapter*{Introduzione}
+\addcontentsline{toc}{chapter}{Introduzione}
+Il seguente documento descrive le specifiche dei requisiti di un sistema software per la gestione di una biblioteca universitaria. Il sistema, denominato \textit{libraryManager}, permette agli operatori di gestire il catalogo dei libri, l'anagrafica degli utenti e le operazioni di prestito e restituzione.
+
+\chapter*{Categorizzazione dei requisiti}
+\addcontentsline{toc}{chapter}{Categorizzazione dei requisiti}
+
+\subsection*{Tabella sintetica dei requisiti}
+\addcontentsline{toc}{section}{Tabella sintetica dei requisiti}
+
+\setlength\LTleft{-1.1cm}
+\begin{longtable}{|p{3cm}|p{2.2cm}|p{1.5cm}|p{5cm}|p{2.26cm}|}
+	\hline
+	\textbf{AREA} & \textbf{PREFISSO} & \textbf{ID} & \textbf{DESCRIZIONE} & \textbf{PRIORITÀ} \\
+	\hline
+	\endhead % Intestazione ripetuta su ogni pagina
+	
+	\multirow{10}{3cm}{Funzionalità \newline individuali} 
+	& IF & IF-1.1 & 
+	\textbf{Inserimento nuovo libro} \newline
+    Il sistema deve permettere l'inserimento di un nuovo libro registrando titolo, autori, anno, ISBN e copie disponibili (vedi DF-1.1). & Alta \\
+	\cline{2-5}
+	& IF & IF-1.2.1 & 
+    \textbf{Modifica di un libro} \newline
+    L'operatore deve poter modificare i metadati descrittivi di un libro esistente. & Alta \\
+    \cline{2-5}
+    & IF & IF-1.2.2 & 
+    \textbf{Aggiornamento copie} \newline
+    L'operatore deve poter aggiornare il numero di copie disponibili. & Alta \\
+	\cline{2-5}
+	& IF & IF-1.3 & 
+	\textbf{Rimozione libro} \newline 
+    Il sistema deve permettere di rimuovere un libro solo se non ci sono prestiti attivi per esso. & Alta \\
+	\cline{2-5}
+	& IF & IF-1.4 & 
+    \textbf{Visualizzazione libri} \newline
+	Elenco libri ordinato di default per titolo, con ordinamento alternativo per anno o autore. & Media \\
+	\cline{2-5}
+	& IF & IF-1.5 & 
+    \textbf{Ricerca libro} \newline
+	Ricerca per titolo, autore o ISBN. & Alta \\
+	\cline{2-5}
+	& IF & IF-2.1 &
+	\textbf{Registrazione utente} \newline 
+    Inserimento nuovo utente con controllo unicità matricola (vedi DF-1.2). & Alta \\
+	\cline{2-5}
+	& IF & IF-2.2 &
+	\textbf{Modifica utente} \newline
+    Modifica dati anagrafici utente esistente. & Alta \\
+	\cline{2-5}
+	& IF & IF-2.3 &
+	\textbf{Cancellazione utente} \newline
+    Rimozione utente possibile solo se non ha prestiti in corso. & Media \\
+	\cline{2-5}
+	& IF & IF-2.4 &
+	\textbf{Visualizzazione utenti} \newline
+    Lista utenti ordinabile per Cognome e Nome. & Alta \\
+	\cline{2-5}
+	& IF & IF-2.5 &
+	\textbf{Ricerca utente} \newline
+     Ricerca per cognome o matricola. & Media \\
+	\hline
+	
+	\multirow{5}{3cm}{Business flow} 
+	& BF & BF-1.1 &
+    \textbf{Vincolo max prestiti} \newline
+	Il sistema blocca il prestito se l'utente ha già 3 prestiti attivi. & Alta \\
+	\cline{2-5}
+	& BF & BF-1.2 &
+    \textbf{Chiusura prestito} \newline
+	Il sistema aggiorna lo stato a "restituito" e incrementa le copie disponibili. & Alta \\
+	\cline{2-5}
+	& BF & BF-1.3 &
+    \textbf{Visualizzazione prestiti} \newline
+	Visualizzazione dello stato dei prestiti attivi (in regola/scaduti). & Media \\
+    \cline{2-5}
+    & BF & BF-1.4 &
+    \textbf{Vincolo rimozione libro} \newline
+    Impossibile rimuovere un libro se è attualmente in prestito. & Alta \\
+	\hline
+    
+	\multirow{5}{3cm}{Dati e formato} 
+	& DF & DF-1.1 &
+	\textbf{Dati Libro}: Titolo, Autori, Anno, ISBN, Copie totali, Copie disponibili. & Alta \\
+    \cline{2-5}
+    & DF & DF-1.2 &
+    \textbf{Dati Utente}: Nome, Cognome, Matricola, Email. & Alta \\
+    \cline{2-5}
+    & DF & DF-1.3 &
+    \textbf{Dati Prestito}: Utente, Libro, Data inizio, Data scadenza, Stato. & Alta \\
+	\cline{2-5}
+	& DF & DF-1.4 &
+    \textbf{Persistenza dati} \newline
+    Tutte le informazioni devono essere salvate su file strutturato. & Alta \\
+	\cline{2-5}
+	& DF & DF-1.5 &
+	\textbf{Caricamento dati} \newline
+    Caricamento automatico dei dati da file all'avvio. & Alta \\
+	\hline
+	
+	\multirow{13}{3cm}{Interfaccia \newline Utente} 
+	& UI & UI-1.1.1 &
+    \textbf{Controlli gestione libro} \newline
+    Pulsanti espliciti per inserimento, modifica, rimozione e conferma. & Alta \\
+    \cline{2-5}
+    & UI & UI-1.1.2 &
+    \textbf{Lista libri} \newline
+    Tabella libri ordinata per titolo. & Alta \\
+    \cline{2-5}
+    & UI & UI-1.1.3 &
+    \textbf{Ricerca libri} \newline
+    Barra di ricerca per titolo, autore, ISBN. & Media \\
+    \cline{2-5}
+    & UI & UI-1.2.1 &
+    \textbf{Form utente} \newline
+    Interfaccia per inserimento e modifica dati utente. & Alta \\
+    \cline{2-5}
+    & UI & UI-1.2.2 &
+    \textbf{Lista utenti} \newline
+    Tabella utenti ordinata per cognome/nome. & Alta \\
+    \cline{2-5}
+    & UI & UI-1.3.1 &
+    \textbf{Lista prestiti} \newline
+    Tabella prestiti attivi con dettagli. & Alta \\
+    \cline{1-5}
+    & UI & UI-1.3.2 &
+    \textbf{Gestione prestito} \newline
+    Interfaccia per creare prestito e registrare restituzione. & Alta \\
+    \cline{2-5}
+    & UI & UI-2.1 &
+    \textbf{Messaggi di errore} \newline
+    Feedback per utente/libro non trovato o operazioni non consentite. & Media \\
+    \cline{2-5}
+    & UI & UI-3.1 &
+    \textbf{Prestiti scaduti} \newline
+    Evidenziazione grafica dei prestiti in scadenza o ritardo. & Alta \\
+    \hline
+\end{longtable}
+
+\subsection*{Schema di categorizzazione di dettaglio}
+\addcontentsline{toc}{section}{Schema di categorizzazione di dettaglio}
+
+\subsubsection*{FUNZIONALITÀ INDIVIDUALI (IF)}
+
+\requisito
+{Inserimento nuovo libro}
+{IF-1.1}
+{Alta}
+{Titolo (stringa), Autori (lista stringhe), Anno (intero), ISBN (stringa univoca), Copie (intero)}
+{Il sistema registra il nuovo libro in archivio e conferma l'operazione. Se l'ISBN esiste già, mostra un errore.}
+
+\requisito
+{Modifica metadati libro}
+{IF-1.2.1}
+{Alta}
+{Selezione libro, nuovi valori per i campi modificabili}
+{Il sistema aggiorna i dati del libro. L'aggiornamento è rifiutato se il nuovo ISBN entra in conflitto con un altro libro.}
+\requisito
+{Aggiornamento numero di copie}
+{IF-1.2.2}
+{Media}
+{Selezione libro, numero di copie disponibili}
+{Il sistema aggiorna il numero di copie disponibili di un libro a seguito dell'input dell'utente.
+L'aggiornamento è rifiutato se il numero di copie disponibili è minore di zero.}
+\requisito
+{Rimozione libro}
+{IF-1.3}
+{Alta}
+{Selezione libro da rimuovere}
+{Se non ci sono prestiti attivi, il libro viene rimosso. Altrimenti, viene mostrato un messaggio di errore bloccante.}
+
+\requisito
+{Visualizzazione libri}
+{IF-1.4}
+{Alta}
+{Richiesta di visualizzazione libri}
+{Il sistema mostra l'elenco dei libri ordinati per autore in ordine lessicografico, con la possibilità di ordinamento alternativo per anno e autore.
+In caso di mancanza di libri viene mostrato un messaggio di errore bloccante}
+\requisito
+{Registrazione nuovo utente}
+{IF-2.1}
+{Alta}
+{Nome, Cognome, Matricola (univoca), Email}
+{Il sistema salva il nuovo utente. Se la matricola è duplicata, l'inserimento viene respinto.}
+
+\subsubsection*{BUSINESS FLOW (BF)}
+
+\requisito
+{Vincolo numero di prestiti}
+{BF-1.1}
+{Alta}
+{Tentativo di creazione nuovo prestito per un utente}
+{Il sistema verifica il numero di prestiti attivi dell'utente. Se sono già 3, blocca l'operazione e mostra un alert.}
+
+\requisito
+{Restituzione libro}
+{BF-1.2}
+{Alta}
+{Selezione di un prestito attivo}
+{Il sistema marca il prestito come "restituito", aggiorna la data di fine effettiva e incrementa di 1 le copie disponibili del libro.}
+
+\subsubsection*{DATI E FORMATO (DF)}
+
+\requisito
+{Persistenza dati}
+{DF-1.4}
+{Alta}
+{Comando di salvataggio o evento di chiusura applicazione}
+{Tutti i dati (libri, utenti, storico prestiti) vengono serializzati su file (es. CSV o JSON) per garantire la persistenza tra le sessioni.}
+
+\chapter*{Casi d'uso}
+\addcontentsline{toc}{chapter}{Casi d'uso}
+
+\section*{Descrizione dei casi d'uso}
+\textit{placeholder}
+
+\section*{Diagramma dei casi d'uso}
+\textit{placeholder}
+
+\end{document}

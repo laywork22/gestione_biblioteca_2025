@@ -1,4 +1,4 @@
-package it.unisa.diem.softeng.gestionebiblioteca;
+package it.unisa.diem.softeng.librarymanager;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
