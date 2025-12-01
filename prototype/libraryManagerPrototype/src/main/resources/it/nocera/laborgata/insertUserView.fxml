@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER_NAME">
+   <children>
+      <Label contentDisplay="CENTER" layoutX="209.0" layoutY="25.0" text="Inserimento utente">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Button layoutX="226.0" layoutY="350.0" mnemonicParsing="false" text="Salva" />
+      <Button layoutX="320.0" layoutY="350.0" mnemonicParsing="false" text="Annulla" />
+      <Label layoutX="33.0" layoutY="245.0" text="Email" />
+      <Label layoutX="33.0" layoutY="191.0" text="Matricola" />
+      <Label layoutX="33.0" layoutY="139.0" text="Cognome" />
+      <Label layoutX="33.0" layoutY="89.0" text="Nome" />
+      <TextField layoutX="128.0" layoutY="85.0" prefHeight="26.0" prefWidth="285.0" />
+      <TextField layoutX="128.0" layoutY="135.0" prefHeight="26.0" prefWidth="285.0" />
+      <TextField layoutX="128.0" layoutY="187.0" />
+      <TextField layoutX="128.0" layoutY="241.0" prefHeight="26.0" prefWidth="285.0" />
+   </children>
+</AnchorPane>
