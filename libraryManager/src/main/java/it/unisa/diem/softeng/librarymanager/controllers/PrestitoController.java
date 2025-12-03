@@ -1,6 +1,9 @@
 package it.unisa.diem.softeng.librarymanager.controllers;
 
+import it.unisa.diem.softeng.librarymanager.model.Prestito;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -36,7 +39,7 @@ public class PrestitoController implements AreaController {
     @Override
     public void onAdd() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("it/unisa/diem/softeng/libraryManager/PrestitoView.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/it/unisa/diem/softeng/libraryManager/PrestitoView.fxml"));
 
             Parent root = fxmlLoader.load();
 
@@ -57,7 +60,7 @@ public class PrestitoController implements AreaController {
     }
 
     @Override
-    public void onEdit() {
+    public void onEdit(TableView<?> tabella) {
 
     }
 
@@ -69,5 +72,26 @@ public class PrestitoController implements AreaController {
     @Override
     public void filtraTabella(TableView<?> tabella) {
 
+    }
+
+    @javafx.fxml.FXML
+    public void annullaNuovoPrestito(ActionEvent actionEvent) {
+        Node source = (Node) actionEvent.getSource();
+
+        Stage stage = (Stage) source.getScene().getWindow();
+
+        stage.close();
+    }
+
+    @javafx.fxml.FXML
+    public void salvaNuovoPrestito(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void viewPrestitiLista(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void viewListaPrestiti(ActionEvent actionEvent) {
     }
 }

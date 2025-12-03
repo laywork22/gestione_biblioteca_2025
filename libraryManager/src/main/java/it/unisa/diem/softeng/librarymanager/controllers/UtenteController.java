@@ -43,7 +43,7 @@ public class UtenteController implements AreaController{
     @Override
     public void onAdd() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("it/unisa/diem/softeng/libraryManager/UtenteView.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/it/unisa/diem/softeng/libraryManager/UtenteView.fxml"));
 
             Parent root = fxmlLoader.load();
 
@@ -64,7 +64,7 @@ public class UtenteController implements AreaController{
     }
 
     @Override
-    public void onEdit() {
+    public void onEdit(TableView<?> tabella) {
 
     }
 

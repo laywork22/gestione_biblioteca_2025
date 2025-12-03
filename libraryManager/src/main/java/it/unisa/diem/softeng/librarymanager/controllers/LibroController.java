@@ -33,10 +33,6 @@ public class LibroController implements AreaController {
     @FXML
     private Button annullaBtn;
 
-    @FXML
-    public void initialize() {
-    }
-
     @Override
     public void onRemove() {
 
@@ -45,7 +41,7 @@ public class LibroController implements AreaController {
     @Override
     public void onAdd() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("it/unisa/diem/softeng/libraryManager/LibroView.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/it/unisa/diem/softeng/libraryManager/LibroView.fxml"));
 
             Parent root = fxmlLoader.load();
 
@@ -66,9 +62,10 @@ public class LibroController implements AreaController {
     }
 
     @Override
-    public void onEdit() {
+    public void onEdit(TableView<?> tabella) {
 
     }
+
 
     @Override
     public void setTableView(TableView<?> table) {
