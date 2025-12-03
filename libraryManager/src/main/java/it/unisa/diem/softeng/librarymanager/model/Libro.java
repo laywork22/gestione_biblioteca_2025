@@ -133,7 +133,7 @@ public class Libro implements Comparable<Libro> {
 
     /**
      * @brief Imposta o aggiorna il codice ISBN.
-     * Attenzione: modificare l'ISBN potrebbe influenzare l'unicità del libro nel catalogo.
+     * Attenzione: modificare l'ISBN potrebbe influenzare l'univocità del libro nel catalogo.
      * @param isbn Il nuovo ISBN.
      */
     public void setIsbn(String isbn) {
@@ -164,6 +164,16 @@ public class Libro implements Comparable<Libro> {
     public void incrementaCopie() {
         this.copieTotali ++;
     }
+
+    /**
+     * @brief Decrementa le copie disponibili di un libro
+     * @return Decrementa le copie disponibili di un libro di uno
+     * */
+    public void decrementaCopie() {
+        if(copieDisponibili > 0) {
+            this.copieDisponibili--;
+        }
+    }
     /**
      * @brief Restituisce una rappresentazione in formato stringa dell'oggetto Libro.
      * @return Stringa formattata con i dettagli del libro.
@@ -173,6 +183,7 @@ public class Libro implements Comparable<Libro> {
         return "Titolo: " + titolo + "\nAutore: " + autore + "\nISBN: " + isbn +
                 "\nCopie Totali: " + copieTotali + "\nCopie Disponibili: " + copieDisponibili + "\n";
     }
+
 
     @Override
     public int compareTo(Libro o) {
