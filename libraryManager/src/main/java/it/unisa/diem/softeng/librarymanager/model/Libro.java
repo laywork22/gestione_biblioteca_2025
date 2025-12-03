@@ -158,6 +158,13 @@ public class Libro {
     }
 
     /**
+     * @brief Incrementa le copie totali di un libro
+     * @return Incrementa le copie totali di un libro di uno.
+     */
+    public void incrementaCopie() {
+        this.copieTotali ++;
+    }
+    /**
      * @brief Restituisce una rappresentazione in formato stringa dell'oggetto Libro.
      * @return Stringa formattata con i dettagli del libro.
      */
