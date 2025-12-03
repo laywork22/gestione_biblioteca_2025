@@ -4,6 +4,7 @@ import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -16,6 +17,8 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.io.File;
 import java.io.IOException;
 
 public class PrincipaleController {
@@ -85,7 +88,7 @@ public class PrincipaleController {
 
         addBtn.setOnAction(e -> areaCorrente.onAdd());
         removeBtn.setOnAction(e -> areaCorrente.onRemove());
-        modifyButton.setOnAction(e -> areaCorrente.onEdit());
+        modifyButton.setOnAction(e -> areaCorrente.onEdit(tabella));
 
         areaCorrente.setTableView(tabella);
     }
@@ -122,6 +125,11 @@ public class PrincipaleController {
     public void apriFile(ActionEvent actionEvent) {
         FileChooser fc = new FileChooser();
 
+        Node source = (Node) actionEvent.getSource();
+
+        Stage stage = (Stage) source.getScene().getWindow();
+
+        File file = fc.showOpenDialog(stage);
     }
 
     @FXML

@@ -33,9 +33,10 @@ public class GestoreLibro implements Gestore<Libro> {
         return listaLibri;
     }
 
+
     @Override
     public void ordinaLista(Comparator<Libro> comparatore) {
-        
+
     }
 
 
