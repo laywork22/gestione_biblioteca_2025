@@ -10,7 +10,7 @@ package it.unisa.diem.softeng.librarymanager.model;
  * @author Gruppo 12
  * @version 1.0
  */
-public class Libro {
+public class Libro implements Comparable<Libro> {
 
     /**
      * @brief Il titolo del libro.
@@ -172,5 +172,10 @@ public class Libro {
     public String toString() {
         return "Titolo: " + titolo + "\nAutore: " + autore + "\nISBN: " + isbn +
                 "\nCopie Totali: " + copieTotali + "\nCopie Disponibili: " + copieDisponibili + "\n";
+    }
+
+    @Override
+    public int compareTo(Libro o) {
+        return 0;
     }
 }
