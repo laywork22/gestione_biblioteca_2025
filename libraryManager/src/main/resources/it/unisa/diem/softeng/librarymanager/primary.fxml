@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="600" prefWidth="900" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.diem.softeng.librarymanager.controllers.PrincipaleController">
+
+    <!-- MENU LATERALE (VBOX) -->
+    <VBox fx:id="sideMenu" alignment="TOP_CENTER" minHeight="200.0" minWidth="200.0" prefWidth="200" spacing="10" AnchorPane.bottomAnchor="0" AnchorPane.topAnchor="0">
+
+        <Label prefHeight="24.0" prefWidth="93.0" style="-fx-font-size: 20px; -fx-padding: 15;" text="Menu" />
+      <Separator prefHeight="0.0" prefWidth="200.0">
+         <VBox.margin>
+            <Insets top="-11.0" />
+         </VBox.margin>
+      </Separator>
+        <Button fx:id="areaLibriBtn" alignment="CENTER" onAction="#setAreaLibri" prefHeight="25.0" prefWidth="211.0" style="-fx-background-color: transparent;" text="Area Libri">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+        <Button fx:id="areaPrestitiBtn" alignment="CENTER" onAction="#setAreaPrestiti" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: transparent;" text="Area Prestiti">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+        <Button fx:id="areaUtentiBtn" alignment="CENTER" onAction="#setAreaUtenti" prefHeight="25.0" prefWidth="213.0" style="-fx-background-color: transparent;" text="Area Utenti">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <Region prefHeight="240.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+      <Button fx:id="apriFileBtn" mnemonicParsing="false" onAction="#apriFile" prefHeight="25.0" prefWidth="235.0" style="-fx-background-color: transparent;" text="Apri file">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+        <Button fx:id="salvaFileBtn" alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#salvaFile" prefHeight="25.0" prefWidth="214.0" style="-fx-background-color: transparent;" text="Salva">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+        <Button fx:id="salvaConNomeBtn" alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#salvaConNome" prefHeight="31.0" prefWidth="208.0" style="-fx-background-color: transparent;" text="Salva con nome">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="20.0" />
+         </VBox.margin></Button>
+    </VBox>
+
+       <!-- CONTENUTO PRINCIPALE -->
+    <AnchorPane fx:id="mainContent" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <TextField layoutX="78.0" layoutY="87.0" prefHeight="26.0" prefWidth="332.0" promptText="Cerca..." AnchorPane.leftAnchor="78.0" AnchorPane.topAnchor="87.0" />
+        <Label layoutX="23.0" layoutY="91.0" text="Ricerca" />
+        <TableView fx:id="tabella" layoutX="23.0" layoutY="150.0" prefHeight="432.0" prefWidth="859.0" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="150.0">
+            <columns>
+                <TableColumn prefWidth="75.0" text="ID" />
+                <TableColumn prefWidth="217.0" text="Titolo" />
+                <TableColumn minWidth="5.0" prefWidth="141.0" text="Autore" />
+                <TableColumn minWidth="3.0" prefWidth="58.0" text="Anno" />
+                <TableColumn prefWidth="82.0" text="ISBN" />
+                <TableColumn minWidth="-Infinity" prefWidth="220.0" text="Numero Copie" />
+            </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+        </TableView>
+        <HBox alignment="CENTER_LEFT" layoutX="418.0" layoutY="81.0" prefHeight="39.0" prefWidth="462.0" spacing="10.0" AnchorPane.leftAnchor="438.0" AnchorPane.rightAnchor="0.0">
+            <Button fx:id="addBtn" mnemonicParsing="false" text="Aggiungi" />
+            <Button fx:id="removeBtn" mnemonicParsing="false" text="Rimuovi" />
+            <Button fx:id="modifyButton" mnemonicParsing="false" text="Modifica" />
+         <Region prefHeight="24.0" prefWidth="44.0" HBox.hgrow="ALWAYS" />
+         <MenuButton fx:id="ordineFiltro" alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#filtraTabella" prefHeight="26.0" prefWidth="131.0" text="Ordina per ">
+           <items>
+             <MenuItem mnemonicParsing="false" text="Action 1" />
+             <MenuItem mnemonicParsing="false" text="Action 2" />
+           </items>
+            <padding>
+               <Insets right="20.0" />
+            </padding>
+            <HBox.margin>
+               <Insets right="18.0" />
+            </HBox.margin>
+         </MenuButton>
+        </HBox>
+        <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="900.0" spacing="15.0" style="-fx-background-color: #F4F4F4;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <padding>
+                <Insets left="20.0" />
+            </padding>
+
+            <!-- Pulsante hamburger -->
+            <Button fx:id="menuButton" alignment="TOP_LEFT" onAction="#toggleMenu" style="-fx-font-size: 28; -fx-background-color: transparent;" text="≡">
+                <HBox.margin>
+                    <Insets />
+                </HBox.margin>
+            </Button>
+            <Label fx:id="areaLbl" alignment="CENTER" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="768.0" text="Area Libri" HBox.hgrow="ALWAYS">
+                <font>
+                    <Font size="28.0" />
+                </font>
+                <HBox.margin>
+                    <Insets right="20.0" />
+                </HBox.margin>
+            </Label>
+        </HBox>
+      <Separator layoutY="58.0" prefWidth="900.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+
+   
+       </AnchorPane>
+
+</AnchorPane>

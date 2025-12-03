@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.diem.softeng.librarymanager.controllers.PrestitoController">
+   <children>
+      <Button fx:id="annullaBtn" layoutX="314.0" layoutY="351.0" mnemonicParsing="false" onAction="#annullaNuovoPrestito" text="Annulla" />
+      <Button fx:id="salvaBtn" layoutX="228.0" layoutY="351.0" mnemonicParsing="false" onAction="#salvaNuovoPrestito" text="Salva" />
+      <Label layoutX="203.0" layoutY="14.0" text="Inserimento prestito">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="33.0" layoutY="272.0" text="Stato" />
+      <Label layoutX="33.0" layoutY="222.0" text="Data scadenza" />
+      <Label layoutX="33.0" layoutY="175.0" text="Data inizio" />
+      <Label layoutX="33.0" layoutY="123.0" text="Libro" />
+      <Label layoutX="33.0" layoutY="78.0" text="Utente" />
+      <TextField fx:id="dataInizioFld" layoutX="147.0" layoutY="171.0" prefWidth="162.0" />
+      <TextField fx:id="statoFld" layoutX="147.0" layoutY="268.0" />
+      <TextField fx:id="dataScadenzaFld" layoutX="147.0" layoutY="218.0" />
+      <ComboBox fx:id="utentiCb" editable="true" layoutX="147.0" layoutY="74.0" onAction="#viewPrestitiLista" prefHeight="26.0" prefWidth="309.0" />
+      <ComboBox fx:id="libroCb" editable="true" layoutX="147.0" layoutY="119.0" onAction="#viewListaPrestiti" prefHeight="26.0" prefWidth="309.0" />
+   </children>
+</AnchorPane>
