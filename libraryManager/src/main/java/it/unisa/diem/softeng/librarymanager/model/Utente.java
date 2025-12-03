@@ -1,5 +1,7 @@
 package it.unisa.diem.softeng.librarymanager.model;
 
+import java.util.Comparator;
+
 /**
  * @brief Rappresenta un utente (studente o personale) della biblioteca.
  *
@@ -10,7 +12,7 @@ package it.unisa.diem.softeng.librarymanager.model;
  * @author Gruppo 12
  * @version 1.0
  */
-public class Utente {
+public class Utente implements Comparable<Utente> {
 
     /**
      * @brief Il nome di battesimo dell'utente.
@@ -126,5 +128,10 @@ public class Utente {
     @Override
     public String toString() {
         return "Nome: " + nome + "\nCognome: " + cognome + "\nMatricola: " + matricola + "\nEmail: " + email + "\n";
+    }
+
+    @Override
+    public int compareTo(Utente o) {
+        return 0;
     }
 }

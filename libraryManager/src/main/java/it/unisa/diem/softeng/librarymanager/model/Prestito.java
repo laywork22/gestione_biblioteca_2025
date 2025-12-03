@@ -12,7 +12,7 @@ import java.time.LocalDate;
  * @author Gruppo 12
  * @version 1.0
  */
-public class Prestito {
+public class Prestito implements Comparable<Prestito> {
 
     /**
      * @brief L'utente che ha richiesto il prestito.
@@ -39,7 +39,7 @@ public class Prestito {
     private LocalDate dataFine;
     /**
      * @brief Lo stato attuale del prestito
-     * Valori possibili ATTIVO, NON_ATTIVO, IN_SCADENZA_SCADUTO
+     * Valori possibili ATTIVO, NON_ATTIVO, IN_SCADENZA, SCADUTO
      */
     private StatoPrestitoEnum stato;
     /**
@@ -142,5 +142,10 @@ public class Prestito {
     public String toString() {
         return "Prestito di " + utente.getNome() + "--->" + libro.getTitolo() +
                 "\nData inizio: " + dataInizio + "\nData fine: " + dataFine + "\n";
+    }
+
+    @Override
+    public int compareTo(Prestito o) {
+        return 0;
     }
 }
