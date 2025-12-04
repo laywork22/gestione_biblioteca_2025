@@ -1,10 +1,10 @@
 package it.unisa.diem.softeng.librarymanager.controllers;
 
-import it.unisa.diem.softeng.librarymanager.managers.GestoreLibro;
+import it.unisa.diem.softeng.librarymanager.comparators.CognomeUtenteComparator;
+import it.unisa.diem.softeng.librarymanager.managers.GestoreUtente;
 import it.unisa.diem.softeng.librarymanager.model.Utente;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,9 +15,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.*;
 
 public class UtenteController implements AreaController{
-    private final GestoreLibro gestore = new GestoreLibro();
+    private GestoreUtente gestore;
+    private final Map<String, Comparator<Utente>> mappaOrdinamento;
     private FilteredList<Utente> listaFiltrata;
     private SortedList<Utente> listaOrdinata;
 
@@ -34,6 +36,13 @@ public class UtenteController implements AreaController{
     @javafx.fxml.FXML
     private TextField emailFld;
 
+    public UtenteController(GestoreUtente gestore) {
+        this.gestore = gestore;
+
+        mappaOrdinamento = new HashMap<>();
+        mappaOrdinamento.put("Cognome (A-Z)", new CognomeUtenteComparator());
+    }
+
     @Override
     public void onRemove() {
 
@@ -43,6 +52,19 @@ public class UtenteController implements AreaController{
     public void onAdd() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/it/unisa/diem/softeng/libraryManager/UtenteView.fxml"));
+
+            fxmlLoader.setControllerFactory(param -> {
+
+                if (param == UtenteController.class) {
+                    return this;
+                }
+
+                try {
+                    return param.getConstructor().newInstance();
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            });
 
             Parent root = fxmlLoader.load();
 
@@ -73,7 +95,19 @@ public class UtenteController implements AreaController{
     }
 
     @Override
-    public void filtraTabella(TableView<?> tabella) {
+    public void filtraTabella(String filtro) {
+
+    }
+
+
+
+    @Override
+    public List<String> getCriteriOrdinamento() {
+        return new ArrayList<>(mappaOrdinamento.keySet());
+    }
+
+    @Override
+    public void ordina(String testo) {
 
     }
 

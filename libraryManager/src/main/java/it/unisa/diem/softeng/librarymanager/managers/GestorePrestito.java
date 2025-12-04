@@ -16,7 +16,6 @@ public class GestorePrestito implements Gestore<Prestito>{
 
     @Override
     public void add(Prestito l) {
-        prestitoList.add(l);
     }
 
     @Override
@@ -34,6 +33,9 @@ public class GestorePrestito implements Gestore<Prestito>{
 
     }
 
+    public Predicate<Prestito> getPredicatoPrestito(String str) {
+        return r -> true;
+    }
 
     @Override
     public void salvaLista(String nomeFile) {

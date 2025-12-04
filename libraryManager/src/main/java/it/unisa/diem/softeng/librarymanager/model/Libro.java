@@ -186,6 +186,11 @@ public class Libro implements Comparable<Libro> {
 
 
     @Override
+    public boolean equals(Object o) {
+        return false;
+    }
+
+    @Override
     public int compareTo(Libro o) {
         return 0;
     }

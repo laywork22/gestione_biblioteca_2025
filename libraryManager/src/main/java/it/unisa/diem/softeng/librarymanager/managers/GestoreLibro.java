@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.Comparator;
+import java.util.function.Predicate;
 
 public class GestoreLibro implements Gestore<Libro> {
     private final ObservableList<Libro> listaLibri;
@@ -33,12 +34,14 @@ public class GestoreLibro implements Gestore<Libro> {
         return listaLibri;
     }
 
-
     @Override
     public void ordinaLista(Comparator<Libro> comparatore) {
 
     }
 
+    public Predicate<Libro> getPredicatoLibro(String str) {
+        return r -> true;
+    }
 
     public static GestoreLibro caricaListaLibri(String nomeFile) {
         return null;

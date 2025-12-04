@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.Comparator;
+import java.util.function.Predicate;
 
 public class GestoreUtente implements Gestore<Utente> {
     private final ObservableList<Utente> utentiList;
@@ -15,9 +16,7 @@ public class GestoreUtente implements Gestore<Utente> {
     }
 
     @Override
-    public void add(Utente l) {
-        utentiList.add(l);
-    }
+    public void add(Utente l) {}
 
     @Override
     public void remove(Utente l) {
@@ -37,6 +36,10 @@ public class GestoreUtente implements Gestore<Utente> {
     @Override
     public void salvaLista(String nomeFile) {
 
+    }
+
+    public Predicate<Utente> getPredicatoUtente(String str) {
+        return r -> true;
     }
 
     public static GestoreLibro caricaListaUtenti(String nomeFile) {

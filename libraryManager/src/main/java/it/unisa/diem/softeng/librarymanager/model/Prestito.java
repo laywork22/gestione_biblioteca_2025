@@ -145,6 +145,11 @@ public class Prestito implements Comparable<Prestito> {
     }
 
     @Override
+    public boolean equals(Object o) {
+        return false;
+    }
+
+    @Override
     public int compareTo(Prestito o) {
         return 0;
     }

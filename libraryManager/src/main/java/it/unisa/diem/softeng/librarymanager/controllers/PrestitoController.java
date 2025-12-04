@@ -1,6 +1,11 @@
 package it.unisa.diem.softeng.librarymanager.controllers;
 
+import it.unisa.diem.softeng.librarymanager.managers.GestorePrestito;
+import it.unisa.diem.softeng.librarymanager.managers.GestoreUtente;
 import it.unisa.diem.softeng.librarymanager.model.Prestito;
+import it.unisa.diem.softeng.librarymanager.model.Utente;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -14,8 +19,17 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.nio.file.FileSystemNotFoundException;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 
 public class PrestitoController implements AreaController {
+    private GestorePrestito gestore;
+    private FilteredList<Prestito> listaFiltrata;
+    private SortedList<Prestito> listaOrdinata;
+
+
     @javafx.fxml.FXML
     private TextField statoFld;
     @javafx.fxml.FXML
@@ -31,6 +45,10 @@ public class PrestitoController implements AreaController {
     @javafx.fxml.FXML
     private Button annullaBtn;
 
+    public PrestitoController(GestorePrestito gestore) {
+        this.gestore = gestore;
+    }
+
     @Override
     public void onRemove() {
 
@@ -38,25 +56,34 @@ public class PrestitoController implements AreaController {
 
     @Override
     public void onAdd() {
-        try {
+        try{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/it/unisa/diem/softeng/libraryManager/PrestitoView.fxml"));
+
+            fxmlLoader.setControllerFactory(param -> {
+                if (param == PrestitoController.class) {
+                    return this;
+                }
+
+                try {
+                    return param.getConstructor().newInstance();
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            });
 
             Parent root = fxmlLoader.load();
 
             Stage stage = new Stage();
 
             stage.setResizable(false);
-
             stage.setTitle("Nuovo Prestito");
             stage.setScene(new Scene(root));
-
-            stage.initModality(Modality.WINDOW_MODAL);
-
-            stage.show();
-
+            stage.initModality(Modality.WINDOW_MODAL); // Blocca la finestra sotto
+            stage.showAndWait(); // Meglio di show() per le finestre di dialogo
         } catch (IOException e) {
-            System.out.println("Errore nel caricamento di PrestitoView.fxml");
+            System.out.println("Errore caricamento PrestitoView.fxml");
         }
+
     }
 
     @Override
@@ -70,7 +97,17 @@ public class PrestitoController implements AreaController {
     }
 
     @Override
-    public void filtraTabella(TableView<?> tabella) {
+    public void filtraTabella(String filtro) {
+
+    }
+
+    @Override
+    public List<String> getCriteriOrdinamento() {
+        return List.of();
+    }
+
+    @Override
+    public void ordina(String testo) {
 
     }
 

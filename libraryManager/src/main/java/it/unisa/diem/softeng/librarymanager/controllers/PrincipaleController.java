@@ -1,12 +1,13 @@
 package it.unisa.diem.softeng.librarymanager.controllers;
 
+import it.unisa.diem.softeng.librarymanager.managers.Gestore;
+import it.unisa.diem.softeng.librarymanager.managers.GestoreLibro;
+import it.unisa.diem.softeng.librarymanager.managers.GestorePrestito;
+import it.unisa.diem.softeng.librarymanager.managers.GestoreUtente;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
@@ -14,14 +15,18 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.File;
-import java.io.IOException;
 
 public class PrincipaleController {
+    private GestorePrestito gestorePrestito;
+    private GestoreUtente gestoreUtente;
+    private GestoreLibro gestoreLibro;
+
+    private Gestore<?> gestoreCorrente;
+
     private AreaController areaCorrente;
     private boolean menuVisible = false;
 
@@ -58,9 +63,14 @@ public class PrincipaleController {
 
     @FXML
     public void initialize() {
+        //inizializzo i gestori UNA sola volta
+        gestoreLibro = new GestoreLibro();
+        gestorePrestito = new GestorePrestito();
+        gestoreUtente = new GestoreUtente();
+
         sideMenu.setTranslateX(-200);
 
-        setArea(new PrestitoController());
+        setArea(new PrestitoController(gestorePrestito));
         areaLbl.setText("Area Prestiti");
     }
 
@@ -82,7 +92,6 @@ public class PrincipaleController {
         slideContent.play();
     }
 
-
     public void setArea(AreaController area) {
         areaCorrente = area;
 
@@ -90,24 +99,36 @@ public class PrincipaleController {
         removeBtn.setOnAction(e -> areaCorrente.onRemove());
         modifyButton.setOnAction(e -> areaCorrente.onEdit(tabella));
 
+        //qui ci va il riempimento del MenuButton con gli ordinamenti disponibili (MenuItem)
+
         areaCorrente.setTableView(tabella);
+        //areaCorrente.filtraTabella(tabella);
     }
 
     @FXML
     public void setAreaPrestiti(ActionEvent actionEvent) {
-        setArea(new PrestitoController());
+        gestoreCorrente = gestorePrestito;
+
+        setArea(new PrestitoController((GestorePrestito) gestoreCorrente));
+
         areaLbl.setText("Area Prestiti");
     }
 
     @FXML
     public void setAreaLibri(ActionEvent actionEvent) {
-        setArea(new LibroController());
+        gestoreCorrente = gestoreLibro;
+
+        setArea(new LibroController((GestoreLibro) gestoreCorrente));
+
         areaLbl.setText("Area Libri");
     }
 
     @FXML
     public void setAreaUtenti(ActionEvent actionEvent) {
-        setArea(new UtenteController());
+        gestoreCorrente = gestoreUtente;
+
+        setArea(new UtenteController((GestoreUtente) gestoreCorrente));
+
         areaLbl.setText("Area Utenti");
     }
 
@@ -133,6 +154,6 @@ public class PrincipaleController {
     }
 
     @FXML
-    public void filtraTabella(ActionEvent actionEvent) {
+    public void ordineTabella(ActionEvent actionEvent) {
     }
 }

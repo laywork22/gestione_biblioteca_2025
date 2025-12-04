@@ -131,6 +131,11 @@ public class Utente implements Comparable<Utente> {
     }
 
     @Override
+    public boolean equals(Object o) {
+        return false;
+    }
+
+    @Override
     public int compareTo(Utente o) {
         return 0;
     }
