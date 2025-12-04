@@ -1,5 +1,6 @@
 package it.unisa.diem.softeng.librarymanager.controllers;
 
+import it.unisa.diem.softeng.librarymanager.controllers.forms.FormPrestitoController;
 import it.unisa.diem.softeng.librarymanager.managers.GestorePrestito;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreUtente;
 import it.unisa.diem.softeng.librarymanager.model.Prestito;
@@ -28,23 +29,6 @@ public class PrestitoController implements AreaController {
     private GestorePrestito gestore;
     private FilteredList<Prestito> listaFiltrata;
     private SortedList<Prestito> listaOrdinata;
-
-
-    @javafx.fxml.FXML
-    private TextField statoFld;
-    @javafx.fxml.FXML
-    private ComboBox<String> utentiCb;
-    @javafx.fxml.FXML
-    private TextField dataInizioFld;
-    @javafx.fxml.FXML
-    private Button salvaBtn;
-    @javafx.fxml.FXML
-    private ComboBox<String> libroCb;
-    @javafx.fxml.FXML
-    private TextField dataScadenzaFld;
-    @javafx.fxml.FXML
-    private Button annullaBtn;
-
     public PrestitoController(GestorePrestito gestore) {
         this.gestore = gestore;
     }
@@ -60,8 +44,8 @@ public class PrestitoController implements AreaController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/it/unisa/diem/softeng/libraryManager/PrestitoView.fxml"));
 
             fxmlLoader.setControllerFactory(param -> {
-                if (param == PrestitoController.class) {
-                    return this;
+                if (param == FormPrestitoController.class) {
+                    return new FormPrestitoController(gestore);
                 }
 
                 try {
@@ -111,24 +95,5 @@ public class PrestitoController implements AreaController {
 
     }
 
-    @javafx.fxml.FXML
-    public void annullaNuovoPrestito(ActionEvent actionEvent) {
-        Node source = (Node) actionEvent.getSource();
 
-        Stage stage = (Stage) source.getScene().getWindow();
-
-        stage.close();
-    }
-
-    @javafx.fxml.FXML
-    public void salvaNuovoPrestito(ActionEvent actionEvent) {
-    }
-
-    @javafx.fxml.FXML
-    public void viewPrestitiLista(ActionEvent actionEvent) {
-    }
-
-    @javafx.fxml.FXML
-    public void viewListaPrestiti(ActionEvent actionEvent) {
-    }
 }

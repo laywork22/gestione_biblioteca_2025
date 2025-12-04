@@ -141,7 +141,7 @@ public class Prestito implements Comparable<Prestito> {
     @Override
     public String toString() {
         return "Prestito di " + utente.getNome() + "--->" + libro.getTitolo() +
-                "\nData inizio: " + dataInizio + "\nData fine: " + dataFine + "\n";
+                "\nData inizio: " + dataInizio + " Data fine: " + dataFine + "\n";
     }
 
     @Override

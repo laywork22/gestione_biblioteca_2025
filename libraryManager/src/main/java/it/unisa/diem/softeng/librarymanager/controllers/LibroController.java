@@ -1,19 +1,16 @@
 package it.unisa.diem.softeng.librarymanager.controllers;
 
 import it.unisa.diem.softeng.librarymanager.comparators.AutoreLibroComparator;
+import it.unisa.diem.softeng.librarymanager.controllers.forms.FormLibroController;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreLibro;
 import it.unisa.diem.softeng.librarymanager.model.Libro;
 import it.unisa.diem.softeng.librarymanager.model.Utente;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -30,24 +27,6 @@ public class LibroController implements AreaController {
     private SortedList<Utente> listaOrdinata;
 
 
-    @FXML
-    private AnchorPane insertBookContent;
-    @FXML
-    private TextField annoFld;
-    @FXML
-    private TextField titoloFld;
-    @FXML
-    private TextField autoreFld;
-    @FXML
-    private Button salvaLibroBtn;
-    @FXML
-    private TextField copieDisponibiliFld;
-    @FXML
-    private TextField isbnFld;
-    @FXML
-    private TextField copieTotaliFld;
-    @FXML
-    private Button annullaBtn;
 
     public LibroController(GestoreLibro gestore) {
         this.gestore = gestore;
@@ -69,8 +48,8 @@ public class LibroController implements AreaController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/it/unisa/diem/softeng/libraryManager/LibroView.fxml"));
             fxmlLoader.setControllerFactory(param -> {
 
-                if (param == LibroController.class) {
-                    return this;
+                if (param == FormLibroController.class) {
+                    return new FormLibroController(this.gestore);
                 }
 
                 try {

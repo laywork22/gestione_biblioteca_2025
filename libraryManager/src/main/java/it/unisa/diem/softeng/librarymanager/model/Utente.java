@@ -127,7 +127,7 @@ public class Utente implements Comparable<Utente> {
      */
     @Override
     public String toString() {
-        return "Nome: " + nome + "\nCognome: " + cognome + "\nMatricola: " + matricola + "\nEmail: " + email + "\n";
+        return "Nome: " + nome + " Cognome: " + cognome + " Matricola: " + matricola + " Email: " + email + "\n";
     }
 
     @Override

@@ -1,57 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="insertBookContent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.diem.softeng.librarymanager.controllers.LibroController">
-    <TextField fx:id="autoreFld" layoutX="174.0" layoutY="109.0" prefHeight="26.0" prefWidth="322.0" />
-    <TextField fx:id="annoFld" layoutX="174.0" layoutY="155.0" prefHeight="26.0" prefWidth="322.0" />
-    <TextField fx:id="titoloFld" layoutX="174.0" layoutY="72.0" prefHeight="26.0" prefWidth="322.0" />
-    <TextField fx:id="isbnFld" layoutX="174.0" layoutY="207.0" prefHeight="26.0" prefWidth="322.0" />
-    <TextField fx:id="copieTotaliFld" layoutX="174.0" layoutY="256.0" prefHeight="26.0" prefWidth="162.0" />
-    <TextField fx:id="copieDisponibiliFld" layoutX="174.0" layoutY="300.0" />
+<AnchorPane fx:id="insertBookContent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.diem.softeng.librarymanager.controllers.forms.FormLibroController">
+    <TextField fx:id="autoreFld" layoutX="179.0" layoutY="109.0" prefHeight="26.0" prefWidth="322.0" />
+    <TextField fx:id="annoFld" layoutX="179.0" layoutY="155.0" prefHeight="26.0" prefWidth="322.0" />
+    <TextField fx:id="titoloFld" layoutX="179.0" layoutY="61.0" prefHeight="26.0" prefWidth="322.0" />
+    <TextField fx:id="isbnFld" layoutX="179.0" layoutY="207.0" prefHeight="26.0" prefWidth="322.0" />
+    <TextField fx:id="copieTotaliFld" layoutX="180.0" layoutY="256.0" prefHeight="26.0" prefWidth="162.0" />
+    <TextField fx:id="copieDisponibiliFld" layoutX="180.0" layoutY="299.0" />
     <Label alignment="CENTER" layoutX="162.0" layoutY="23.0" prefHeight="26.0" prefWidth="277.0" text="Inserisci nuovo libro">
         <font>
           <Font size="20.0" />
         </font>
     </Label>
-    <Label layoutX="50.0" layoutY="76.0" text="Titolo">
+    <Label layoutX="93.0" layoutY="76.0" text="Titolo">
         <font>
           <Font size="15.0" />
         </font>
     </Label>
-    <Label layoutX="50.0" layoutY="113.0" text="Autori">
+    <Label layoutX="91.0" layoutY="124.0" text="Autori">
         <font>
           <Font size="15.0" />
         </font>
     </Label>
-    <Label layoutX="50.0" layoutY="159.0" text="Anno">
+    <Label layoutX="94.0" layoutY="170.0" text="Anno">
         <font>
           <Font size="15.0" />
         </font>
     </Label>
-    <Label layoutX="50.0" layoutY="211.0" text="ISBN">
+    <Label layoutX="91.0" layoutY="222.0" text="ISBN">
         <font>
           <Font size="15.0" />
         </font>
     </Label>
-    <Label layoutX="34.0" layoutY="260.0" text="Copie totali">
+    <Label layoutX="74.0" layoutY="261.0" text="Copie totali">
         <font>
           <Font size="15.0" />
         </font>
     </Label>
-    <Label layoutX="27.0" layoutY="303.0" text="Copie disponibili">
+    <Label layoutX="56.0" layoutY="304.0" text="Copie disponibili">
         <font>
           <Font size="15.0" />
         </font>
     </Label>
-    <Button fx:id="salvaLibroBtn" layoutX="216.0" layoutY="354.0" mnemonicParsing="false" text="Salva">
+    <Button fx:id="salvaLibroBtn" layoutX="216.0" layoutY="354.0" mnemonicParsing="false" onAction="#handleSalva" text="Salva">
         <font>
           <Font size="15.0" />
         </font>
     </Button>
-    <Button fx:id="annullaBtn" layoutX="301.0" layoutY="354.0" mnemonicParsing="false" text="Annulla">
+    <Button fx:id="annullaBtn" layoutX="301.0" layoutY="354.0" mnemonicParsing="false" onAction="#handleAnnulla" text="Annulla">
         <font>
           <Font size="15.0" />
         </font>
