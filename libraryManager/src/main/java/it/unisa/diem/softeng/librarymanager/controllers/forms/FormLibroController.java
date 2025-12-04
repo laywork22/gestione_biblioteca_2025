@@ -30,9 +30,6 @@ public class FormLibroController {
     @FXML
     private Button annullaBtn;
 
-    public FormLibroController(GestoreLibro gestore) {
-        this.gestore = gestore;
-    }
     @FXML
     private void handleSalva(ActionEvent event) {
         String titolo = titoloFld.getText();
@@ -54,5 +51,9 @@ public class FormLibroController {
     private void chiudiFinestra() {
         Stage stage = (Stage) salvaLibroBtn.getScene().getWindow();
         stage.close();
+    }
+
+    public void setGestore(GestoreLibro gestore) {
+        this.gestore = gestore;
     }
 }

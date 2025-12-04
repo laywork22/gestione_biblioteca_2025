@@ -24,7 +24,7 @@ public interface AreaController {
     void setTableView(TableView<?> tabella);
 
     /**
-    * Incapsulo unaa lista di osservabili in un una FilteredList chr segue i criteri imposti nel Predicate associato un
+    * Incapsulo una lista di osservabili in un una FilteredList chr segue i criteri imposti nel Predicate associato un
     * gestore specifico. Utilizzato per filtrare gli elementi della tabella durante la ricerca.
     **/
     void filtraTabella(String filtro);

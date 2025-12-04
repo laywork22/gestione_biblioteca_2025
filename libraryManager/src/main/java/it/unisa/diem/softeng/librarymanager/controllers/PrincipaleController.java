@@ -70,6 +70,8 @@ public class PrincipaleController {
 
         sideMenu.setTranslateX(-200);
 
+        //PrestitoController pc = new PrestitoController();
+
         setArea(new PrestitoController(gestorePrestito));
         areaLbl.setText("Area Prestiti");
     }
