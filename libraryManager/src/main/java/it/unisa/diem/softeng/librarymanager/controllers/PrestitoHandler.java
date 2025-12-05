@@ -1,6 +1,7 @@
 package it.unisa.diem.softeng.librarymanager.controllers;
 
 import it.unisa.diem.softeng.librarymanager.controllers.forms.FormPrestitoController;
+import it.unisa.diem.softeng.librarymanager.controllers.forms.FormUtenteController;
 import it.unisa.diem.softeng.librarymanager.managers.GestorePrestito;
 import it.unisa.diem.softeng.librarymanager.model.Prestito;
 import javafx.collections.transformation.FilteredList;
@@ -40,28 +41,24 @@ public class PrestitoHandler implements AreaHandler {
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/it/unisa/diem/softeng/libraryManager/PrestitoView.fxml"));
 
-            fxmlLoader.setControllerFactory(param -> {
-                if (param == FormPrestitoController.class) {
-                    return new FormPrestitoController(gestore);
-                }
-
-                try {
-                    return param.getConstructor().newInstance();
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
-            });
-
             Parent root = fxmlLoader.load();
+
+            FormPrestitoController fu = fxmlLoader.getController();
+
+            if(fu != null) {
+                fu.setGestore(gestore);
+            }
 
             Stage stage = new Stage();
 
             stage.setResizable(false);
+
             stage.setTitle("Nuovo Prestito");
             stage.setScene(new Scene(root));
-            stage.initModality(Modality.WINDOW_MODAL); // Blocca la finestra sotto
-            stage.showAndWait(); // Meglio di show() per le finestre di dialogo
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.showAndWait();
         } catch (IOException e) {
+            e.printStackTrace();
             System.out.println("Errore caricamento PrestitoView.fxml");
         }
 

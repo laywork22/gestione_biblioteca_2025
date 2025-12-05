@@ -32,12 +32,6 @@ public class FormPrestitoController {
     @FXML
     private Button annullaBtn;
 
-
-    public FormPrestitoController(GestorePrestito gestore) {
-        this.gestore = gestore;
-    }
-
-
     @FXML
     public void initialize() {
 
@@ -52,12 +46,13 @@ public class FormPrestitoController {
 
     @FXML
     public void annullaNuovoPrestito(ActionEvent event) {
-
+        chiudiFinestra();
     }
 
 
     private void chiudiFinestra() {
-
+        Stage stage = (Stage) salvaBtn.getScene().getWindow();
+        stage.close();
     }
 
 
@@ -72,4 +67,7 @@ public class FormPrestitoController {
     }
 
 
+    public void setGestore(GestorePrestito gestore) {
+        this.gestore = gestore;
+    }
 }

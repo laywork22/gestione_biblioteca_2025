@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 public class FormUtenteController {
 
-    private final GestoreUtente gestore;
+    private GestoreUtente gestore;
 
     @FXML
     private TextField nomeFld;
@@ -24,10 +24,6 @@ public class FormUtenteController {
     private Button salvaBtn;
     @FXML
     private Button annullaBtn;
-
-    public FormUtenteController(GestoreUtente gestore) {
-        this.gestore = gestore;
-    }
 
     @FXML
     public void initialize() {
@@ -50,11 +46,17 @@ public class FormUtenteController {
     private void handleAnnulla(ActionEvent event) {
         chiudiFinestra();
     }
+
     @FXML
     private void viewListaUtenti(ActionEvent event){
     }
+
     @FXML
     private void viewListaLibri(ActionEvent event){
+    }
+
+    public void setGestore(GestoreUtente gestore) {
+        this.gestore = gestore;
     }
 
     private void chiudiFinestra() {
