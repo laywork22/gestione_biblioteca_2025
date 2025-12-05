@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -18,19 +19,17 @@ public class FormPrestitoController {
     private SortedList<Prestito> listaOrdinata;
 
     @FXML
-    private TextField statoFld;
-    @FXML
     private ComboBox<String> utentiCb;
-    @FXML
-    private TextField dataInizioFld;
     @FXML
     private Button salvaBtn;
     @FXML
     private ComboBox<String> libroCb;
     @FXML
-    private TextField dataScadenzaFld;
-    @FXML
     private Button annullaBtn;
+    @FXML
+    private DatePicker dataInizioDp;
+    @FXML
+    private DatePicker dataScadenzaDp;
 
     @FXML
     public void initialize() {
@@ -66,8 +65,14 @@ public class FormPrestitoController {
 
     }
 
-
     public void setGestore(GestorePrestito gestore) {
         this.gestore = gestore;
     }
+
+    public void setFormOnEdit(Prestito p) {
+        //imposta tutti i campi del form
+
+    }
+
+
 }

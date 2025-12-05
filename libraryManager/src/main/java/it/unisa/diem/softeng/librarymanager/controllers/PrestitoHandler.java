@@ -24,9 +24,10 @@ import java.util.List;
  *
  */
 public class PrestitoHandler implements AreaHandler {
-    private GestorePrestito gestore;
+    private final GestorePrestito gestore;
     private FilteredList<Prestito> listaFiltrata;
     private SortedList<Prestito> listaOrdinata;
+
     public PrestitoHandler(GestorePrestito gestore) {
         this.gestore = gestore;
     }
@@ -39,7 +40,7 @@ public class PrestitoHandler implements AreaHandler {
     @Override
     public void onAdd() {
         try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/it/unisa/diem/softeng/libraryManager/PrestitoView.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/it/unisa/diem/softeng/librarymanager/PrestitoView.fxml"));
 
             Parent root = fxmlLoader.load();
 
@@ -88,6 +89,7 @@ public class PrestitoHandler implements AreaHandler {
     public void ordina(String testo) {
 
     }
+
 
 
 }

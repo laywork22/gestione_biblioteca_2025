@@ -1,6 +1,7 @@
 package it.unisa.diem.softeng.librarymanager.controllers.forms;
 
 import it.unisa.diem.softeng.librarymanager.managers.GestoreUtente;
+import it.unisa.diem.softeng.librarymanager.model.Prestito;
 import it.unisa.diem.softeng.librarymanager.model.Utente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -62,5 +63,10 @@ public class FormUtenteController {
     private void chiudiFinestra() {
         Stage stage = (Stage) salvaBtn.getScene().getWindow();
         stage.close();
+    }
+
+    public void setFormOnEdit(Prestito p) {
+        //imposta tutti i campi del form
+
     }
 }

@@ -43,6 +43,7 @@ public class FormLibroController {
 
         chiudiFinestra();
     }
+
     @FXML
     private void handleAnnulla(ActionEvent event) {
         chiudiFinestra();
@@ -55,5 +56,14 @@ public class FormLibroController {
 
     public void setGestore(GestoreLibro gestore) {
         this.gestore = gestore;
+    }
+
+    public void getLibroOnEdit(Libro l) {
+        autoreFld.setText(l.getAutore());
+        titoloFld.setText(l.getTitolo());
+        annoFld.setText(String.valueOf(l.getAnno()));
+        isbnFld.setText(l.getIsbn());
+        copieDisponibiliFld.setText(String.valueOf(l.getCopieDisponibili()));
+        copieTotaliFld.setText(String.valueOf(l.getCopieTotali()));
     }
 }

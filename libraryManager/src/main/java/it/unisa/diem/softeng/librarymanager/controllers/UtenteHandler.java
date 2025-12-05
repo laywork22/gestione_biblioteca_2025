@@ -38,18 +38,14 @@ public class UtenteHandler implements AreaHandler {
     @Override
     public void onAdd() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/it/unisa/diem/softeng/libraryManager/UtenteView.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/it/unisa/diem/softeng/librarymanager/UtenteView.fxml"));
 
-            fxmlLoader.setControllerFactory(param -> {
-                if (param == FormUtenteController.class) {
-                    return new FormUtenteController(this.gestore);
-                }
-                try {
-                    return param.getConstructor().newInstance();
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
-            });
+            FormUtenteController fu = fxmlLoader.getController();
+
+            if(fu == null) return;
+            else {
+                fu.setGestore(gestore);
+            }
 
             Parent root = fxmlLoader.load();
             Stage stage = new Stage();

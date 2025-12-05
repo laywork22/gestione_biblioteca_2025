@@ -53,7 +53,7 @@ public class LibroHandler implements AreaHandler {
     @Override
     public void onAdd() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/it/unisa/diem/softeng/libraryManager/LibroView.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/it/unisa/diem/softeng/librarymanager/LibroView.fxml"));
 
             Parent root = fxmlLoader.load();
 
@@ -81,7 +81,11 @@ public class LibroHandler implements AreaHandler {
 
     @Override
     public void onEdit(TableView<?> tabella) {
+        //prendi il libro dalla tabella
 
+        //usa il controller per settare il form con setFormOnEdit
+
+        //apri il form con i campi riempiti
     }
 
 
