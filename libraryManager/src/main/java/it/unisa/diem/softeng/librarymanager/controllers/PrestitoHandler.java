@@ -2,34 +2,31 @@ package it.unisa.diem.softeng.librarymanager.controllers;
 
 import it.unisa.diem.softeng.librarymanager.controllers.forms.FormPrestitoController;
 import it.unisa.diem.softeng.librarymanager.managers.GestorePrestito;
-import it.unisa.diem.softeng.librarymanager.managers.GestoreUtente;
 import it.unisa.diem.softeng.librarymanager.model.Prestito;
-import it.unisa.diem.softeng.librarymanager.model.Utente;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.nio.file.FileSystemNotFoundException;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 
-public class PrestitoController implements AreaController {
+/**@brief Gestore della schermata UI Area Prestiti
+ *
+ * Implementa la logica di visualizzazione della tabella
+ * e di caricamento FXML del file del form al
+ * gestore del form
+ *
+ */
+public class PrestitoHandler implements AreaHandler {
     private GestorePrestito gestore;
     private FilteredList<Prestito> listaFiltrata;
     private SortedList<Prestito> listaOrdinata;
-    public PrestitoController(GestorePrestito gestore) {
+    public PrestitoHandler(GestorePrestito gestore) {
         this.gestore = gestore;
     }
 

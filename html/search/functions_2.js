@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['prestito_0',['Prestito',['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_prestito.html#a86366979107256c9b7b428d3ffaef52a',1,'it::unisa::diem::softeng::librarymanager::model::Prestito']]]
+  ['filtratabella_0',['filtraTabella',['../interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_controller.html#a5102b8fd94b9937888c1d95a35d3ef18',1,'it.unisa.diem.softeng.librarymanager.controllers.AreaController.filtraTabella()'],['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_libro_controller.html#ae64962ec67e90f5dc2e331dc7d192d10',1,'it.unisa.diem.softeng.librarymanager.controllers.LibroController.filtraTabella()'],['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_prestito_controller.html#a4e6c1ddd7134cc5dd741ae462e6e8960',1,'it.unisa.diem.softeng.librarymanager.controllers.PrestitoController.filtraTabella()'],['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_utente_controller.html#aa311643218274f4daf4f7a1c614d01f9',1,'it.unisa.diem.softeng.librarymanager.controllers.UtenteController.filtraTabella()']]]
 ];

@@ -11,11 +11,22 @@ var annotated_dup =
                 [ "CognomeUtenteComparator", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1comparators_1_1_cognome_utente_comparator.html", null ]
               ] ],
               [ "controllers", null, [
-                [ "AreaController", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_controller.html", null ],
-                [ "LibroController", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_libro_controller.html", null ],
-                [ "PrestitoController", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_prestito_controller.html", null ],
+                [ "forms", null, [
+                  [ "FormLibroController", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1forms_1_1_form_libro_controller.html", null ],
+                  [ "FormPrestitoController", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1forms_1_1_form_prestito_controller.html", null ],
+                  [ "FormUtenteController", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1forms_1_1_form_utente_controller.html", null ]
+                ] ],
+                [ "AreaController", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_controller.html", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_controller" ],
+                [ "LibroController", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_libro_controller.html", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_libro_controller" ],
+                [ "PrestitoController", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_prestito_controller.html", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_prestito_controller" ],
                 [ "PrincipaleController", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_principale_controller.html", null ],
-                [ "UtenteController", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_utente_controller.html", null ]
+                [ "UtenteController", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_utente_controller.html", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_utente_controller" ]
+              ] ],
+              [ "managers", null, [
+                [ "Gestore", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore.html", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore" ],
+                [ "GestoreLibro", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_libro.html", null ],
+                [ "GestorePrestito", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_prestito.html", null ],
+                [ "GestoreUtente", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_utente.html", null ]
               ] ],
               [ "model", null, [
                 [ "Libro", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro" ],
@@ -23,12 +34,7 @@ var annotated_dup =
                 [ "StatoPrestitoEnum", "enumit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_stato_prestito_enum.html", null ],
                 [ "Utente", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_utente.html", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_utente" ]
               ] ],
-              [ "GestoreLibro", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1_gestore_libro.html", null ],
-              [ "GestorePrestito", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1_gestore_prestito.html", null ],
-              [ "GestoreUtente", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1_gestore_utente.html", null ],
-              [ "libraryManagerApp", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1library_manager_app.html", null ],
-              [ "PrimaryController", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1_primary_controller.html", null ],
-              [ "SecondaryController", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1_secondary_controller.html", null ]
+              [ "libraryManagerApp", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1library_manager_app.html", null ]
             ] ]
           ] ]
         ] ]

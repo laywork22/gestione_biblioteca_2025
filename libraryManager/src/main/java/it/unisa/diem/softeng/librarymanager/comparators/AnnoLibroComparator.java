@@ -8,6 +8,6 @@ public class AnnoLibroComparator implements Comparator<Libro> {
 
     @Override
     public int compare(Libro o1, Libro o2) {
-        return 0;
+        return Integer.compare(o1.getAnno(), o2.getAnno());
     }
 }

@@ -15,14 +15,20 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.*;
-
-public class UtenteController implements AreaController {
+/**@brief Gestore della schermata UI Area utenti
+ *
+ * Implementa la logica di visualizzazione della tabella
+ * e di caricamento FXML del file del form al
+ * gestore del form
+ *
+ */
+public class UtenteHandler implements AreaHandler {
     private GestoreUtente gestore;
     private final Map<String, Comparator<Utente>> mappaOrdinamento;
     private FilteredList<Utente> listaFiltrata;
     private SortedList<Utente> listaOrdinata;
 
-    public UtenteController(GestoreUtente gestore) {
+    public UtenteHandler(GestoreUtente gestore) {
         this.gestore = gestore;
 
         mappaOrdinamento = new HashMap<>();

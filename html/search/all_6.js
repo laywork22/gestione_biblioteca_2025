@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['tostring_0',['toString',['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html#a9f446b6c29ced9b7415ba99640e638c2',1,'it.unisa.diem.softeng.librarymanager.model.Libro.toString()'],['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_prestito.html#af8c4e30fa7f5b163adab74731c418eb5',1,'it.unisa.diem.softeng.librarymanager.model.Prestito.toString()'],['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_utente.html#ae961971c15669ce56272bab5646c1a01',1,'it.unisa.diem.softeng.librarymanager.model.Utente.toString()']]]
+  ['librarymanagerapp_0',['libraryManagerApp',['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1library_manager_app.html',1,'it::unisa::diem::softeng::librarymanager']]],
+  ['libro_1',['Libro',['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html',1,'it.unisa.diem.softeng.librarymanager.model.Libro'],['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html#aba21f494f2d4f0ba46725f9bd766f20c',1,'it.unisa.diem.softeng.librarymanager.model.Libro.Libro()']]],
+  ['librocontroller_2',['LibroController',['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_libro_controller.html',1,'it::unisa::diem::softeng::librarymanager::controllers']]]
 ];

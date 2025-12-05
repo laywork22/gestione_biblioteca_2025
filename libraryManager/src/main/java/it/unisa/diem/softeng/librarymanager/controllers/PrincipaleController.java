@@ -19,7 +19,18 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.File;
-
+/**@brief Gestore principale di schermata
+ *
+ * Implementa la logica di modifica dell'area a
+ * seguito della pressione dei pulsanti a schermo
+ * e del cambiamento di ordinamento della tabella.
+ *
+ * E' la classe che contiene il log dei gestori delle
+ * schermate e implementa il processo di salvataggio
+ * e caricamento
+ *
+ *
+ */
 public class PrincipaleController {
     private GestorePrestito gestorePrestito;
     private GestoreUtente gestoreUtente;
@@ -27,7 +38,7 @@ public class PrincipaleController {
 
     private Gestore<?> gestoreCorrente;
 
-    private AreaController areaCorrente;
+    private AreaHandler areaCorrente;
     private boolean menuVisible = false;
 
     @FXML
@@ -70,7 +81,7 @@ public class PrincipaleController {
 
         sideMenu.setTranslateX(-200);
 
-        setArea(new PrestitoController(gestorePrestito));
+        setArea(new PrestitoHandler(gestorePrestito));
         areaLbl.setText("Area Prestiti");
     }
 
@@ -92,7 +103,7 @@ public class PrincipaleController {
         slideContent.play();
     }
 
-    public void setArea(AreaController area) {
+    public void setArea(AreaHandler area) {
         areaCorrente = area;
 
         addBtn.setOnAction(e -> areaCorrente.onAdd());
@@ -109,27 +120,30 @@ public class PrincipaleController {
     public void setAreaPrestiti(ActionEvent actionEvent) {
         gestoreCorrente = gestorePrestito;
 
-        setArea(new PrestitoController((GestorePrestito) gestoreCorrente));
+        setArea(new PrestitoHandler((GestorePrestito) gestoreCorrente));
 
         areaLbl.setText("Area Prestiti");
+        toggleMenu();
     }
 
     @FXML
     public void setAreaLibri(ActionEvent actionEvent) {
         gestoreCorrente = gestoreLibro;
 
-        setArea(new LibroController((GestoreLibro) gestoreCorrente));
+        setArea(new LibroHandler((GestoreLibro) gestoreCorrente));
 
         areaLbl.setText("Area Libri");
+        toggleMenu();
     }
 
     @FXML
     public void setAreaUtenti(ActionEvent actionEvent) {
         gestoreCorrente = gestoreUtente;
 
-        setArea(new UtenteController((GestoreUtente) gestoreCorrente));
+        setArea(new UtenteHandler((GestoreUtente) gestoreCorrente));
 
         areaLbl.setText("Area Utenti");
+        toggleMenu();
     }
 
     @FXML

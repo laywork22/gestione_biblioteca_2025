@@ -6,7 +6,13 @@ import javafx.collections.ObservableList;
 
 import java.util.Comparator;
 import java.util.function.Predicate;
-
+/**
+ * @brief Classe specifica per la gestione delle entità Prestito.
+ *
+ *Questa classe implementa i metodi relativi a la logica di formazione
+ *della ObservableList di Prestito.
+ * @author Gruppo 12
+ */
 public class GestorePrestito implements Gestore<Prestito>{
     private final ObservableList<Prestito> prestitoList;
 

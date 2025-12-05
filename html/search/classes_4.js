@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['prestito_0',['Prestito',['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_prestito.html',1,'it::unisa::diem::softeng::librarymanager::model']]],
-  ['prestitocontroller_1',['PrestitoController',['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_prestito_controller.html',1,'it::unisa::diem::softeng::librarymanager::controllers']]],
-  ['primarycontroller_2',['PrimaryController',['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1_primary_controller.html',1,'it::unisa::diem::softeng::librarymanager']]],
-  ['principalecontroller_3',['PrincipaleController',['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_principale_controller.html',1,'it::unisa::diem::softeng::librarymanager::controllers']]]
+  ['librarymanagerapp_0',['libraryManagerApp',['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1library_manager_app.html',1,'it::unisa::diem::softeng::librarymanager']]],
+  ['libro_1',['Libro',['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html',1,'it::unisa::diem::softeng::librarymanager::model']]],
+  ['librocontroller_2',['LibroController',['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_libro_controller.html',1,'it::unisa::diem::softeng::librarymanager::controllers']]]
 ];

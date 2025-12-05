@@ -21,10 +21,14 @@
       <Label layoutX="33.0" layoutY="175.0" text="Data inizio" />
       <Label layoutX="33.0" layoutY="123.0" text="Libro" />
       <Label layoutX="33.0" layoutY="78.0" text="Utente" />
-      <TextField fx:id="dataInizioFld" layoutX="147.0" layoutY="171.0" prefWidth="162.0" />
+      <TextField fx:id="dataInizioFld" layoutX="147.0" layoutY="171.0" prefHeight="31.0" prefWidth="45.0" promptText="DD" />
       <TextField fx:id="statoFld" layoutX="147.0" layoutY="268.0" />
-      <TextField fx:id="dataScadenzaFld" layoutX="147.0" layoutY="218.0" />
       <ComboBox fx:id="utentiCb" editable="true" layoutX="147.0" layoutY="74.0" onAction="#viewListaUtenti" prefHeight="26.0" prefWidth="309.0" />
       <ComboBox fx:id="libroCb" editable="true" layoutX="147.0" layoutY="119.0" onAction="#viewListaLibri" prefHeight="26.0" prefWidth="309.0" />
+      <TextField layoutX="203.0" layoutY="171.0" prefHeight="31.0" prefWidth="45.0" promptText="MM" />
+      <TextField layoutX="258.0" layoutY="170.0" prefHeight="31.0" prefWidth="70.0" promptText="    YY" />
+      <TextField layoutX="203.0" layoutY="217.0" prefHeight="31.0" prefWidth="45.0" promptText="MM" />
+      <TextField fx:id="dataInizioFld1" layoutX="147.0" layoutY="217.0" prefHeight="31.0" prefWidth="45.0" promptText="DD" />
+      <TextField layoutX="258.0" layoutY="217.0" prefHeight="31.0" prefWidth="70.0" promptText="    YY" />
    </children>
 </AnchorPane>

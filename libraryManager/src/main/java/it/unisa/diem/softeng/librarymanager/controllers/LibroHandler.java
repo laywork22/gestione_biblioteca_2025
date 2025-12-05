@@ -20,7 +20,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class LibroController implements AreaController {
+/**@brief Gestore della schermata UI Area Libri
+ *
+ * Implementa la logica di visualizzazione della tabella
+ * e di caricamento FXML del file del form al
+ * gestore del form
+ *
+ */
+public class LibroHandler implements AreaHandler {
     private final GestoreLibro gestore;
     private final Map<String, Comparator<Libro>> mappaComparatori;
     private FilteredList<Utente> listaFiltrata;
@@ -28,7 +35,7 @@ public class LibroController implements AreaController {
 
 
 
-    public LibroController(GestoreLibro gestore) {
+    public LibroHandler(GestoreLibro gestore) {
         this.gestore = gestore;
 
         mappaComparatori = new HashMap<>();

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['secondarycontroller_0',['SecondaryController',['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1_secondary_controller.html',1,'it::unisa::diem::softeng::librarymanager']]],
-  ['statoprestitoenum_1',['StatoPrestitoEnum',['../enumit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_stato_prestito_enum.html',1,'it::unisa::diem::softeng::librarymanager::model']]]
+  ['prestito_0',['Prestito',['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_prestito.html',1,'it::unisa::diem::softeng::librarymanager::model']]],
+  ['prestitocontroller_1',['PrestitoController',['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_prestito_controller.html',1,'it::unisa::diem::softeng::librarymanager::controllers']]],
+  ['principalecontroller_2',['PrincipaleController',['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_principale_controller.html',1,'it::unisa::diem::softeng::librarymanager::controllers']]]
 ];

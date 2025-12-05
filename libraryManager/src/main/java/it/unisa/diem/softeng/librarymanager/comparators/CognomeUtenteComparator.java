@@ -8,6 +8,6 @@ public class CognomeUtenteComparator implements Comparator<Utente> {
 
     @Override
     public int compare(Utente utente, Utente t1) {
-        return 0;
+        return utente.getCognome().compareTo(t1.getCognome());
     }
 }
