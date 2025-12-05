@@ -63,7 +63,7 @@ public class FormUtenteController {
         stage.close();
     }
 
-    public void setFormOnEdit(Prestito p) {
+    public void setFormOnEdit(Utente u) {
         //imposta tutti i campi del form
 
     }

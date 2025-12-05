@@ -40,6 +40,8 @@ public class UtenteHandler implements AreaHandler {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/it/unisa/diem/softeng/librarymanager/UtenteView.fxml"));
 
+            Parent root = fxmlLoader.load();
+
             FormUtenteController fu = fxmlLoader.getController();
 
             if(fu == null) return;
@@ -47,7 +49,6 @@ public class UtenteHandler implements AreaHandler {
                 fu.init(gestore);
             }
 
-            Parent root = fxmlLoader.load();
             Stage stage = new Stage();
             stage.setResizable(false);
             stage.setTitle("Nuovo Utente");
