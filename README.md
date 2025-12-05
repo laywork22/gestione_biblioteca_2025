@@ -6,7 +6,7 @@ Documentazione tecnica del progetto **Library Manager**.
 
 Questo software è un'applicazione desktop sviluppata in **Java** con interfaccia grafica **JavaFX**. Il sistema è progettato per automatizzare e semplificare le operazioni quotidiane di una biblioteca, permettendo la gestione efficiente del catalogo libri, dell’anagrafica utenti e del monitoraggio dei prestiti.
 
-features_sec Funzionalità Principali
+Funzionalità Principali
 
 Il sistema è suddiviso in tre macro-aree funzionali:
 
@@ -52,7 +52,7 @@ Per compilare ed eseguire il progetto:
 
 
 
-authors_sec Autori
+Autori
 
 - Emiddio Ferrentino
 - Rosa Genovese
