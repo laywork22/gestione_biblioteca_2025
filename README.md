@@ -48,11 +48,11 @@ Requisiti e Installazione
 
 Per compilare ed eseguire il progetto:
 
-<pre> ```mvn clean javafx:run``` </pre>
+<pre> mvn clean javafx:run </pre>
 
 
 
-@section authors_sec Autori
+authors_sec Autori
 
 - Emiddio Ferrentino
 - Rosa Genovese
