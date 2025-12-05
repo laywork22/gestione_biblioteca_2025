@@ -58,13 +58,6 @@ public class Libro implements Comparable<Libro> {
      * @param copieTotali Il numero totale di copie fisiche da inserire a catalogo.
      */
     public Libro(String titolo, String autore, int anno, String isbn, int copieTotali) {
-        this.titolo = titolo;
-        this.autore = autore;
-        this.anno = anno;
-        this.isbn = isbn;
-        this.copieTotali = copieTotali;
-        // All'inizio tutte le copie sono disponibili
-        this.copieDisponibili = copieTotali;
     }
 
     /**
@@ -162,7 +155,6 @@ public class Libro implements Comparable<Libro> {
      * @return Incrementa le copie totali di un libro di uno.
      */
     public void incrementaCopie() {
-        this.copieTotali ++;
     }
 
     /**
@@ -170,9 +162,7 @@ public class Libro implements Comparable<Libro> {
      * @return Decrementa le copie disponibili di un libro di uno
      * */
     public void decrementaCopie() {
-        if(copieDisponibili > 0) {
-            this.copieDisponibili--;
-        }
+
     }
     /**
      * @brief Restituisce una rappresentazione in formato stringa dell'oggetto Libro.
@@ -180,8 +170,7 @@ public class Libro implements Comparable<Libro> {
      */
     @Override
     public String toString() {
-        return "Titolo: " + titolo + "\nAutore: " + autore + "\nISBN: " + isbn +
-                "\nCopie Totali: " + copieTotali + "\nCopie Disponibili: " + copieDisponibili + "\n";
+
     }
 
 

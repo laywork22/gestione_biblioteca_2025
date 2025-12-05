@@ -34,8 +34,6 @@ public class LibroHandler implements AreaHandler {
     private FilteredList<Utente> listaFiltrata;
     private SortedList<Utente> listaOrdinata;
 
-
-
     public LibroHandler(GestoreLibro gestore) {
         this.gestore = gestore;
 
@@ -52,31 +50,6 @@ public class LibroHandler implements AreaHandler {
 
     @Override
     public void onAdd() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/it/unisa/diem/softeng/libraryManager/LibroView.fxml"));
-
-            Parent root = fxmlLoader.load();
-
-            FormLibroController fu = fxmlLoader.getController();
-
-            if(fu != null) {
-                fu.setGestore(gestore);
-            }
-
-            Stage stage = new Stage();
-
-            stage.setResizable(false);
-
-            stage.setTitle("Nuovo Libro");
-            stage.setScene(new Scene(root));
-
-            stage.initModality(Modality.WINDOW_MODAL);
-
-            stage.show();
-
-        } catch (IOException e) {
-            System.out.println("Errore nel caricamento di LibroView.fxml");
-        }
     }
 
     @Override

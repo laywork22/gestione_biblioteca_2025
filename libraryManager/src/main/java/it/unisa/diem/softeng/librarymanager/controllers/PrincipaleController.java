@@ -74,76 +74,31 @@ public class PrincipaleController {
 
     @FXML
     public void initialize() {
-        //inizializzo i gestori UNA sola volta
-        gestoreLibro = new GestoreLibro();
-        gestorePrestito = new GestorePrestito();
-        gestoreUtente = new GestoreUtente();
 
-        sideMenu.setTranslateX(-200);
-
-        setArea(new PrestitoHandler(gestorePrestito));
-        areaLbl.setText("Area Prestiti");
     }
 
     @FXML
     private void toggleMenu() {
-        TranslateTransition slideMenu = new TranslateTransition(Duration.millis(300), sideMenu);
-        TranslateTransition slideContent = new TranslateTransition(Duration.millis(300), mainContent);
 
-        if (!menuVisible) {
-            slideMenu.setToX(0);
-            slideContent.setToX(200);
-            menuVisible = true;
-        } else {
-            slideMenu.setToX(-200);
-            slideContent.setToX(0);
-            menuVisible = false;
-        }
-        slideMenu.play();
-        slideContent.play();
     }
 
     public void setArea(AreaHandler area) {
-        areaCorrente = area;
 
-        addBtn.setOnAction(e -> areaCorrente.onAdd());
-        removeBtn.setOnAction(e -> areaCorrente.onRemove());
-        modifyButton.setOnAction(e -> areaCorrente.onEdit(tabella));
-
-        //qui ci va il riempimento del MenuButton con gli ordinamenti disponibili (MenuItem)
-
-        areaCorrente.setTableView(tabella);
-        //areaCorrente.filtraTabella(tabella);
     }
 
     @FXML
     public void setAreaPrestiti(ActionEvent actionEvent) {
-        gestoreCorrente = gestorePrestito;
 
-        setArea(new PrestitoHandler((GestorePrestito) gestoreCorrente));
-
-        areaLbl.setText("Area Prestiti");
-        toggleMenu();
     }
 
     @FXML
     public void setAreaLibri(ActionEvent actionEvent) {
-        gestoreCorrente = gestoreLibro;
 
-        setArea(new LibroHandler((GestoreLibro) gestoreCorrente));
-
-        areaLbl.setText("Area Libri");
-        toggleMenu();
     }
 
     @FXML
     public void setAreaUtenti(ActionEvent actionEvent) {
-        gestoreCorrente = gestoreUtente;
 
-        setArea(new UtenteHandler((GestoreUtente) gestoreCorrente));
-
-        areaLbl.setText("Area Utenti");
-        toggleMenu();
     }
 
     @FXML
@@ -158,13 +113,7 @@ public class PrincipaleController {
 
     @FXML
     public void apriFile(ActionEvent actionEvent) {
-        FileChooser fc = new FileChooser();
 
-        Node source = (Node) actionEvent.getSource();
-
-        Stage stage = (Stage) source.getScene().getWindow();
-
-        File file = fc.showOpenDialog(stage);
     }
 
     @FXML

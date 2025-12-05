@@ -38,29 +38,6 @@ public class PrestitoHandler implements AreaHandler {
 
     @Override
     public void onAdd() {
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/it/unisa/diem/softeng/libraryManager/PrestitoView.fxml"));
-
-            Parent root = fxmlLoader.load();
-
-            FormPrestitoController fu = fxmlLoader.getController();
-
-            if(fu != null) {
-                fu.setGestore(gestore);
-            }
-
-            Stage stage = new Stage();
-
-            stage.setResizable(false);
-
-            stage.setTitle("Nuovo Prestito");
-            stage.setScene(new Scene(root));
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.showAndWait();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Errore caricamento PrestitoView.fxml");
-        }
 
     }
 

@@ -37,32 +37,7 @@ public class UtenteHandler implements AreaHandler {
 
     @Override
     public void onAdd() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/it/unisa/diem/softeng/libraryManager/UtenteView.fxml"));
 
-            fxmlLoader.setControllerFactory(param -> {
-                if (param == FormUtenteController.class) {
-                    return new FormUtenteController(this.gestore);
-                }
-                try {
-                    return param.getConstructor().newInstance();
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
-            });
-
-            Parent root = fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setResizable(false);
-            stage.setTitle("Nuovo Utente");
-            stage.setScene(new Scene(root));
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace(); // Meglio stampare lo stack trace completo per debug
-            System.out.println("Errore nel caricamento di UtenteView.fxml");
-        }
     }
 
     @Override

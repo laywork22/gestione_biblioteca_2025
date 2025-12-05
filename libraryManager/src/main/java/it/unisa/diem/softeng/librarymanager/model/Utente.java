@@ -50,10 +50,7 @@ public class Utente implements Comparable<Utente> {
      * @param email L'email istituzionale.
      */
     public Utente(String nome, String cognome, String matricola, String email) {
-        this.nome = nome;
-        this.cognome = cognome;
-        this.matricola = matricola;
-        this.email = email;
+
     }
 
     /**
@@ -127,7 +124,7 @@ public class Utente implements Comparable<Utente> {
      */
     @Override
     public String toString() {
-        return "Nome: " + nome + " Cognome: " + cognome + " Matricola: " + matricola + " Email: " + email + "\n";
+        return null;
     }
 
     @Override
