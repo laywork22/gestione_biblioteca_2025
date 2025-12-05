@@ -169,9 +169,7 @@ public class Libro implements Comparable<Libro> {
      * @return Stringa formattata con i dettagli del libro.
      */
     @Override
-    public String toString() {
-
-    }
+    public String toString() {return null;}
 
 
     @Override

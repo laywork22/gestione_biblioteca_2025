@@ -11,7 +11,6 @@ import java.util.function.Predicate;
  *
  *Questa classe implementa i metodi relativi a la logica di formazione
  *della ObservableList di Libro.
- * @author Gruppo 12
  */
 public class GestoreLibro implements Gestore<Libro> {
     private final ObservableList<Libro> listaLibri;

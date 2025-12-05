@@ -13,7 +13,6 @@ import java.util.List;
  *
  *
  * @author Gruppo 12
- * @version 1.0
  */
 public interface AreaHandler {
     void onRemove();

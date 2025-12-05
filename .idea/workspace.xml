@@ -5,17 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3996dc4f-7061-430b-8b83-92fb78c7f1ce" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/comparators/AnnoLibroComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/comparators/AnnoLibroComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/comparators/AutoreLibroComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/comparators/AutoreLibroComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/comparators/CognomeUtenteComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/comparators/CognomeUtenteComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/controllers/LibroHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/controllers/LibroHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/controllers/PrestitoHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/controllers/PrestitoHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/controllers/PrincipaleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/controllers/PrincipaleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/controllers/UtenteHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/controllers/UtenteHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/controllers/forms/FormLibroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/controllers/forms/FormLibroController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/controllers/forms/FormPrestitoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/controllers/forms/FormPrestitoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/model/Libro.java" beforeDir="false" afterPath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/model/Libro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/model/Prestito.java" beforeDir="false" afterPath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/model/Prestito.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/model/Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/model/Utente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/controllers/forms/FormUtenteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/controllers/forms/FormUtenteController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +43,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Temp",
+    "git-widget-placeholder": "temp",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/durso/mainsofteng/gestione_biblioteca_2025",
     "node.js.detected.package.eslint": "true",
@@ -114,7 +107,7 @@
       <updated>1764764662362</updated>
       <workItem from="1764764663449" duration="3631000" />
       <workItem from="1764863035901" duration="17348000" />
-      <workItem from="1764941716780" duration="3348000" />
+      <workItem from="1764941716780" duration="4044000" />
     </task>
     <servers />
   </component>

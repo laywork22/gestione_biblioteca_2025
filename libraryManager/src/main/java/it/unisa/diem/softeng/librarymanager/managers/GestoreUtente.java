@@ -12,7 +12,6 @@ import java.util.function.Predicate;
  *
  *Questa classe implementa i metodi relativi a la logica
  *della ObservableList di Utente.
- * @author Gruppo 12
  */
 public class GestoreUtente implements Gestore<Utente> {
     private final ObservableList<Utente> utentiList;
