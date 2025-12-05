@@ -3,7 +3,9 @@ package it.unisa.diem.softeng.librarymanager.controllers.forms;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreLibro;
 import it.unisa.diem.softeng.librarymanager.managers.GestorePrestito;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreUtente;
+import it.unisa.diem.softeng.librarymanager.model.Libro;
 import it.unisa.diem.softeng.librarymanager.model.Prestito;
+import it.unisa.diem.softeng.librarymanager.model.Utente;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
@@ -20,11 +22,11 @@ public class FormPrestitoController {
     private SortedList<Prestito> listaOrdinata;
 
     @FXML
-    private ComboBox<String> utentiCb;
+    private ComboBox<Utente> utentiCb;
     @FXML
     private Button salvaBtn;
     @FXML
-    private ComboBox<String> libroCb;
+    private ComboBox<Libro> libroCb;
     @FXML
     private Button annullaBtn;
     @FXML
@@ -32,10 +34,13 @@ public class FormPrestitoController {
     @FXML
     private DatePicker dataScadenzaDp;
 
+
     //salva il libro modificato nella lista
     @FXML
     public void salvaNuovoPrestito(ActionEvent event) {
+        Prestito p = new Prestito(utentiCb.getValue(), libroCb.getValue(), dataInizioDp.getValue(), dataScadenzaDp.getValue());
 
+        gestore.add(p);
     }
 
 
@@ -75,6 +80,5 @@ public class FormPrestitoController {
 
 
     }
-
 
 }

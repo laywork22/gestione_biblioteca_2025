@@ -26,9 +26,6 @@ public class FormUtenteController {
     @FXML
     private Button annullaBtn;
 
-    @FXML
-    public void initialize() {
-    }
 
     @FXML
     private void handleSalva(ActionEvent event) {

@@ -52,7 +52,8 @@ public interface AreaHandler {
     /**
      *
      * Incapsula la FilteredList ottenuta da filtraTabella in una SortedList.
-     * @param testo Rappresenta il criterio di ordinamento che deve essere implementato nella tabella
+     * @param criterio Rappresenta il criterio di ordinamento che deve essere implementato nella tabella
      **/
-    void ordina(String testo);
+    void ordina(String criterio);
+
 }
