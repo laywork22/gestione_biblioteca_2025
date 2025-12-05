@@ -1,12 +1,12 @@
-Library Manager - Documentazione Tecnica
+@mainpage Library Manager - Documentazione Tecnica
 
-Introduzione
+@section intro_sec Introduzione
 
 Documentazione tecnica del progetto **Library Manager**.
 
 Questo software è un'applicazione desktop sviluppata in **Java** con interfaccia grafica **JavaFX**. Il sistema è progettato per automatizzare e semplificare le operazioni quotidiane di una biblioteca, permettendo la gestione efficiente del catalogo libri, dell’anagrafica utenti e del monitoraggio dei prestiti.
 
-features_sec Funzionalità Principali
+@section features_sec Funzionalità Principali
 
 Il sistema è suddiviso in tre macro-aree funzionali:
 
@@ -23,7 +23,7 @@ Il sistema è suddiviso in tre macro-aree funzionali:
 - Creazione di nuovi prestiti associando un Utente a un Libro
 - Controllo delle scadenze e dello stato del prestito
 
-Architettura del Sistema
+@section arch_sec Architettura del Sistema
 
 Il progetto segue il pattern architetturale **MVC (Model-View-Controller)**:
 
@@ -40,7 +40,7 @@ Il progetto segue il pattern architetturale **MVC (Model-View-Controller)**:
 - **Model** (`it.unisa.diem.softeng.librarymanager.model`)
   Classi POJO che rappresentano le entità del dominio (`Libro`, `Utente`, `Prestito`).
 
-Requisiti e Installazione
+@section install_sec Requisiti e Installazione
 
 - **Java:** JDK 17 o superiore
 - **JavaFX:** SDK configurato o via Maven
@@ -48,9 +48,9 @@ Requisiti e Installazione
 
 Per compilare ed eseguire il progetto:
 
-<pre> ```mvn clean javafx:run``` </pre>
-
-
+@code
+mvn clean javafx:run
+@endcode
 
 @section authors_sec Autori
 
