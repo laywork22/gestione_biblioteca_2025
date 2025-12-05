@@ -12,15 +12,15 @@ var annotated_dup =
               ] ],
               [ "controllers", null, [
                 [ "forms", null, [
-                  [ "FormLibroController", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1forms_1_1_form_libro_controller.html", null ],
-                  [ "FormPrestitoController", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1forms_1_1_form_prestito_controller.html", null ],
-                  [ "FormUtenteController", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1forms_1_1_form_utente_controller.html", null ]
+                  [ "FormLibroController", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1forms_1_1_form_libro_controller.html", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1forms_1_1_form_libro_controller" ],
+                  [ "FormPrestitoController", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1forms_1_1_form_prestito_controller.html", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1forms_1_1_form_prestito_controller" ],
+                  [ "FormUtenteController", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1forms_1_1_form_utente_controller.html", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1forms_1_1_form_utente_controller" ]
                 ] ],
-                [ "AreaController", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_controller.html", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_controller" ],
-                [ "LibroController", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_libro_controller.html", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_libro_controller" ],
-                [ "PrestitoController", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_prestito_controller.html", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_prestito_controller" ],
+                [ "AreaHandler", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_handler.html", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_handler" ],
+                [ "LibroHandler", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_libro_handler.html", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_libro_handler" ],
+                [ "PrestitoHandler", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_prestito_handler.html", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_prestito_handler" ],
                 [ "PrincipaleController", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_principale_controller.html", null ],
-                [ "UtenteController", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_utente_controller.html", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_utente_controller" ]
+                [ "UtenteHandler", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_utente_handler.html", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_utente_handler" ]
               ] ],
               [ "managers", null, [
                 [ "Gestore", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore.html", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore" ],

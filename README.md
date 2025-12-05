@@ -1,15 +1,60 @@
-Progetto Ingegneria del Software - anno 2025/2026 : 
+@mainpage Library Manager - Documentazione Tecnica
 
-    Gestione Biblioteca
+@section intro_sec Introduzione
 
-Istruzioni per l'utilizzo:
+Documentazione tecnica del progetto **Library Manager**.
 
-Clonare il repository 
+Questo software è un'applicazione desktop sviluppata in **Java** con interfaccia grafica **JavaFX**. Il sistema è progettato per automatizzare e semplificare le operazioni quotidiane di una biblioteca, permettendo la gestione efficiente del catalogo libri, dell’anagrafica utenti e del monitoraggio dei prestiti.
 
-    git clone https://github.com/laywork22/gestione_biblioteca_2025
+@section features_sec Funzionalità Principali
 
-Entrare nel repository Clonare
+Il sistema è suddiviso in tre macro-aree funzionali:
 
-    cd PATH/TO/CLONED/REPO/ 
+### Gestione Libri
+- Inserimento di nuovi volumi con dettagli (Titolo, Autore, Anno, ISBN)
+- Monitoraggio delle copie totali e disponibili
+- Ricerca e filtraggio del catalogo
 
+### Gestione Utenti
+- Registrazione di nuovi utenti (studenti/docenti)
+- Gestione dei dati anagrafici (Matricola, Email)
 
+### Gestione Prestiti
+- Creazione di nuovi prestiti associando un Utente a un Libro
+- Controllo delle scadenze e dello stato del prestito
+
+@section arch_sec Architettura del Sistema
+
+Il progetto segue il pattern architetturale **MVC (Model-View-Controller)**:
+
+- **Controllers** (`it.unisa.diem.softeng.librarymanager.controllers`)
+  Gestiscono l'interazione tra le view FXML e i dati.
+  Il `PrincipaleController` funge da orchestratore, delegando ai vari sotto-controller (`LibroController`, `PrestitoController`, ecc.).
+
+- **Forms** (`it.unisa.diem.softeng.librarymanager.controllers.forms`)
+  Controller dedicati alle finestre di dialogo (popup).
+
+- **Managers** (`it.unisa.diem.softeng.librarymanager.managers`)
+  Contengono la logica di business e lo stato dell'applicazione.
+
+- **Model** (`it.unisa.diem.softeng.librarymanager.model`)
+  Classi POJO che rappresentano le entità del dominio (`Libro`, `Utente`, `Prestito`).
+
+@section install_sec Requisiti e Installazione
+
+- **Java:** JDK 17 o superiore
+- **JavaFX:** SDK configurato o via Maven
+- **Build Tool:** Maven
+
+Per compilare ed eseguire il progetto:
+
+@code
+mvn clean javafx:run
+@endcode
+
+@section authors_sec Autori
+
+- Emiddio Ferrentino
+- Rosa Genovese
+- Letizia Argenio
+- Antonio D'Urso

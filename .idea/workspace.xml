@@ -5,10 +5,106 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3996dc4f-7061-430b-8b83-92fb78c7f1ce" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/controllers/forms/FormLibroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/controllers/forms/FormLibroController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/controllers/forms/FormPrestitoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/controllers/forms/FormPrestitoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/controllers/forms/FormUtenteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/controllers/forms/FormUtenteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Doxyfile" beforeDir="false" afterPath="$PROJECT_DIR$/Doxyfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/annotated.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/annotated.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/annotated_dup.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/annotated_dup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classes.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1comparators_1_1_anno_libro_comparator-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1comparators_1_1_anno_libro_comparator-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1comparators_1_1_anno_libro_comparator.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1comparators_1_1_anno_libro_comparator.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1comparators_1_1_autore_libro_comparator-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1comparators_1_1_autore_libro_comparator-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1comparators_1_1_autore_libro_comparator.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1comparators_1_1_autore_libro_comparator.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1comparators_1_1_cognome_utente_comparator-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1comparators_1_1_cognome_utente_comparator-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1comparators_1_1_cognome_utente_comparator.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1comparators_1_1_cognome_utente_comparator.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_principale_controller-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_principale_controller-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_principale_controller.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_principale_controller.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1forms_1_1_form_libro_controller-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1forms_1_1_form_libro_controller-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1forms_1_1_form_libro_controller.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1forms_1_1_form_libro_controller.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1forms_1_1_form_prestito_controller-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1forms_1_1_form_prestito_controller-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1forms_1_1_form_prestito_controller.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1forms_1_1_form_prestito_controller.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1forms_1_1_form_utente_controller-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1forms_1_1_form_utente_controller-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1forms_1_1_form_utente_controller.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1forms_1_1_form_utente_controller.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_libro-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_libro-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_libro.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_libro.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_prestito-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_prestito-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_prestito.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_prestito.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_utente-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_utente-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_utente.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_utente.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_prestito-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_prestito-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_prestito.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_prestito.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_utente-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_utente-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_utente.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_utente.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/dir_00f7381dfb53f631d8bcfde417d5c62d.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/dir_00f7381dfb53f631d8bcfde417d5c62d.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/dir_bfff1d9a6033838bc7dc8c8cfcfb9e35.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/dir_bfff1d9a6033838bc7dc8c8cfcfb9e35.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/dir_d014a16b06adc41dafd5f6d98a959372.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/dir_d014a16b06adc41dafd5f6d98a959372.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/dir_ef98689d7fa661885ced47e29c3348e5.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/dir_ef98689d7fa661885ced47e29c3348e5.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/doxygen_crawl.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/doxygen_crawl.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/functions.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/functions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/functions_func.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/functions_func.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/hierarchy.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/hierarchy.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/hierarchy.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/hierarchy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/menudata.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/menudata.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/navtreedata.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/navtreedata.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/navtreeindex0.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/navtreeindex0.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/all_0.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/all_0.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/all_2.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/all_2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/all_3.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/all_3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/all_4.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/all_4.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/all_5.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/all_5.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/all_6.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/all_6.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/all_7.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/all_7.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/all_8.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/all_8.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/all_9.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/all_9.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/all_a.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/all_a.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/all_b.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/all_b.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/all_c.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/all_c.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/classes_0.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/classes_0.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/classes_2.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/classes_2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/classes_3.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/classes_3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/classes_4.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/classes_4.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/classes_5.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/classes_5.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/classes_6.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/classes_6.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/classes_7.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/classes_7.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_0.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_0.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_1.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_2.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_3.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_4.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_4.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_5.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_5.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_6.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_6.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_7.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_7.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_8.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_8.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_9.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_9.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_a.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_a.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_b.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_b.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/searchdata.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/searchdata.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/model/StatoPrestitoEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/libraryManager/src/main/java/it/unisa/diem/softeng/librarymanager/model/StatoPrestitoEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prototype/libraryManagerPrototype/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prototype/libraryManagerPrototype/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prototype/libraryManagerPrototype/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prototype/libraryManagerPrototype/.idea/material_theme_project_new.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prototype/libraryManagerPrototype/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prototype/libraryManagerPrototype/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prototype/libraryManagerPrototype/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prototype/libraryManagerPrototype/src/main/java/it/nocera/laborgata/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prototype/libraryManagerPrototype/src/main/java/it/nocera/laborgata/PrimaryController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prototype/libraryManagerPrototype/src/main/java/it/nocera/laborgata/insertBookViewController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prototype/libraryManagerPrototype/src/main/java/it/nocera/laborgata/insertLoanViewController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prototype/libraryManagerPrototype/src/main/java/module-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prototype/libraryManagerPrototype/src/main/resources/it/nocera/laborgata/insertBookView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prototype/libraryManagerPrototype/src/main/resources/it/nocera/laborgata/insertLoanView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prototype/libraryManagerPrototype/src/main/resources/it/nocera/laborgata/insertUserView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prototype/libraryManagerPrototype/src/main/resources/it/nocera/laborgata/primary.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +139,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "temp",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/durso/mainsofteng/gestione_biblioteca_2025",
     "node.js.detected.package.eslint": "true",
@@ -51,9 +147,9 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -107,7 +203,8 @@
       <updated>1764764662362</updated>
       <workItem from="1764764663449" duration="3631000" />
       <workItem from="1764863035901" duration="17348000" />
-      <workItem from="1764941716780" duration="4044000" />
+      <workItem from="1764941716780" duration="5371000" />
+      <workItem from="1764948447849" duration="97000" />
     </task>
     <servers />
   </component>
