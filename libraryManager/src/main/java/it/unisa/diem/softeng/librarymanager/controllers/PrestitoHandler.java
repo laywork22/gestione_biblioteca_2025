@@ -1,8 +1,9 @@
 package it.unisa.diem.softeng.librarymanager.controllers;
 
 import it.unisa.diem.softeng.librarymanager.controllers.forms.FormPrestitoController;
-import it.unisa.diem.softeng.librarymanager.controllers.forms.FormUtenteController;
+import it.unisa.diem.softeng.librarymanager.managers.GestoreLibro;
 import it.unisa.diem.softeng.librarymanager.managers.GestorePrestito;
+import it.unisa.diem.softeng.librarymanager.managers.GestoreUtente;
 import it.unisa.diem.softeng.librarymanager.model.Prestito;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
@@ -25,11 +26,16 @@ import java.util.List;
  */
 public class PrestitoHandler implements AreaHandler {
     private final GestorePrestito gestore;
+    private final GestoreLibro gestoreLibro;
+    private final GestoreUtente gestoreUtente;
+
     private FilteredList<Prestito> listaFiltrata;
     private SortedList<Prestito> listaOrdinata;
 
-    public PrestitoHandler(GestorePrestito gestore) {
+    public PrestitoHandler(GestorePrestito gestore, GestoreLibro gestoreLibro, GestoreUtente gestoreUtente) {
         this.gestore = gestore;
+        this.gestoreLibro = gestoreLibro;
+        this.gestoreUtente = gestoreUtente;
     }
 
     @Override
@@ -47,7 +53,7 @@ public class PrestitoHandler implements AreaHandler {
             FormPrestitoController fu = fxmlLoader.getController();
 
             if(fu != null) {
-                fu.setGestore(gestore);
+                fu.init(gestore, gestoreLibro, gestoreUtente);
             }
 
             Stage stage = new Stage();

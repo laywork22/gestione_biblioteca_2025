@@ -54,11 +54,13 @@ public class FormLibroController {
         stage.close();
     }
 
-    public void setGestore(GestoreLibro gestore) {
+    public void init(GestoreLibro gestore) {
         this.gestore = gestore;
     }
 
     public void getLibroOnEdit(Libro l) {
+        if (l == null) return;
+
         autoreFld.setText(l.getAutore());
         titoloFld.setText(l.getTitolo());
         annoFld.setText(String.valueOf(l.getAnno()));

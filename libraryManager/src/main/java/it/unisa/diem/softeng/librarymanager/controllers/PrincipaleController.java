@@ -81,7 +81,7 @@ public class PrincipaleController {
 
         sideMenu.setTranslateX(-200);
 
-        setArea(new PrestitoHandler(gestorePrestito));
+        setArea(new PrestitoHandler(gestorePrestito, gestoreLibro, gestoreUtente));
         areaLbl.setText("Area Prestiti");
     }
 
@@ -120,7 +120,7 @@ public class PrincipaleController {
     public void setAreaPrestiti(ActionEvent actionEvent) {
         gestoreCorrente = gestorePrestito;
 
-        setArea(new PrestitoHandler((GestorePrestito) gestoreCorrente));
+        setArea(new PrestitoHandler(gestorePrestito, gestoreLibro, gestoreUtente));
 
         areaLbl.setText("Area Prestiti");
         toggleMenu();

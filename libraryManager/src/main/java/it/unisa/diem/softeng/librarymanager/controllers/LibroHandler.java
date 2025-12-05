@@ -2,7 +2,6 @@ package it.unisa.diem.softeng.librarymanager.controllers;
 
 import it.unisa.diem.softeng.librarymanager.comparators.AutoreLibroComparator;
 import it.unisa.diem.softeng.librarymanager.controllers.forms.FormLibroController;
-import it.unisa.diem.softeng.librarymanager.controllers.forms.FormUtenteController;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreLibro;
 import it.unisa.diem.softeng.librarymanager.model.Libro;
 import it.unisa.diem.softeng.librarymanager.model.Utente;
@@ -60,7 +59,7 @@ public class LibroHandler implements AreaHandler {
             FormLibroController fu = fxmlLoader.getController();
 
             if(fu != null) {
-                fu.setGestore(gestore);
+                fu.init(gestore);
             }
 
             Stage stage = new Stage();

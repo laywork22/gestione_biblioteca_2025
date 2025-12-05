@@ -50,13 +50,14 @@ public class FormUtenteController {
 
     @FXML
     private void viewListaUtenti(ActionEvent event){
+
     }
 
     @FXML
     private void viewListaLibri(ActionEvent event){
     }
 
-    public void setGestore(GestoreUtente gestore) {
+    public void init(GestoreUtente gestore) {
         this.gestore = gestore;
     }
 

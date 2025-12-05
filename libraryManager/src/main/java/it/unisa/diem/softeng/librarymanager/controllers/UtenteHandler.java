@@ -44,7 +44,7 @@ public class UtenteHandler implements AreaHandler {
 
             if(fu == null) return;
             else {
-                fu.setGestore(gestore);
+                fu.init(gestore);
             }
 
             Parent root = fxmlLoader.load();
