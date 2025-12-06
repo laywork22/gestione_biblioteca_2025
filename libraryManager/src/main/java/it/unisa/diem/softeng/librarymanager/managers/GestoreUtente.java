@@ -52,7 +52,7 @@ public class GestoreUtente implements Gestore<Utente> {
 
     /** @brief Ottiene il Predicate corrispondente per la ricerca filtrata di un Utente
      *
-     * @param str La stringa da filtrare nella tabella per la ricerca
+     * @param filtro La stringa da filtrare nella tabella per la ricerca
      *
      * @return Predicate associato alla ricerca attuale
      */
