@@ -43,8 +43,14 @@ public class GestorePrestito implements Gestore<Prestito>{
     public void ordinaLista(Comparator<Prestito> comparatore) {
 
     }
-
-    public Predicate<Prestito> getPredicatoPrestito(String str) {
+    /** @brief Ottiene il Predicate corrispondente per la ricerca filtrata di un Prestito
+     *
+     * @param str La stringa da filtrare nella tabella per la ricerca
+     *
+     * @return Predicate associato alla ricerca attuale
+     */
+    @Override
+    public Predicate<Prestito> getPredicato(String str) {
         return r -> true;
     }
 
@@ -53,6 +59,17 @@ public class GestorePrestito implements Gestore<Prestito>{
 
     }
 
+
+    /** @brief Inizializza il gestore con la lista di osservabili dei prestiti caricata dal file
+     *
+     * @pre Il file deve esistere
+     *
+     * @post La lista è caricata in memoria nel GestorePrestito
+     *
+     * @return GestoreUtente con listaUtente non vuota
+     *
+     * @param nomeFile Il nome del file da cui caricare la lista
+     */
     public static GestorePrestito caricaListaPrestiti(String nomeFile) {
         return null;
     }

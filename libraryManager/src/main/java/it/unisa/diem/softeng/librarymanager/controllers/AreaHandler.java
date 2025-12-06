@@ -1,74 +1,84 @@
 package it.unisa.diem.softeng.librarymanager.controllers;
 
 import javafx.scene.control.TableView;
-
 import java.util.List;
+
 /**
  * @brief Interfaccia implementata dai gestori delle aree.
  *
- * Questa classe definisce il modello dati per un controller di un area,
+ * Questa classe definisce il modello dati per un controller di un'area,
  * includendo i metodi logici di operazioni per il cambio del
- * gestore e i metodi per la visualizzazione delle tabelle
- *
- *
+ * gestore e i metodi per la visualizzazione delle tabelle.
  *
  * @author Gruppo 12
  * @version 1.0
  */
 public interface AreaHandler<E> {
+
+    /**
+     * @brief Gestisce la rimozione dell'elemento selezionato dalla tabella.
+     *
+     * @param tabella La tabella da cui rimuovere l'elemento selezionato.
+     */
     void onRemove(TableView<E> tabella);
 
-    /**@brief Gestisce la logica di aggiunta di uno dei tre form.
-    *
-     * Consente il caricamento delle scene FXML ai rispettivi controllori dei form
+    /**
+     * @brief Gestisce la logica di apertura del form di aggiunta.
      *
-    **/
+     * Consente il caricamento delle scene FXML e l'inizializzazione dei
+     * rispettivi controller per i form di inserimento.
+     */
     void onAdd();
 
-    /**@brief Apre la view di inserimento con i campi riempiti dalla riga scelta
-    *
-     * @pre `Elemento selezionato non nullo` Il libro/prestito/utente non deve essere vuoto
+    /**
+     * @brief Apre la view di modifica con i campi pre-compilati.
      *
-     * @param[inout] tabella la tabella in fase di modifica
-    * */
+     * Recupera l'elemento selezionato dalla tabella e popola il form
+     * per consentirne la modifica.
+     *
+     * @pre La tabella deve avere un elemento selezionato (non null).
+     *
+     * @param tabella La tabella contenente l'elemento da modificare.
+     */
     void onEdit(TableView<E> tabella);
 
     /**
-    * @brief Imposta la tabella con la lista di osservabili dell'area corrispondente
+     * @brief Imposta la tabella con la lista di elementi dell'area corrispondente.
      *
-     * @post La tabella dell'area corrispondente è impostata correttamente per la visualizzazione degli attributi
-    **/
+     * Collega la ObservableList del gestore alla TableView per visualizzare i dati.
+     *
+     * @post La tabella è popolata con gli elementi aggiornati.
+     *
+     * @param tabella La tabella da inizializzare.
+     */
     void setTableView(TableView<E> tabella);
 
-    /**@brief Algoritmo di scrittura della tabella in funzione del criterio di ricerca inserito
-    *
-     * Incapsulo unaa lista di osservabili in un una FilteredList chr segue i criteri imposti nel Predicate associato un
-    * gestore specifico. Utilizzato per filtrare gli elementi della tabella durante la ricerca.
+    /**
+     * @brief Filtra il contenuto della tabella in base alla stringa di ricerca.
      *
-     * @pre `Il filtro passato come parametro sia tra quelli disponibili
+     * Incapsula la lista di osservabili in una FilteredList che applica il Predicate
+     * definito nel gestore specifico.
      *
-     * @post La ricerca è filtrata
-     *
-     * @param[in] filtro il testo del campo di ricerca inserito
-     *
-     *
-    **/
+     * @param filtro La stringa inserita nel campo di ricerca.
+     */
     void filtraTabella(String filtro);
 
     /**
-     * @brief Ottengo una stringa di criteri da inserire nel ComboBox
+     * @brief Restituisce la lista dei criteri di ordinamento disponibili.
      *
-     * @post Lista di stringhe di criteri di ordinamento da cui scegliere
+     * Utilizzato per popolare il ComboBox di scelta ordinamento.
      *
-     *
-     **/
+     * @return Una lista di stringhe rappresentanti i nomi dei criteri di ordinamento.
+     */
     List<String> getCriteriOrdinamento();
 
     /**
+     * @brief Ordina la tabella secondo il criterio specificato.
      *
-     * Incapsula la FilteredList ottenuta da filtraTabella in una SortedList.
-     * @param criterio Rappresenta il criterio di ordinamento che deve essere implementato nella tabella
-     **/
+     * Incapsula la FilteredList corrente in una SortedList applicando il comparatore
+     * associato al criterio scelto.
+     *
+     * @param criterio Il nome del criterio di ordinamento da applicare.
+     */
     void ordina(String criterio);
-
 }

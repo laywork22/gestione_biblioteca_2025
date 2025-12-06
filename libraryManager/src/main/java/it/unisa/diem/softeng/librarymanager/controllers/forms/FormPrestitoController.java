@@ -15,11 +15,18 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
 
+
+/**
+ * @brief Controller di gestione dell'interfaccia grafica del Form di inserimento/modifica di un Prestito.
+ * Mette a disposizione dei metodi che consentono all'AreaHandler di manipolare la logica della Label e dei campi del form.
+ *
+ * @author Gruppo 12
+ *
+ */
 public class FormPrestitoController {
 
     private GestorePrestito gestore;
-    private FilteredList<Prestito> listaFiltrata;
-    private SortedList<Prestito> listaOrdinata;
+    private Prestito prestitoInModifica = null;
 
     @FXML
     private ComboBox<Utente> utentiCb;
@@ -50,10 +57,6 @@ public class FormPrestitoController {
     }
 
 
-    private void chiudiFinestra() {
-        Stage stage = (Stage) salvaBtn.getScene().getWindow();
-        stage.close();
-    }
 
     //metodo handle del ComboBox per visualizzare la lista di Prestiti
     @FXML
@@ -67,6 +70,13 @@ public class FormPrestitoController {
 
     }
 
+
+    /**
+     * @brief Consente di impostare il GestorePrestito corrispondente.
+     *
+     * È utilizzato da un LibroHandler affinché il controller abbia un riferimento al GestoreLibro corrispondente.
+     * @param gestore Il gestore dellArea Prestiti
+     */
     public void init(GestorePrestito gestore, GestoreLibro gb, GestoreUtente gu) {
         this.gestore = gestore;
 
@@ -75,9 +85,37 @@ public class FormPrestitoController {
         //definire il modo in cui libri e utenti sono visualizzati nei combobox
     }
 
-    public void setFormOnEdit(Prestito p) {
-        //imposta tutti i campi del form
+    /**
+     * @brief Consente la chiusura dello Stage attivo.
+     */
+    private void chiudiFinestra() {
+        Stage stage = (Stage) salvaBtn.getScene().getWindow();
+        stage.close();
+    }
 
+    /**
+     * @brief Imposta tutte le informazioni scelte sul form di modifica in modo da renderle modificabili manualmente.
+     *
+     * @param p il Prestito da cui estrarre gli attributi da impostare sui vari campi del form
+     */
+    public void setFormOnEdit(Prestito p) {
+
+    }
+
+    /**
+     * @brief Controlla che i campi del form siano vuoti affinché si possano gestire i messaggi di avviso/errore
+     *
+     * @return true se almeno un campo è vuoto, false se tutti sono pieni.
+     */
+    private boolean isFormNotValid() {
+        return false;
+    }
+
+    /**
+     * @brief Gestisce la logica di cambio testo della Label riassuntivo del form quando si sceglie Aggiungi o Modifica nell'Area Prestiti.
+     *
+     */
+    private void setInsModLblText() {
 
     }
 

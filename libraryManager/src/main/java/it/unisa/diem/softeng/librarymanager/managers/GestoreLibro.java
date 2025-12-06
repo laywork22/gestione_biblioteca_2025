@@ -70,10 +70,28 @@ public class GestoreLibro implements Gestore<Libro> {
 
     }
 
-    public Predicate<Libro> getPredicatoLibro(String str) {
+    /** @brief Ottiene il Predicate corrispondente per la ricerca filtrata di un libro
+     *
+     * @param str La stringa da filtrare nella tabella per la ricerca
+     *
+     * @return Predicate associato alla ricerca attuale
+     */
+    @Override
+    public Predicate<Libro> getPredicato(String str) {
         return r -> true;
     }
 
+
+    /** @brief Inizializza il gestore con la lista di osservabili di libri caricata dal file
+     *
+     * @pre Il file deve esistere
+     *
+     * @post La lista è caricata in memoria nel GestoreLibro
+     *
+     * @return GestoreLibro con listaLibri non vuota
+     *
+     * @param nomeFile Il nome del file da cui caricare la lista
+      */
     public static GestoreLibro caricaListaLibri(String nomeFile) {
         return null;
     }

@@ -8,11 +8,18 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.util.Optional;
 
+/**
+ * @brief Controller di gestione dell'interfaccia grafica del Form di inserimento/modifica di un Libro.
+ * Mette a disposizione dei metodi che consentono all'AreaHandler di manipolare la logica della Label e dei campi del form.
+ *
+ * @author Gruppo 12
+ *
+ */
 public class FormLibroController {
     private GestoreLibro gestore;
     private Libro libroInModifica = null;
+
     @FXML
     private AnchorPane insertBookContent;
     @FXML
@@ -41,7 +48,7 @@ public class FormLibroController {
 
     @FXML
     private void handleSalva(ActionEvent event) {
-        if (isNotValid()) {
+        if (isFormNotValid()) {
             Alert al = new Alert(Alert.AlertType.ERROR);
             al.setTitle("Campi vuoti");
             al.setHeaderText(null);
@@ -75,16 +82,30 @@ public class FormLibroController {
         chiudiFinestra();
     }
 
+    /**
+     * @brief Consente la chiusura dello Stage attivo.
+     */
     private void chiudiFinestra() {
         Stage stage = (Stage) salvaLibroBtn.getScene().getWindow();
         stage.close();
     }
 
+    /**
+     * @brief Consente di impostare il GestoreLibro corrispondente.
+     *
+     * È utlizzato da un LibroHandler affinchè il controller abbia un riferimento al GestoreLibro corrispondente.
+     * @param gestore Il gestore dell'Area Libri
+     */
     public void init(GestoreLibro gestore) {
         this.gestore = gestore;
     }
 
-    public void setLibroOnEdit(Libro l) {
+    /**
+     * @brief Imposta tutte le informazioni scelte sul form di modifica in modo da renderle modificabili manualmeente.
+     *
+     * @param l il Libro da cui estrarre gli attributi da impostare sui vari campi del form
+     */
+    public void setFormOnEdit(Libro l) {
         this.libroInModifica = l;
 
         titoloFld.setText(l.getTitolo());
@@ -98,7 +119,13 @@ public class FormLibroController {
 
     }
 
-    private boolean isNotValid() {
+
+    /**
+     * @brief Controlla che i campi del form siano vuoti affinché si possano gestire i messaggi di avviso/errore
+     *
+     * @return true se almeno un campo è vuoto, false se tutti sono pieni.
+     */
+    private boolean isFormNotValid() {
         return titoloFld.getText().isEmpty() ||
                 autoreFld.getText().isEmpty() ||
                 annoFld.getText().isEmpty() ||
@@ -107,6 +134,10 @@ public class FormLibroController {
                 copieTotaliFld.getText().isEmpty();
     }
 
+    /**
+     * @brief Gestisce la logica di cambio testo della Label riassuntivo del form quando si sceglie Aggiungi o Modifica nell'Area Libri
+     *
+     */
     private void setInsModLblText() {
         if (libroInModifica != null) {
             insModLbl.setText("Modifica libro");

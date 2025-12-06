@@ -49,11 +49,29 @@ public class GestoreUtente implements Gestore<Utente> {
 
     }
 
-    public Predicate<Utente> getPredicatoUtente(String str) {
+
+    /** @brief Ottiene il Predicate corrispondente per la ricerca filtrata di un Utente
+     *
+     * @param str La stringa da filtrare nella tabella per la ricerca
+     *
+     * @return Predicate associato alla ricerca attuale
+     */
+    @Override
+    public Predicate<Utente> getPredicato(String filtro) {
         return r -> true;
     }
 
-    public static GestoreLibro caricaListaUtenti(String nomeFile) {
+    /** @brief Inizializza il gestore con la lista di osservabili degli utenti caricata dal file
+     *
+     * @pre Il file deve esistere
+     *
+     * @post La lista è caricata in memoria nel GestoreUtente
+     *
+     * @return GestoreUtente con listaUtente non vuota
+     *
+     * @param nomeFile Il nome del file da cui caricare la lista
+     */
+    public static GestoreUtente caricaListaUtenti(String nomeFile) {
         return null;
     }
 
