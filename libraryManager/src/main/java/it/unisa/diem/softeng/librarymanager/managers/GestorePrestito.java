@@ -22,16 +22,23 @@ public class GestorePrestito implements Gestore<Prestito>{
 
     @Override
     public void add(Prestito l) {
+        if(l==null){
+            return;
+        }
+
+        prestitoList.add(l);
     }
 
     @Override
     public void remove(Prestito l) {
+        if(l==null){return;}
 
+        prestitoList.remove(l);
     }
 
     @Override
     public ObservableList<Prestito> getLista(){
-        return null;
+        return this.prestitoList;
     }
 
     @Override

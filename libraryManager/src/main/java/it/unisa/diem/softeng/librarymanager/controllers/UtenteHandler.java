@@ -72,6 +72,7 @@ public class UtenteHandler implements AreaHandler<Utente> {
 
     @Override
     public void setTableView(TableView<Utente> table) {
+
     }
 
     @Override

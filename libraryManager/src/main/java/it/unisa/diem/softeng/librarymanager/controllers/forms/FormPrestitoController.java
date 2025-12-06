@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 
 /**
@@ -26,7 +27,7 @@ import javafx.stage.Stage;
 public class FormPrestitoController {
 
     private GestorePrestito gestore;
-    private Prestito prestitoInModifica = null;
+    private final Prestito prestitoInModifica = null;
 
     @FXML
     private ComboBox<Utente> utentiCb;
@@ -58,19 +59,6 @@ public class FormPrestitoController {
 
 
 
-    //metodo handle del ComboBox per visualizzare la lista di Prestiti
-    @FXML
-    public void viewListaUtenti(ActionEvent event) {
-
-    }
-
-    //metodo handle del ComboBox per visualizzare la lista di Libri
-    @FXML
-    public void viewListaLibri(ActionEvent event) {
-
-    }
-
-
     /**
      * @brief Consente di impostare il GestorePrestito corrispondente.
      *
@@ -79,10 +67,39 @@ public class FormPrestitoController {
      */
     public void init(GestorePrestito gestore, GestoreLibro gb, GestoreUtente gu) {
         this.gestore = gestore;
-
         //settare la lista di libri e utenti nei combobox
+        utentiCb.setItems(gu.getLista());
+        libroCb.setItems(gb.getLista());
 
+        utentiCb.setPromptText("Selezionare  Utente");
+        libroCb.setPromptText("Selezionare  Libro");
         //definire il modo in cui libri e utenti sono visualizzati nei combobox
+        utentiCb.setConverter(new StringConverter<Utente>() {
+            @Override
+            public String toString(Utente u) {
+                if (u == null) return null;
+                return u.getCognome() + " " + u.getNome() + " (" + u.getMatricola() + ")";
+            }
+
+            @Override
+            public Utente fromString(String s) {
+                return null;
+            }
+
+        });
+        libroCb.setConverter(new StringConverter<Libro>() {
+            @Override
+            public String toString(Libro l) {
+                if (l == null) return null;
+                return l.getTitolo() + " - " + l.getAutore();
+            }
+
+            @Override
+            public Libro fromString(String string) {
+                return null;
+            }
+        });
+
     }
 
     /**

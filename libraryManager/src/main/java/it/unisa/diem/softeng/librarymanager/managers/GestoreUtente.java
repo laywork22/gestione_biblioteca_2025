@@ -22,7 +22,16 @@ public class GestoreUtente implements Gestore<Utente> {
     }
 
     @Override
-    public void add(Utente l) {}
+    public void add(Utente l) {
+        if (l == null) return;
+
+        if (this.utentiList.contains(l)) {
+            throw new IllegalArgumentException("Utente già presente nel sistema!");
+            //DA GESTIRE IL CATCH CON EVENTUALI AVVISI IN FORMUTENTE
+        }
+
+        this.utentiList.add(l);
+    }
 
     @Override
     public void remove(Utente l) {
@@ -31,7 +40,7 @@ public class GestoreUtente implements Gestore<Utente> {
 
     @Override
     public ObservableList<Utente> getLista() {
-        return null;
+        return this.utentiList;
     }
 
     @Override

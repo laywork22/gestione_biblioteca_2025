@@ -5,6 +5,8 @@ import it.unisa.diem.softeng.librarymanager.managers.GestoreLibro;
 import it.unisa.diem.softeng.librarymanager.managers.GestorePrestito;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreUtente;
 import it.unisa.diem.softeng.librarymanager.model.Libro;
+import it.unisa.diem.softeng.librarymanager.model.Prestito;
+import it.unisa.diem.softeng.librarymanager.model.Utente;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +22,8 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.File;
+import java.time.LocalDate;
+
 /**@brief Gestore principale di schermata
  *
  * Implementa la logica di modifica dell'area a
@@ -82,7 +86,10 @@ public class PrincipaleController {
 
         gestoreLibro.add(new Libro("Evangelion", "Shiro Sagisu", 2012, "983231-12", 10, 10));
         gestoreLibro.add(new Libro("Marc Jerkinson", "Hawk Two A", 2012, "283231-12", 12, 12));
-
+        Libro libro=new Libro("Marc Jerkinson", "Hawk Two A", 2012, "283231-12", 12, 12);
+        Utente Fabio=new Utente("fabio","volo","9832193","sasas@gmail.com");
+        gestoreUtente.add(Fabio);
+        gestorePrestito.add(new Prestito(Fabio,libro, LocalDate.now(),LocalDate.of(2036,12,29)));
         sideMenu.setTranslateX(-200);
 
         setArea(new PrestitoHandler(gestorePrestito, gestoreLibro, gestoreUtente));

@@ -132,7 +132,16 @@ public class Utente implements Comparable<Utente> {
 
     @Override
     public boolean equals(Object o) {
-        return false;
+        if (o == null) return false;
+
+        if (this == o) return true;
+
+        if (this.getClass() != o.getClass()) return false;
+
+        Utente l = (Utente) o;
+
+        return this.matricola.equals(l.matricola);
+
     }
 
     @Override

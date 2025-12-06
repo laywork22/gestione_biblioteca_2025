@@ -33,8 +33,6 @@ public class LibroHandler implements AreaHandler<Libro> {
     private FilteredList<Libro> listaFiltrata;
     private SortedList<Libro> listaOrdinata;
 
-
-
     public LibroHandler(GestoreLibro gestore) {
         this.gestore = gestore;
 
@@ -100,7 +98,7 @@ public class LibroHandler implements AreaHandler<Libro> {
                 fu.init(gestore);
             } else return;
 
-            fu.setLibroOnEdit(l);
+            fu.setFormOnEdit(l);
 
             Stage stage = new Stage();
 
