@@ -22,7 +22,7 @@ import java.util.*;
  * gestore del form
  *
  */
-public class UtenteHandler implements AreaHandler {
+public class UtenteHandler implements AreaHandler<Utente> {
     private GestoreUtente gestore;
     private final Map<String, Comparator<Utente>> mappaOrdinamento;
     private FilteredList<Utente> listaFiltrata;
@@ -63,15 +63,15 @@ public class UtenteHandler implements AreaHandler {
     }
 
     @Override
-    public void onRemove() {
+    public void onRemove(TableView<Utente> tabella) {
     }
 
     @Override
-    public void onEdit(TableView<?> tabella) {
+    public void onEdit(TableView<Utente> tabella) {
     }
 
     @Override
-    public void setTableView(TableView<?> table) {
+    public void setTableView(TableView<Utente> table) {
     }
 
     @Override

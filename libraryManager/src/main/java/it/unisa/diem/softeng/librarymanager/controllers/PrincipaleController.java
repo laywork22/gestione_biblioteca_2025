@@ -4,6 +4,7 @@ import it.unisa.diem.softeng.librarymanager.managers.Gestore;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreLibro;
 import it.unisa.diem.softeng.librarymanager.managers.GestorePrestito;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreUtente;
+import it.unisa.diem.softeng.librarymanager.model.Libro;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,7 +28,7 @@ import java.io.File;
  *
  * E' la classe che contiene il log dei gestori delle
  * schermate e implementa il processo di salvataggio
- * e caricamento
+ * e caricamento su e da file
  *
  *
  */
@@ -79,6 +80,9 @@ public class PrincipaleController {
         gestorePrestito = new GestorePrestito();
         gestoreUtente = new GestoreUtente();
 
+        gestoreLibro.add(new Libro("Evangelion", "Shiro Sagisu", 2012, "983231-12", 10, 10));
+        gestoreLibro.add(new Libro("Marc Jerkinson", "Hawk Two A", 2012, "283231-12", 12, 12));
+
         sideMenu.setTranslateX(-200);
 
         setArea(new PrestitoHandler(gestorePrestito, gestoreLibro, gestoreUtente));
@@ -107,7 +111,7 @@ public class PrincipaleController {
         areaCorrente = area;
 
         addBtn.setOnAction(e -> areaCorrente.onAdd());
-        removeBtn.setOnAction(e -> areaCorrente.onRemove());
+        removeBtn.setOnAction(e -> areaCorrente.onRemove(tabella));
         modifyButton.setOnAction(e -> areaCorrente.onEdit(tabella));
 
         //qui ci va il riempimento del MenuButton con gli ordinamenti disponibili (MenuItem)
@@ -170,4 +174,6 @@ public class PrincipaleController {
     @FXML
     public void ordineTabella(ActionEvent actionEvent) {
     }
+
+
 }

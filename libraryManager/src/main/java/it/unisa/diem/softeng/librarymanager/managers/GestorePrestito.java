@@ -35,6 +35,11 @@ public class GestorePrestito implements Gestore<Prestito>{
     }
 
     @Override
+    public void modifica(Prestito vecchio, Prestito nuovo) {
+
+    }
+
+    @Override
     public void ordinaLista(Comparator<Prestito> comparatore) {
 
     }

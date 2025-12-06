@@ -56,15 +56,16 @@ public class Libro implements Comparable<Libro> {
      * @param anno L'anno di pubblicazione.
      * @param isbn Il codice ISBN univoco.
      * @param copieTotali Il numero totale di copie fisiche da inserire a catalogo.
+     * @param copieDisponibili Il numero di copie fisiche prestabili
      */
-    public Libro(String titolo, String autore, int anno, String isbn, int copieTotali) {
+    public Libro(String titolo, String autore, int anno, String isbn, int copieTotali, int copieDisponibili) {
         this.titolo = titolo;
         this.autore = autore;
         this.anno = anno;
         this.isbn = isbn;
         this.copieTotali = copieTotali;
         // All'inizio tutte le copie sono disponibili
-        this.copieDisponibili = copieTotali;
+        this.copieDisponibili = copieDisponibili;
     }
 
     /**
@@ -187,11 +188,19 @@ public class Libro implements Comparable<Libro> {
 
     @Override
     public boolean equals(Object o) {
-        return false;
+        if (o == null) return false;
+
+        if (this == o) return true;
+
+        if (this.getClass() != o.getClass()) return false;
+
+        Libro l = (Libro) o;
+
+        return this.isbn.equals(l.isbn);
     }
 
     @Override
     public int compareTo(Libro o) {
-        return 0;
+        return this.isbn.compareToIgnoreCase(o.isbn);
     }
 }

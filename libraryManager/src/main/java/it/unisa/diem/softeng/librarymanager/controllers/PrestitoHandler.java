@@ -24,7 +24,7 @@ import java.util.List;
  * gestore del form
  *
  */
-public class PrestitoHandler implements AreaHandler {
+public class PrestitoHandler implements AreaHandler<Prestito> {
     private final GestorePrestito gestore;
     private final GestoreLibro gestoreLibro;
     private final GestoreUtente gestoreUtente;
@@ -39,7 +39,7 @@ public class PrestitoHandler implements AreaHandler {
     }
 
     @Override
-    public void onRemove() {
+    public void onRemove(TableView<Prestito> tabella) {
 
     }
 
@@ -72,12 +72,12 @@ public class PrestitoHandler implements AreaHandler {
     }
 
     @Override
-    public void onEdit(TableView<?> tabella) {
+    public void onEdit(TableView<Prestito> tabella) {
 
     }
 
     @Override
-    public void setTableView(TableView<?> table) {
+    public void setTableView(TableView<Prestito> table) {
 
     }
 
@@ -95,7 +95,5 @@ public class PrestitoHandler implements AreaHandler {
     public void ordina(String criterio) {
 
     }
-
-
 
 }

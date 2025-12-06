@@ -22,12 +22,28 @@ public class GestoreLibro implements Gestore<Libro> {
 
     @Override
     public void add(Libro l) {
+        if (l == null) return;
 
+        int index = listaLibri.indexOf(l);
+
+        if (index != -1) {
+            Libro libroEsistente = listaLibri.get(index);
+
+            libroEsistente.incrementaCopie();
+
+            listaLibri.set(index, libroEsistente);
+
+            return;
+        }
+
+        listaLibri.add(l);
     }
 
     @Override
     public void remove(Libro l) {
+        if(l == null) return;
 
+        listaLibri.remove(l);
     }
 
     @Override
@@ -38,6 +54,15 @@ public class GestoreLibro implements Gestore<Libro> {
     @Override
     public ObservableList<Libro> getLista() {
         return listaLibri;
+    }
+
+    @Override
+    public void modifica(Libro vecchio, Libro nuovo) {
+        int index = listaLibri.indexOf(vecchio);
+
+        if (index != -1) {
+            listaLibri.set(index, nuovo);
+        }
     }
 
     @Override

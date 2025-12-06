@@ -35,6 +35,11 @@ public class GestoreUtente implements Gestore<Utente> {
     }
 
     @Override
+    public void modifica(Utente vecchio, Utente nuovo) {
+
+    }
+
+    @Override
     public void ordinaLista(Comparator<Utente> comparatore) {
 
     }

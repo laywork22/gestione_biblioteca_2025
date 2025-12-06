@@ -42,6 +42,8 @@ public interface Gestore<T> {
      */
     ObservableList<T> getLista();
 
+    void modifica(T vecchio, T nuovo);
+
     /**Ordina la lista in funzione del customComparator in ingresso
      *
      * Ordina la lista e rende possibile rispettare i requisiti di visualizzaziona in ordine (UI-1.1.2,UI-1.2.2).
