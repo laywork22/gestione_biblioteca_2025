@@ -6,6 +6,7 @@ import it.unisa.diem.softeng.librarymanager.model.Utente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -34,6 +35,8 @@ public class FormUtenteController {
     private Button salvaBtn;
     @FXML
     private Button annullaBtn;
+    @FXML
+    private Label insModLbl;
 
 
     @FXML
@@ -52,15 +55,6 @@ public class FormUtenteController {
     @FXML
     private void handleAnnulla(ActionEvent event) {
         chiudiFinestra();
-    }
-
-    @FXML
-    private void viewListaUtenti(ActionEvent event){
-
-    }
-
-    @FXML
-    private void viewListaLibri(ActionEvent event){
     }
 
     /**

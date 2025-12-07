@@ -20,6 +20,14 @@ public class GestoreLibro implements Gestore<Libro> {
         this.listaLibri = FXCollections.observableArrayList();
     }
 
+    /**
+     * @brief Aggiunge un libro alla lista.
+     * Implementazione specifica per i Libri: controlla se il Libro è già presente
+     * (tramite ISBN). Se esiste, non aggiunge una nuova istanza, ma incrementa il contatore delle copie disponibili.
+     *
+     * @param l il Libro da aggiungere o aggiornare
+     * @see Gestore#add(Object)
+     */
     @Override
     public void add(Libro l) {
         if (l == null) return;
@@ -75,6 +83,8 @@ public class GestoreLibro implements Gestore<Libro> {
      * @param str La stringa da filtrare nella tabella per la ricerca
      *
      * @return Predicate associato alla ricerca attuale
+     *
+     * @see Gestore#getPredicato(String)
      */
     @Override
     public Predicate<Libro> getPredicato(String str) {

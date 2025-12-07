@@ -106,7 +106,11 @@ public class FormLibroController {
      * @param l il Libro da cui estrarre gli attributi da impostare sui vari campi del form
      */
     public void setFormOnEdit(Libro l) {
-        this.libroInModifica = l;
+        try {
+            this.libroInModifica = l;
+        } catch (NullPointerException e) {
+            return;
+        }
 
         titoloFld.setText(l.getTitolo());
         autoreFld.setText(l.getAutore());

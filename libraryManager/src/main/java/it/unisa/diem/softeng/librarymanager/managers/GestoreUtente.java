@@ -21,6 +21,15 @@ public class GestoreUtente implements Gestore<Utente> {
         utentiList = FXCollections.observableArrayList();
     }
 
+    /**
+     * @brief Aggiunge un utente alla lista.
+     * Implementazione specifica per gli utent: controlla se la matricola è già presente nella lista,
+     * se esiste, non aggiunge una nuova istanza e non inserisce l'Utente, altrimenti lo aggiunge..
+     *
+     * @param l il Libro da aggiungere o aggiornare
+     *
+     * @see Gestore#add(Object)
+     */
     @Override
     public void add(Utente l) {
         if (l == null) return;
@@ -64,6 +73,8 @@ public class GestoreUtente implements Gestore<Utente> {
      * @param filtro La stringa da filtrare nella tabella per la ricerca
      *
      * @return Predicate associato alla ricerca attuale
+     *
+     * @see Gestore#getPredicato(String)
      */
     @Override
     public Predicate<Utente> getPredicato(String filtro) {

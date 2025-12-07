@@ -86,10 +86,11 @@ public class PrincipaleController {
 
         gestoreLibro.add(new Libro("Evangelion", "Shiro Sagisu", 2012, "983231-12", 10, 10));
         gestoreLibro.add(new Libro("Marc Jerkinson", "Hawk Two A", 2012, "283231-12", 12, 12));
-        Libro libro=new Libro("Marc Jerkinson", "Hawk Two A", 2012, "283231-12", 12, 12);
+        /*Libro libro=new Libro("Marc Jerkinson", "Hawk Two A", 2012, "283231-12", 12, 12);
         Utente Fabio=new Utente("fabio","volo","9832193","sasas@gmail.com");
         gestoreUtente.add(Fabio);
         gestorePrestito.add(new Prestito(Fabio,libro, LocalDate.now(),LocalDate.of(2036,12,29)));
+        */
         sideMenu.setTranslateX(-200);
 
         setArea(new PrestitoHandler(gestorePrestito, gestoreLibro, gestoreUtente));
@@ -114,7 +115,7 @@ public class PrincipaleController {
         slideContent.play();
     }
 
-    public void setArea(AreaHandler area) {
+    private void setArea(AreaHandler area) {
         areaCorrente = area;
 
         addBtn.setOnAction(e -> areaCorrente.onAdd());

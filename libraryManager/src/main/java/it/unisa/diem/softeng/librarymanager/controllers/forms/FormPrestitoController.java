@@ -6,13 +6,12 @@ import it.unisa.diem.softeng.librarymanager.managers.GestoreUtente;
 import it.unisa.diem.softeng.librarymanager.model.Libro;
 import it.unisa.diem.softeng.librarymanager.model.Prestito;
 import it.unisa.diem.softeng.librarymanager.model.Utente;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
@@ -26,7 +25,9 @@ import javafx.util.StringConverter;
  */
 public class FormPrestitoController {
 
-    private GestorePrestito gestore;
+    private GestorePrestito gp;
+    private GestoreLibro gl;
+    private GestoreUtente gu;
     private final Prestito prestitoInModifica = null;
 
     @FXML
@@ -41,14 +42,15 @@ public class FormPrestitoController {
     private DatePicker dataInizioDp;
     @FXML
     private DatePicker dataScadenzaDp;
-
+    @FXML
+    private Label insModFld;
 
     //salva il libro modificato nella lista
     @FXML
     public void salvaNuovoPrestito(ActionEvent event) {
         Prestito p = new Prestito(utentiCb.getValue(), libroCb.getValue(), dataInizioDp.getValue(), dataScadenzaDp.getValue());
 
-        gestore.add(p);
+        gp.add(p);
     }
 
 
@@ -60,19 +62,34 @@ public class FormPrestitoController {
 
 
     /**
-     * @brief Consente di impostare il GestorePrestito corrispondente.
+     * @brief Consente di impostare il GestorePrestito  e di popolare le ComboBox.
      *
      * È utilizzato da un LibroHandler affinché il controller abbia un riferimento al GestoreLibro corrispondente.
-     * @param gestore Il gestore dellArea Prestiti
+     * @param gp Il gestore dellArea Prestiti
+     * @param gl il gestore dell'Area Libri
+     * @param gu il gestore dell'Area Utenti
+     *
+     * @see
      */
-    public void init(GestorePrestito gestore, GestoreLibro gb, GestoreUtente gu) {
-        this.gestore = gestore;
-        //settare la lista di libri e utenti nei combobox
+    public void init(GestorePrestito gp, GestoreLibro gl, GestoreUtente gu) {
+        this.gp = gp;
+        this.gl = gl;
+        this.gu = gu;
+
+        //TODO settare la lista di libri e utenti nei combobox
+        setComboBox();
+    }
+
+    /**
+     * @brief Popola le ComboBox con le rispettive liste.
+     */
+    private void setComboBox() {
         utentiCb.setItems(gu.getLista());
-        libroCb.setItems(gb.getLista());
+        libroCb.setItems(gl.getLista());
 
         utentiCb.setPromptText("Selezionare  Utente");
         libroCb.setPromptText("Selezionare  Libro");
+
         //definire il modo in cui libri e utenti sono visualizzati nei combobox
         utentiCb.setConverter(new StringConverter<Utente>() {
             @Override
@@ -99,7 +116,6 @@ public class FormPrestitoController {
                 return null;
             }
         });
-
     }
 
     /**
