@@ -36,6 +36,14 @@ public class GestorePrestito implements Gestore<Prestito>{
         prestitoList.add(l);
     }
 
+    /**
+     * @brief Rimuove logicamente un prestito dalla lista: imposta il suo stato a "CHIUSO".
+     * L'istanza persiste nella lista come richiesto.
+     * 
+     * @param l
+     * 
+     * @see Gestore#remove(Object) 
+     */
     @Override
     public void remove(Prestito l) {
 

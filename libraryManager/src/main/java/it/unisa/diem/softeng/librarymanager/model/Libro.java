@@ -46,6 +46,11 @@ public class Libro implements Comparable<Libro> {
     int copieDisponibili;
 
     /**
+     * @brief verifica se un determinato libro è presente o meno nella lista. Necessario
+     */
+    boolean attivo;
+
+    /**
      * @brief Costruttore della classe Libro.
      *
      * Inizializza un nuovo libro con i dati forniti.
@@ -117,6 +122,15 @@ public class Libro implements Comparable<Libro> {
     }
 
     /**
+     * @brief Restituisce il flag di esistenza di un libro
+     *
+     * @return vero se il libro esiste, falso altrimenti.
+     */
+    public boolean isAttivo() {
+        return attivo;
+    }
+
+    /**
      * @brief Imposta o aggiorna il titolo del libro.
      * @param titolo Il nuovo titolo da impostare.
      */
@@ -157,6 +171,16 @@ public class Libro implements Comparable<Libro> {
     public void setCopieDisponibili(int copieDisponibili) {
         this.copieDisponibili = copieDisponibili;
     }
+
+    /**
+     * @brief Imposta manualmente la flag di esistenza.
+     *
+     * @param attivo
+     */
+    public void setAttivo(boolean attivo) {
+        this.attivo = attivo;
+    }
+
 
     /**
      * @brief Incrementa le copie totali di un libro

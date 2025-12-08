@@ -33,6 +33,14 @@ public class GestoreUtente implements Gestore<Utente> {
     public void add(Utente l) {
     }
 
+    /**
+     * @brief Rimuove un utente dalla lista logicamente: aggiorna il suo stato a "non attivo".
+     * L'istanza persiste come richiesto.
+     *
+     * @param l
+     * 
+     * @see Gestore#remove(Object) 
+     */
     @Override
     public void remove(Utente l) {
 

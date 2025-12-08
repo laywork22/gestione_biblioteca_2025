@@ -18,26 +18,31 @@ public class Utente implements Comparable<Utente> {
      * @brief Il nome di battesimo dell'utente.
      * Utilizzato insieme al cognome per l'ordinamento delle liste (IF-2.4).
      */
-    String nome;
+    private String nome;
 
     /**
      * @brief Il cognome dell'utente.
      * Campo chiave per l'ordinamento (IF-2.4) e la ricerca (IF-2.5).
      */
-    String cognome;
+    private String cognome;
 
     /**
      * @brief Il numero di matricola univoco dell'utente.
      * Identifica univocamente l'utente nel sistema.
      * [cite_start]È soggetto al vincolo di unicità durante la registrazione (IF-2.1)[cite: 61].
      */
-    String matricola;
+    private String matricola;
 
     /**
      * @brief L'indirizzo email istituzionale dell'utente.
      * [cite_start]Secondo il requisito **DF-1.2**, deve rispettare il formato "*@studenti.unisa.it"[cite: 128].
      */
-    String email;
+    private String email;
+
+    /**
+     * @brief f
+     */
+    private boolean attivo;
 
     /**
      * @brief Costruttore della classe Utente.
@@ -86,6 +91,15 @@ public class Utente implements Comparable<Utente> {
     }
 
     /**
+     * @brief Restituisce il flag di esistenza di un Utente
+     *
+     * @return vero se l'utente esiste, falso altrimenti.
+     */
+    public boolean isAttivo() {
+        return attivo;
+    }
+
+    /**
      * @brief Imposta o aggiorna il nome dell'utente.
      * @param nome Il nuovo nome da impostare.
      */
@@ -116,6 +130,15 @@ public class Utente implements Comparable<Utente> {
      */
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    /**
+     * @brief Imposta manualmente la flag di esistenza.
+     *
+     * @param attivo
+     */
+    public void setAttivo(boolean attivo) {
+        this.attivo = attivo;
     }
 
     /**

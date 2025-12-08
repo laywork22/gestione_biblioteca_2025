@@ -46,6 +46,15 @@ public class GestoreLibro implements Gestore<Libro> {
         listaLibri.add(l);
     }
 
+
+    /**
+     * @brief Rimuove un libro dalla lista logicamente: aggiorna il suo stato a "non attivo".
+     * L'istanza persiste come richiesto.
+     * 
+     * @param l
+     * 
+     * @see Gestore#remove(Object) 
+     */
     @Override
     public void remove(Libro l) {
         if(l == null) return;
