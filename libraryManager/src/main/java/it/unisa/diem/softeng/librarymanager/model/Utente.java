@@ -40,6 +40,11 @@ public class Utente implements Comparable<Utente> {
     private String email;
 
     /**
+     * @brief Numero di libri presi in prestito.
+     */
+    private int count;
+
+    /**
      * @brief f
      */
     private boolean attivo;
@@ -97,6 +102,25 @@ public class Utente implements Comparable<Utente> {
      */
     public boolean isAttivo() {
         return attivo;
+    }
+
+    /**
+     * @brief Restituisce il numero di libri in prestito.
+     * Non può essere maggiore di tre.
+     *
+     * @return
+     */
+    public int getCount() {
+        return count;
+    }
+
+    /**
+     * @brief Modifica il conteggio dei libri in prestito.
+     *
+     * @param count
+     */
+    public void setCount(int count) {
+        this.count = count;
     }
 
     /**
