@@ -66,11 +66,7 @@ public class GestoreLibro implements Gestore<Libro> {
 
     @Override
     public void modifica(Libro vecchio, Libro nuovo) {
-        int index = listaLibri.indexOf(vecchio);
 
-        if (index != -1) {
-            listaLibri.set(index, nuovo);
-        }
     }
 
     @Override

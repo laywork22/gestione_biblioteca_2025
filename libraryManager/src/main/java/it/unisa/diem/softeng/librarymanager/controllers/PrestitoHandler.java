@@ -76,45 +76,10 @@ public class PrestitoHandler implements AreaHandler<Prestito> {
 
     @Override
     public void onEdit(TableView<Prestito> tabella) {
-        Prestito p = tabella.getSelectionModel().getSelectedItem();
-
-        if(p==null)return;
-
     }
 
     @Override
     public void setTableView(TableView<Prestito> table) {
-        TableView<Prestito> t=table;
-        t.getColumns().clear();
-        TableColumn<Prestito,String> utenteClm=new TableColumn<>("Dati utente");
-        TableColumn<Prestito,String> libroClm=new TableColumn<>("Dati Libro");
-
-        TableColumn<Prestito,String> nomeClm=new TableColumn<>("Nome");
-        nomeClm.setCellValueFactory(r->new SimpleStringProperty(r.getValue().getUtente().getNome()));
-        TableColumn<Prestito,String> cognomeClm=new TableColumn<>("cognome");
-        cognomeClm.setCellValueFactory(r->new SimpleStringProperty(r.getValue().getUtente().getCognome()));
-
-        TableColumn<Prestito,String> titoloClm =new TableColumn<>("Titolo");
-        titoloClm.setCellValueFactory(r->new SimpleStringProperty(r.getValue().getLibro().getTitolo()));
-        TableColumn<Prestito,String> autoreClm=new TableColumn<>("Autore");
-        autoreClm.setCellValueFactory(r->new SimpleStringProperty(r.getValue().getLibro().getAutore()));
-        utenteClm.getColumns().addAll(nomeClm,cognomeClm);
-        libroClm.getColumns().addAll(titoloClm,autoreClm);
-        t.getColumns().addAll(utenteClm,libroClm);
-
-        TableColumn<Prestito, String> dataClm=new TableColumn<>("Data Prestito");
-
-        TableColumn<Prestito,String> dataInizioClm=new TableColumn<>("Data Inizio");
-        dataInizioClm.setCellValueFactory(r->new SimpleStringProperty(r.getValue().getDataInizio().toString()));
-
-        TableColumn<Prestito,String> dataFineClm=new TableColumn<>("Data Fine");
-        dataFineClm.setCellValueFactory(r->new SimpleStringProperty(r.getValue().getDataFine().toString()));
-
-        dataClm.getColumns().addAll(dataInizioClm,dataFineClm);
-        t.getColumns().addAll(dataClm);
-        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        table.setItems(gestore.getLista());
-
 
     }
 

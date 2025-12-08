@@ -48,33 +48,7 @@ public class FormLibroController {
 
     @FXML
     private void handleSalva(ActionEvent event) {
-        if (isFormNotValid()) {
-            Alert al = new Alert(Alert.AlertType.ERROR);
-            al.setTitle("Campi vuoti");
-            al.setHeaderText(null);
-            al.setContentText("Alcuni campi sono vuoti, impossibile salvare le modifiche effettuate");
 
-            al.showAndWait();
-        }
-
-        String titolo = titoloFld.getText();
-        String autore = autoreFld.getText();
-        int anno = Integer.parseInt(annoFld.getText());
-        String isbn = isbnFld.getText();
-        int copieDisponibili = Integer.parseInt(copieDisponibiliFld.getText());
-        int copieTotali = Integer.parseInt(copieTotaliFld.getText());
-        //MANCA GESTORE CAMPI VUOTI E GESTIONE ISBN DUPLICATI!!!
-        Libro nuovoLibro = new Libro(titolo,autore, anno,isbn, copieTotali, copieDisponibili);
-
-
-
-        if (libroInModifica != null) {
-            gestore.modifica(libroInModifica, nuovoLibro);
-        } else {
-            gestore.add(nuovoLibro);
-        }
-
-        chiudiFinestra();
     }
 
     @FXML
@@ -86,8 +60,6 @@ public class FormLibroController {
      * @brief Consente la chiusura dello Stage attivo.
      */
     private void chiudiFinestra() {
-        Stage stage = (Stage) salvaLibroBtn.getScene().getWindow();
-        stage.close();
     }
 
     /**
@@ -106,20 +78,6 @@ public class FormLibroController {
      * @param l il Libro da cui estrarre gli attributi da impostare sui vari campi del form
      */
     public void setFormOnEdit(Libro l) {
-        try {
-            this.libroInModifica = l;
-        } catch (NullPointerException e) {
-            return;
-        }
-
-        titoloFld.setText(l.getTitolo());
-        autoreFld.setText(l.getAutore());
-        annoFld.setText(String.valueOf(l.getAnno()));
-        isbnFld.setText(l.getIsbn());
-        copieDisponibiliFld.setText(String.valueOf(l.getCopieDisponibili()));
-        copieTotaliFld.setText(String.valueOf(l.getCopieTotali()));
-
-        setInsModLblText();
 
     }
 
@@ -130,12 +88,7 @@ public class FormLibroController {
      * @return true se almeno un campo è vuoto, false se tutti sono pieni.
      */
     private boolean isFormNotValid() {
-        return titoloFld.getText().isEmpty() ||
-                autoreFld.getText().isEmpty() ||
-                annoFld.getText().isEmpty() ||
-                isbnFld.getText().isEmpty() ||
-                copieDisponibiliFld.getText().isEmpty() ||
-                copieTotaliFld.getText().isEmpty();
+        return false;
     }
 
     /**
@@ -143,11 +96,7 @@ public class FormLibroController {
      *
      */
     private void setInsModLblText() {
-        if (libroInModifica != null) {
-            insModLbl.setText("Modifica libro");
-        } else {
-            insModLbl.setText("Inserimento nuovo libro");
-        }
+
     }
 
 }

@@ -84,46 +84,13 @@ public class FormPrestitoController {
      * @brief Popola le ComboBox con le rispettive liste.
      */
     private void setComboBox() {
-        utentiCb.setItems(gu.getLista());
-        libroCb.setItems(gl.getLista());
 
-        utentiCb.setPromptText("Selezionare  Utente");
-        libroCb.setPromptText("Selezionare  Libro");
-
-        //definire il modo in cui libri e utenti sono visualizzati nei combobox
-        utentiCb.setConverter(new StringConverter<Utente>() {
-            @Override
-            public String toString(Utente u) {
-                if (u == null) return null;
-                return u.getCognome() + " " + u.getNome() + " (" + u.getMatricola() + ")";
-            }
-
-            @Override
-            public Utente fromString(String s) {
-                return null;
-            }
-
-        });
-        libroCb.setConverter(new StringConverter<Libro>() {
-            @Override
-            public String toString(Libro l) {
-                if (l == null) return null;
-                return l.getTitolo() + " - " + l.getAutore();
-            }
-
-            @Override
-            public Libro fromString(String string) {
-                return null;
-            }
-        });
     }
 
     /**
      * @brief Consente la chiusura dello Stage attivo.
      */
     private void chiudiFinestra() {
-        Stage stage = (Stage) salvaBtn.getScene().getWindow();
-        stage.close();
     }
 
     /**

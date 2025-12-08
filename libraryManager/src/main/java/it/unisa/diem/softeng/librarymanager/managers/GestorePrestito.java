@@ -39,9 +39,7 @@ public class GestorePrestito implements Gestore<Prestito>{
 
     @Override
     public void remove(Prestito l) {
-        if(l==null){return;}
 
-        prestitoList.remove(l);
     }
 
     @Override

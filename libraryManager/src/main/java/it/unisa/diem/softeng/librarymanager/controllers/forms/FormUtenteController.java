@@ -41,15 +41,6 @@ public class FormUtenteController {
 
     @FXML
     private void handleSalva(ActionEvent event) {
-        String nome = nomeFld.getText();
-        String cognome = cognomeFld.getText();
-        String matricola = matricolaFld.getText();
-        String email = emailFld.getText();
-        //MANCA GESTORE CAMPI VUOTI
-        Utente nuovoUtente = new Utente(nome, cognome, matricola, email);
-        gestore.add(nuovoUtente);
-
-        chiudiFinestra();
     }
 
     @FXML
