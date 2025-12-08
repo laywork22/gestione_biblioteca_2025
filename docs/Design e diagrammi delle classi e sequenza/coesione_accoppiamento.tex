@@ -1,0 +1,97 @@
+\documentclass[a4paper,12pt]{article}
+
+% --- Pacchetti Essenziali ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{pdflscape}
+\usepackage{geometry}
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+
+
+\usepackage{mathpazo}
+\usepackage{microtype}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{standalone}
+\usepackage{tikz}
+\usepackage{amsmath}
+
+\newcommand{\metric}[2]{\textbf{#1:} #2}
+
+\title{\textbf{Analisi Architetturale: Coesione e Accoppiamento}}
+\author{Gruppo 12}
+\date{\today}
+
+\begin{document}
+	
+	\maketitle
+	
+	\section{Analisi delle Componenti}
+	Di seguito viene riportata l'analisi dettagliata delle metriche di qualità software (Coesione e Accoppiamento) per le principali classi del sistema.
+	
+	\subsection{Classi Entità: Utente / Libro}
+	\begin{itemize}
+		\item \metric{Coesione}{Funzionale.} \\
+		Le classi rappresentano fedelmente le entità del dominio; ogni metodo è strettamente correlato alla gestione dei dati intrinseci dell'entità.
+		\item \metric{Accoppiamento}{Per Dati.} \\
+		L'interazione con l'esterno avviene scambiando esclusivamente tipi primitivi o dati semplici, garantendo la massima indipendenza.
+	\end{itemize}
+	
+	\subsection{Classe Entità: Prestito}
+	\begin{itemize}
+		\item \metric{Coesione}{Funzionale.} \\
+		Tutti i metodi concorrono a definire l'entità \textit{Prestito} e le relative operazioni di gestione stato.
+		\item \metric{Accoppiamento}{Di Timbro (Stamp Coupling).} \\
+		A differenza delle entità base, i metodi di questa classe richiedono il passaggio di strutture dati composite (riferimenti a oggetti \texttt{Libro} o \texttt{Utente}) piuttosto che soli tipi primitivi (es. metodo \texttt{setLibro}).
+	\end{itemize}
+	
+	\subsection{Classi Gestore: Libro / Utente / Prestito}
+	\begin{itemize}
+		\item \metric{Coesione}{Funzionale.} \\
+		Ogni metodo persegue un unico obiettivo specifico, come l'aggiunta di un elemento alla collezione o la persistenza dei dati su file.
+		\item \metric{Accoppiamento}{Di Controllo.} \\
+		Il metodo \texttt{ordinaLista} richiede in input un oggetto \texttt{Comparator}. Questo parametro esterno altera la logica interna di ordinamento della struttura dati visualizzata.
+	\end{itemize}
+	
+	\subsection{Handler: UtenteHandler / LibroHandler / PrestitoHandler}
+	\begin{itemize}
+		\item \metric{Coesione}{Sequenziale.} \\
+		I metodi \texttt{onAdd} e \texttt{onEdit} orchestrano una serie di operazioni che devono essere eseguite in un ordine rigoroso (startup del controller e inizializzazione del form) affinché il flusso termini correttamente.
+		\item \metric{Accoppiamento}{Di Controllo.} \\
+		Il metodo \texttt{ordina} accetta come parametro una stringa che determina l'algoritmo di ordinamento da applicare, influenzando direttamente il flusso di esecuzione del programma. 
+	\end{itemize}
+	
+	\subsection{Classe: PrincipaleController}
+	\begin{itemize}
+		\item \metric{Coesione}{Temporale.} \\
+		Il metodo \texttt{initialize} raggruppa operazioni eterogenee la cui unica relazione è il momento di esecuzione, ovvero la fase di avvio dell'applicazione e dei componenti grafici.
+		\item \metric{Accoppiamento}{Di Timbro.} \\
+		La maggioranza dei metodi (es. \texttt{setArea}, \texttt{ordinaTabella}) opera passando o ricevendo intere strutture dati o oggetti complessi, invece di singoli valori.
+	\end{itemize}
+	
+	\subsection{Controller Form: FormLibroController / FormUtenteController}
+	\begin{itemize}
+		\item \metric{Coesione}{Comunicazionale.} \\
+		I metodi operano sullo stesso insieme di dati (i campi del form e l'oggetto in modifica) per eseguire azioni distinte ma correlate (validazione, salvataggio, annullamento).
+		\item \metric{Accoppiamento}{Di Timbro.} \\
+		\textit{Timbro:} Le classi ricevono l'intera istanza dell'oggetto per popolare i campi. \\
+	\end{itemize}
+	
+	\subsection{Controller Form: FormPrestitoController}
+	\begin{itemize}
+		\item \metric{Coesione}{Comunicazionale.} \\
+		Simile agli altri form, ma con una complessità maggiore: opera sull'aggregazione di dati provenienti da fonti diverse (selezione Utente, selezione Libro, date) per produrre l'output finale (il Prestito).
+		\item \metric{Accoppiamento}{Di Timbro (Elevato).} \\
+		Presenta un accoppiamento di timbro più marcato rispetto agli altri form, poiché deve gestire e collegare istanze multiple di oggetti complessi (\texttt{Libro}, \texttt{Utente} e \texttt{Prestito}) per garantire la coerenza del vincolo relazionale.
+	\end{itemize}
+	
+	\subsection{Classe: libraryManagerApp}
+	\begin{itemize}
+		\item \metric{Coesione}{Funzionale.} \\
+		È la classe main dell'applicazione. Ogni suo metodo ha il solo e unico scopo di caricare la scena principale.
+		\item \metric{Accoppiamento}{Di Timbro.} \\
+		Il metodo \texttt{start} richiede uno \texttt{Stage} passato come parametro. C'è una chiara dipendenza con il modulo \textbf{Stage} ma d'altro canto è la classe main di un programma in JavaFX quindi è normale che sia presente.
+	\end{itemize}
+	
+\end{document}
