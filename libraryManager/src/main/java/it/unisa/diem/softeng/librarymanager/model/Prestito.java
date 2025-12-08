@@ -55,13 +55,7 @@ public class Prestito implements Comparable<Prestito> {
      */
 
     public Prestito(Utente utente, Libro libro, LocalDate dataInizio, LocalDate dataFine) {
-        this.utente = utente;
-        this.libro = libro;
-        //trattamento caso di default con campo dataInizio vuota
-        this.dataInizio = (dataInizio == null) ? LocalDate.now() : dataInizio;
-        this.dataFine = dataFine;
-        this.stato = StatoPrestitoEnum.ATTIVO;
-        //DA IMPLEMENTARE GESTIONE DATE ERRATE
+
     }
 
     /**
@@ -140,8 +134,7 @@ public class Prestito implements Comparable<Prestito> {
      */
     @Override
     public String toString() {
-        return "Prestito di " + utente.getNome() + "--->" + libro.getTitolo() +
-                "\nData inizio: " + dataInizio + " Data fine: " + dataFine + "\n";
+        return null;
     }
 
     @Override

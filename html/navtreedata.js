@@ -25,6 +25,7 @@
 var NAVTREE =
 [
   [ "libraryManager", "index.html", [
+    [ "Library Manager - Documentazione Tecnica", "index.html", "index" ],
     [ "Classi", "annotated.html", [
       [ "Elenco dei tipi composti", "annotated.html", "annotated_dup" ],
       [ "Indice dei tipi composti", "classes.html", null ],

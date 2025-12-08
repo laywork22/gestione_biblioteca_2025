@@ -11,7 +11,6 @@ import java.util.List;
  * gestore e i metodi per la visualizzazione delle tabelle.
  *
  * @author Gruppo 12
- * @version 1.0
  */
 public interface AreaHandler<E> {
 

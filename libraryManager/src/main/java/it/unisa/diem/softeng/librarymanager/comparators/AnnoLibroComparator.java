@@ -4,10 +4,15 @@ import it.unisa.diem.softeng.librarymanager.model.Libro;
 
 import java.util.Comparator;
 
+/**@brief Comparatore di classe libro ordinati per anno
+ *
+ *
+ *
+ */
 public class AnnoLibroComparator implements Comparator<Libro> {
 
     @Override
     public int compare(Libro o1, Libro o2) {
-        return Integer.compare(o1.getAnno(), o2.getAnno());
+        return 0;
     }
 }

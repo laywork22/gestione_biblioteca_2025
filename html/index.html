@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.15.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libraryManager: Pagina Principale</title>
+<title>libraryManager: Library Manager - Documentazione Tecnica</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -87,10 +87,63 @@ $(function(){initNavTree('index.html','',''); });
 </div>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">libraryManager Documentazione</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">Library Manager - Documentazione Tecnica </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><h1 class="doxsection"><a class="anchor" id="intro_sec"></a>
+Introduzione</h1>
+<p>Documentazione tecnica del progetto <b>Library Manager</b>.</p>
+<p>Questo software è un'applicazione desktop sviluppata in <b>Java</b> con interfaccia grafica <b>JavaFX</b>. Il sistema è progettato per automatizzare e semplificare le operazioni quotidiane di una biblioteca, permettendo la gestione efficiente del catalogo libri, dell’anagrafica utenti e del monitoraggio dei prestiti.</p>
+<h1 class="doxsection"><a class="anchor" id="features_sec"></a>
+Funzionalità Principali</h1>
+<p>Il sistema è suddiviso in tre macro-aree funzionali:</p>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md0"></a>
+Gestione Libri</h3>
+<ul>
+<li>Inserimento di nuovi volumi con dettagli (Titolo, Autore, Anno, ISBN)</li>
+<li>Monitoraggio delle copie totali e disponibili</li>
+<li>Ricerca e filtraggio del catalogo</li>
+</ul>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
+Gestione Utenti</h3>
+<ul>
+<li>Registrazione di nuovi utenti (studenti/docenti)</li>
+<li>Gestione dei dati anagrafici (Matricola, Email)</li>
+</ul>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
+Gestione Prestiti</h3>
+<ul>
+<li>Creazione di nuovi prestiti associando un Utente a un Libro</li>
+<li>Controllo delle scadenze e dello stato del prestito</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="arch_sec"></a>
+Architettura del Sistema</h1>
+<p>Il progetto segue il pattern architetturale <b>MVC (Model-View-Controller)</b>:</p>
+<ul>
+<li><b>Controllers</b> (<span class="tt">it.unisa.diem.softeng.librarymanager.controllers</span>) Gestiscono l'interazione tra le view FXML e i dati. Il <span class="tt">PrincipaleController</span> funge da orchestratore, delegando ai vari sotto-controller (<span class="tt">LibroController</span>, <span class="tt">PrestitoController</span>, ecc.).</li>
+<li><b>Forms</b> (<span class="tt">it.unisa.diem.softeng.librarymanager.controllers.forms</span>) Controller dedicati alle finestre di dialogo (popup).</li>
+<li><b>Managers</b> (<span class="tt">it.unisa.diem.softeng.librarymanager.managers</span>) Contengono la logica di business e lo stato dell'applicazione.</li>
+<li><b>Model</b> (<span class="tt">it.unisa.diem.softeng.librarymanager.model</span>) Classi POJO che rappresentano le entità del dominio (<span class="tt">Libro</span>, <span class="tt">Utente</span>, <span class="tt">Prestito</span>).</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="install_sec"></a>
+Requisiti e Installazione</h1>
+<ul>
+<li><b>Java:</b> JDK 17 o superiore</li>
+<li><b>JavaFX:</b> SDK configurato o via Maven</li>
+<li><b>Build Tool:</b> Maven</li>
+</ul>
+<p>Per compilare ed eseguire il progetto:</p>
+<div class="fragment"><div class="line">mvn clean javafx:run</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="authors_sec"></a>
+Autori</h1>
+<ul>
+<li>Emiddio Ferrentino</li>
+<li>Rosa Genovese</li>
+<li>Letizia Argenio</li>
+<li>Antonio D'Urso </li>
+</ul>
+</div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>
 </div><!-- contents -->
 </div><!-- doc-content -->

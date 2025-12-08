@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['librarymanagerapp_0',['libraryManagerApp',['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1library_manager_app.html',1,'it::unisa::diem::softeng::librarymanager']]],
-  ['libro_1',['Libro',['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html',1,'it.unisa.diem.softeng.librarymanager.model.Libro'],['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html#aba21f494f2d4f0ba46725f9bd766f20c',1,'it.unisa.diem.softeng.librarymanager.model.Libro.Libro()']]],
-  ['librocontroller_2',['LibroController',['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_libro_controller.html',1,'it::unisa::diem::softeng::librarymanager::controllers']]]
+  ['incrementacopie_0',['incrementaCopie',['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html#a5b8580eec64e1e9afe11c1838efca718',1,'it::unisa::diem::softeng::librarymanager::model::Libro']]],
+  ['initialize_1',['initialize',['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1forms_1_1_form_prestito_controller.html#ac2df3fa146b60412415777de2305eca1',1,'it.unisa.diem.softeng.librarymanager.controllers.forms.FormPrestitoController.initialize()'],['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1forms_1_1_form_utente_controller.html#a079b45fb40b526eb026693c0b26f0b2c',1,'it.unisa.diem.softeng.librarymanager.controllers.forms.FormUtenteController.initialize()']]],
+  ['installazione_2',['Requisiti e Installazione',['../index.html#install_sec',1,'']]],
+  ['introduzione_3',['Introduzione',['../index.html#intro_sec',1,'']]]
 ];

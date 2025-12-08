@@ -3,10 +3,10 @@ var hierarchy =
     [ "Application", null, [
       [ "it.unisa.diem.softeng.librarymanager.libraryManagerApp", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1library_manager_app.html", null ]
     ] ],
-    [ "it.unisa.diem.softeng.librarymanager.controllers.AreaController", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_controller.html", [
-      [ "it.unisa.diem.softeng.librarymanager.controllers.LibroController", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_libro_controller.html", null ],
-      [ "it.unisa.diem.softeng.librarymanager.controllers.PrestitoController", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_prestito_controller.html", null ],
-      [ "it.unisa.diem.softeng.librarymanager.controllers.UtenteController", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_utente_controller.html", null ]
+    [ "it.unisa.diem.softeng.librarymanager.controllers.AreaHandler", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_handler.html", [
+      [ "it.unisa.diem.softeng.librarymanager.controllers.LibroHandler", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_libro_handler.html", null ],
+      [ "it.unisa.diem.softeng.librarymanager.controllers.PrestitoHandler", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_prestito_handler.html", null ],
+      [ "it.unisa.diem.softeng.librarymanager.controllers.UtenteHandler", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_utente_handler.html", null ]
     ] ],
     [ "Comparable", null, [
       [ "it.unisa.diem.softeng.librarymanager.model.Libro", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html", null ],
