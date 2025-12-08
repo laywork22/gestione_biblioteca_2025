@@ -108,8 +108,8 @@ Diagramma delle classi per it.unisa.diem.softeng.librarymanager.managers.Gestore
 Membri pubblici</h2></td></tr>
 <tr class="memitem:a9453101330286264310e23d369c95027" id="r_a9453101330286264310e23d369c95027"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9453101330286264310e23d369c95027">add</a> (<a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_prestito.html">Prestito</a> l)</td></tr>
 <tr class="memdesc:a9453101330286264310e23d369c95027"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aggiunge un libro alla lista. Implementazione specifica per i Prestiti: controlla che un <a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_utente.html" title="Rappresenta un utente (studente o personale) della biblioteca.">Utente</a> non abbia più di tre prestiti attivi, in caso contrario, il prestito viene rifiutato e l'operazione di inserimento annullata. Sono ammessi più prestiti di uno stesso libro (copie disponibili permettendo) a nome di un unico utente..  <br /></td></tr>
-<tr class="memitem:afe17cef0d46fdcec83d735df04b406f6" id="r_afe17cef0d46fdcec83d735df04b406f6"><td class="memItemLeft" align="right" valign="top"><a id="afe17cef0d46fdcec83d735df04b406f6" name="afe17cef0d46fdcec83d735df04b406f6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>remove</b> (<a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_prestito.html">Prestito</a> l)</td></tr>
+<tr class="memitem:afe17cef0d46fdcec83d735df04b406f6" id="r_afe17cef0d46fdcec83d735df04b406f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe17cef0d46fdcec83d735df04b406f6">remove</a> (<a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_prestito.html">Prestito</a> l)</td></tr>
+<tr class="memdesc:afe17cef0d46fdcec83d735df04b406f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rimuove logicamente un prestito dalla lista: imposta il suo stato a "CHIUSO". L'istanza persiste nella lista come richiesto.  <br /></td></tr>
 <tr class="memitem:a353a877b65dd3c6b58f3288aaa7cac21" id="r_a353a877b65dd3c6b58f3288aaa7cac21"><td class="memItemLeft" align="right" valign="top"><a id="a353a877b65dd3c6b58f3288aaa7cac21" name="a353a877b65dd3c6b58f3288aaa7cac21"></a>
 ObservableList&lt; <a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_prestito.html">Prestito</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getLista</b> ()</td></tr>
 <tr class="memitem:a0fed78c57d943193c6827adc5a57fbfd" id="r_a0fed78c57d943193c6827adc5a57fbfd"><td class="memItemLeft" align="right" valign="top"><a id="a0fed78c57d943193c6827adc5a57fbfd" name="a0fed78c57d943193c6827adc5a57fbfd"></a>
@@ -247,6 +247,40 @@ Membri pubblici statici</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Restituisce</dt><dd>Predicate associato alla ricerca attuale</dd></dl>
 <dl class="section see"><dt>Si veda anche</dt><dd>Gestore#getPredicato(String) </dd></dl>
+
+</div>
+</div>
+<a id="afe17cef0d46fdcec83d735df04b406f6" name="afe17cef0d46fdcec83d735df04b406f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe17cef0d46fdcec83d735df04b406f6">&#9670;&#160;</a></span>remove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void it.unisa.diem.softeng.librarymanager.managers.GestorePrestito.remove </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_prestito.html">Prestito</a></td>          <td class="paramname"><span class="paramname"><em>l</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Rimuove logicamente un prestito dalla lista: imposta il suo stato a "CHIUSO". L'istanza persiste nella lista come richiesto. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">l</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>Si veda anche</dt><dd>Gestore#remove(Object) </dd></dl>
 
 </div>
 </div>

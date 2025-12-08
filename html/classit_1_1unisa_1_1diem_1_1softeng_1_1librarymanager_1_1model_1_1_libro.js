@@ -9,6 +9,8 @@ var classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro =
     [ "getIsbn", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html#aef8e2f2dff5888cb364d33386c334e72", null ],
     [ "getTitolo", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html#ab9e49f4bbaeee6bac8e537abc7c621c8", null ],
     [ "incrementaCopie", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html#a5b8580eec64e1e9afe11c1838efca718", null ],
+    [ "isAttivo", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html#ac9bf1549d848349996adfcd96368ca62", null ],
+    [ "setAttivo", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html#a3d2673f4e0e8b2ba757d775144204a2e", null ],
     [ "setAutore", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html#a7621bdc98abe353223e9ec6a819f0a26", null ],
     [ "setCopieDisponibili", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html#a9c89be48f433192355ccb20e00961af2", null ],
     [ "setCopieTotali", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html#a772f07c7d510ef92458f211facde0474", null ],

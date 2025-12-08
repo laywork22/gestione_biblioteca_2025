@@ -117,6 +117,8 @@ Membri pubblici</h2></td></tr>
 <tr class="memdesc:a3668e85456d47edf078d1ccc54c23b23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce il numero totale di copie.  <br /></td></tr>
 <tr class="memitem:a30a468aa208d6c32b884ec620af81d46" id="r_a30a468aa208d6c32b884ec620af81d46"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30a468aa208d6c32b884ec620af81d46">getCopieDisponibili</a> ()</td></tr>
 <tr class="memdesc:a30a468aa208d6c32b884ec620af81d46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce il numero di copie attualmente disponibili.  <br /></td></tr>
+<tr class="memitem:ac9bf1549d848349996adfcd96368ca62" id="r_ac9bf1549d848349996adfcd96368ca62"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac9bf1549d848349996adfcd96368ca62">isAttivo</a> ()</td></tr>
+<tr class="memdesc:ac9bf1549d848349996adfcd96368ca62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce il flag di esistenza di un libro.  <br /></td></tr>
 <tr class="memitem:a5dd6b00d55ba4600ec00991ec50c50f0" id="r_a5dd6b00d55ba4600ec00991ec50c50f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5dd6b00d55ba4600ec00991ec50c50f0">setTitolo</a> (String titolo)</td></tr>
 <tr class="memdesc:a5dd6b00d55ba4600ec00991ec50c50f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imposta o aggiorna il titolo del libro.  <br /></td></tr>
 <tr class="memitem:a7621bdc98abe353223e9ec6a819f0a26" id="r_a7621bdc98abe353223e9ec6a819f0a26"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7621bdc98abe353223e9ec6a819f0a26">setAutore</a> (String autore)</td></tr>
@@ -127,6 +129,8 @@ Membri pubblici</h2></td></tr>
 <tr class="memdesc:a772f07c7d510ef92458f211facde0474"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imposta il numero totale di copie.  <br /></td></tr>
 <tr class="memitem:a9c89be48f433192355ccb20e00961af2" id="r_a9c89be48f433192355ccb20e00961af2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c89be48f433192355ccb20e00961af2">setCopieDisponibili</a> (int copieDisponibili)</td></tr>
 <tr class="memdesc:a9c89be48f433192355ccb20e00961af2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imposta manualmente il numero di copie disponibili. Generalmente questo valore dovrebbe essere gestito dalla logica dei prestiti.  <br /></td></tr>
+<tr class="memitem:a3d2673f4e0e8b2ba757d775144204a2e" id="r_a3d2673f4e0e8b2ba757d775144204a2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d2673f4e0e8b2ba757d775144204a2e">setAttivo</a> (boolean attivo)</td></tr>
+<tr class="memdesc:a3d2673f4e0e8b2ba757d775144204a2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imposta manualmente la flag di esistenza.  <br /></td></tr>
 <tr class="memitem:a5b8580eec64e1e9afe11c1838efca718" id="r_a5b8580eec64e1e9afe11c1838efca718"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b8580eec64e1e9afe11c1838efca718">incrementaCopie</a> ()</td></tr>
 <tr class="memdesc:a5b8580eec64e1e9afe11c1838efca718"><td class="mdescLeft">&#160;</td><td class="mdescRight">Incrementa le copie totali di un libro.  <br /></td></tr>
 <tr class="memitem:a4f8d0a82ab4eb46bbeccb400c3cdab06" id="r_a4f8d0a82ab4eb46bbeccb400c3cdab06"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4f8d0a82ab4eb46bbeccb400c3cdab06">decrementaCopie</a> ()</td></tr>
@@ -429,6 +433,67 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>compareTo</b> (<a clas
 
 <p>Incrementa le copie totali di un libro. </p>
 <dl class="section return"><dt>Restituisce</dt><dd>Incrementa le copie totali di un libro di uno. </dd></dl>
+
+</div>
+</div>
+<a id="ac9bf1549d848349996adfcd96368ca62" name="ac9bf1549d848349996adfcd96368ca62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9bf1549d848349996adfcd96368ca62">&#9670;&#160;</a></span>isAttivo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean it.unisa.diem.softeng.librarymanager.model.Libro.isAttivo </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Restituisce il flag di esistenza di un libro. </p>
+<dl class="section return"><dt>Restituisce</dt><dd>vero se il libro esiste, falso altrimenti. </dd></dl>
+
+</div>
+</div>
+<a id="a3d2673f4e0e8b2ba757d775144204a2e" name="a3d2673f4e0e8b2ba757d775144204a2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d2673f4e0e8b2ba757d775144204a2e">&#9670;&#160;</a></span>setAttivo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void it.unisa.diem.softeng.librarymanager.model.Libro.setAttivo </td>
+          <td>(</td>
+          <td class="paramtype">boolean</td>          <td class="paramname"><span class="paramname"><em>attivo</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Imposta manualmente la flag di esistenza. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">attivo</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

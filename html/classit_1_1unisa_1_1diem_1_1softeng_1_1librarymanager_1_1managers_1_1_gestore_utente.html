@@ -108,8 +108,8 @@ Diagramma delle classi per it.unisa.diem.softeng.librarymanager.managers.Gestore
 Membri pubblici</h2></td></tr>
 <tr class="memitem:ad942acb0c73ee4471f84fd7dc60319ac" id="r_ad942acb0c73ee4471f84fd7dc60319ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad942acb0c73ee4471f84fd7dc60319ac">add</a> (<a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_utente.html">Utente</a> l)</td></tr>
 <tr class="memdesc:ad942acb0c73ee4471f84fd7dc60319ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aggiunge un utente alla lista. Implementazione specifica per gli utent: controlla se la matricola è già presente nella lista, se esiste, non aggiunge una nuova istanza e non inserisce l'<a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_utente.html" title="Rappresenta un utente (studente o personale) della biblioteca.">Utente</a>, altrimenti lo aggiunge..  <br /></td></tr>
-<tr class="memitem:a547149ee5c4a1df03f07aed65b64c294" id="r_a547149ee5c4a1df03f07aed65b64c294"><td class="memItemLeft" align="right" valign="top"><a id="a547149ee5c4a1df03f07aed65b64c294" name="a547149ee5c4a1df03f07aed65b64c294"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>remove</b> (<a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_utente.html">Utente</a> l)</td></tr>
+<tr class="memitem:a547149ee5c4a1df03f07aed65b64c294" id="r_a547149ee5c4a1df03f07aed65b64c294"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a547149ee5c4a1df03f07aed65b64c294">remove</a> (<a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_utente.html">Utente</a> l)</td></tr>
+<tr class="memdesc:a547149ee5c4a1df03f07aed65b64c294"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rimuove un utente dalla lista logicamente: aggiorna il suo stato a "non attivo". L'istanza persiste come richiesto.  <br /></td></tr>
 <tr class="memitem:aed39af517390f184c364002552941290" id="r_aed39af517390f184c364002552941290"><td class="memItemLeft" align="right" valign="top"><a id="aed39af517390f184c364002552941290" name="aed39af517390f184c364002552941290"></a>
 ObservableList&lt; <a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_utente.html">Utente</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getLista</b> ()</td></tr>
 <tr class="memitem:a6a9b6969cb4f8ef7fa8d4f103c9d954a" id="r_a6a9b6969cb4f8ef7fa8d4f103c9d954a"><td class="memItemLeft" align="right" valign="top"><a id="a6a9b6969cb4f8ef7fa8d4f103c9d954a" name="a6a9b6969cb4f8ef7fa8d4f103c9d954a"></a>
@@ -247,6 +247,40 @@ Membri pubblici statici</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Restituisce</dt><dd>Predicate associato alla ricerca attuale</dd></dl>
 <dl class="section see"><dt>Si veda anche</dt><dd>Gestore#getPredicato(String) </dd></dl>
+
+</div>
+</div>
+<a id="a547149ee5c4a1df03f07aed65b64c294" name="a547149ee5c4a1df03f07aed65b64c294"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a547149ee5c4a1df03f07aed65b64c294">&#9670;&#160;</a></span>remove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void it.unisa.diem.softeng.librarymanager.managers.GestoreUtente.remove </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_utente.html">Utente</a></td>          <td class="paramname"><span class="paramname"><em>l</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Rimuove un utente dalla lista logicamente: aggiorna il suo stato a "non attivo". L'istanza persiste come richiesto. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">l</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>Si veda anche</dt><dd>Gestore#remove(Object) </dd></dl>
 
 </div>
 </div>
