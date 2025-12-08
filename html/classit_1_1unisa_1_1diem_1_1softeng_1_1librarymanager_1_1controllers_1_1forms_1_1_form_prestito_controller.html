@@ -92,27 +92,23 @@ $(function(){initNavTree('classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_
 </div><!--header-->
 <div class="contents">
 
-<p>Controller per la gestione del form di inserimento prestiti.  
+<p>Controller di gestione dell'interfaccia grafica del Form di inserimento/modifica di un <a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_prestito.html" title="Rappresenta un&#39;operazione di prestito nel sistema Library Manager.">Prestito</a>. Mette a disposizione dei metodi che consentono all'<a class="el" href="interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_handler.html" title="Interfaccia implementata dai gestori delle aree.">AreaHandler</a> di manipolare la logica della Label e dei campi del form.  
  <a href="#details">Continua...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Membri pubblici</h2></td></tr>
-<tr class="memitem:ac2df3fa146b60412415777de2305eca1" id="r_ac2df3fa146b60412415777de2305eca1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2df3fa146b60412415777de2305eca1">initialize</a> ()</td></tr>
-<tr class="memdesc:ac2df3fa146b60412415777de2305eca1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo di inizializzazione del controller.  <br /></td></tr>
 <tr class="memitem:a9cfd9481fcad8958fa6d1086eb9e0d2c" id="r_a9cfd9481fcad8958fa6d1086eb9e0d2c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9cfd9481fcad8958fa6d1086eb9e0d2c">salvaNuovoPrestito</a> (ActionEvent event)</td></tr>
-<tr class="memdesc:a9cfd9481fcad8958fa6d1086eb9e0d2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestisce l'azione di salvataggio di un nuovo prestito.  <br /></td></tr>
+<tr class="memdesc:a9cfd9481fcad8958fa6d1086eb9e0d2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Salva il <a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_prestito.html" title="Rappresenta un&#39;operazione di prestito nel sistema Library Manager.">Prestito</a> nella lista corrispondente, rendendolo visibile in tabella.  <br /></td></tr>
 <tr class="memitem:a6d446b79e6ace43b7c1f876a5e21cb57" id="r_a6d446b79e6ace43b7c1f876a5e21cb57"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d446b79e6ace43b7c1f876a5e21cb57">annullaNuovoPrestito</a> (ActionEvent event)</td></tr>
-<tr class="memdesc:a6d446b79e6ace43b7c1f876a5e21cb57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestisce l'azione di annullamento.  <br /></td></tr>
-<tr class="memitem:a67cf0b0e9dac20ced1c8b79d9c69323b" id="r_a67cf0b0e9dac20ced1c8b79d9c69323b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67cf0b0e9dac20ced1c8b79d9c69323b">viewListaUtenti</a> (ActionEvent event)</td></tr>
-<tr class="memdesc:a67cf0b0e9dac20ced1c8b79d9c69323b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestisce l'evento di interazione con la lista utenti.  <br /></td></tr>
-<tr class="memitem:a6c92f349adc04b65c54f1dae14253183" id="r_a6c92f349adc04b65c54f1dae14253183"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c92f349adc04b65c54f1dae14253183">viewListaLibri</a> (ActionEvent event)</td></tr>
-<tr class="memdesc:a6c92f349adc04b65c54f1dae14253183"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestisce l'evento di interazione con la lista libri.  <br /></td></tr>
-<tr class="memitem:a8c7f5aa19d5eeeb3fa13e5bbff3fd1c6" id="r_a8c7f5aa19d5eeeb3fa13e5bbff3fd1c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c7f5aa19d5eeeb3fa13e5bbff3fd1c6">setGestore</a> (<a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_prestito.html">GestorePrestito</a> gestore)</td></tr>
-<tr class="memdesc:a8c7f5aa19d5eeeb3fa13e5bbff3fd1c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imposta il gestore dei prestiti.  <br /></td></tr>
+<tr class="memdesc:a6d446b79e6ace43b7c1f876a5e21cb57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Annulla qualsiasi operazione (modifica o inserimento) nel form, chiudendo la finestra.  <br /></td></tr>
+<tr class="memitem:aed02fab6d1cbec91ad7df96de0de42f7" id="r_aed02fab6d1cbec91ad7df96de0de42f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed02fab6d1cbec91ad7df96de0de42f7">init</a> (<a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_prestito.html">GestorePrestito</a> gp, <a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_libro.html">GestoreLibro</a> gl, <a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_utente.html">GestoreUtente</a> gu)</td></tr>
+<tr class="memdesc:aed02fab6d1cbec91ad7df96de0de42f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Consente di impostare il <a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_prestito.html" title="Classe specifica per la gestione delle entità Prestito.">GestorePrestito</a> e di popolare le ComboBox.  <br /></td></tr>
+<tr class="memitem:a304a112726efe46b3d90ae0ca100de81" id="r_a304a112726efe46b3d90ae0ca100de81"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a304a112726efe46b3d90ae0ca100de81">setFormOnEdit</a> (<a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_prestito.html">Prestito</a> p)</td></tr>
+<tr class="memdesc:a304a112726efe46b3d90ae0ca100de81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imposta tutte le informazioni scelte sul form di modifica in modo da renderle modificabili manualmente.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrizione dettagliata</h2>
-<div class="textblock"><p>Controller per la gestione del form di inserimento prestiti. </p>
-<p>Questa classe gestisce l'interazione con l'utente nella finestra di dialogo per la creazione di un nuovo prestito. Permette di selezionare un utente e un libro dalle liste disponibili e di definire le date del prestito. </p>
+<div class="textblock"><p>Controller di gestione dell'interfaccia grafica del Form di inserimento/modifica di un <a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_prestito.html" title="Rappresenta un&#39;operazione di prestito nel sistema Library Manager.">Prestito</a>. Mette a disposizione dei metodi che consentono all'<a class="el" href="interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_handler.html" title="Interfaccia implementata dai gestori delle aree.">AreaHandler</a> di manipolare la logica della Label e dei campi del form. </p>
+<dl class="section author"><dt>Autore</dt><dd>Gruppo 12 </dd></dl>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentazione delle funzioni membro</h2>
 <a id="a6d446b79e6ace43b7c1f876a5e21cb57" name="a6d446b79e6ace43b7c1f876a5e21cb57"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6d446b79e6ace43b7c1f876a5e21cb57">&#9670;&#160;</a></span>annullaNuovoPrestito()</h2>
@@ -137,19 +133,18 @@ Membri pubblici</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Gestisce l'azione di annullamento. </p>
-<p>Chiude la finestra corrente senza effettuare operazioni di salvataggio.</p>
+<p>Annulla qualsiasi operazione (modifica o inserimento) nel form, chiudendo la finestra. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">event</td><td>L'evento generato dal click sul bottone "Annulla". </td></tr>
+    <tr><td class="paramname">event</td><td>L'evento generato dal click sul pulsante annulla. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="ac2df3fa146b60412415777de2305eca1" name="ac2df3fa146b60412415777de2305eca1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac2df3fa146b60412415777de2305eca1">&#9670;&#160;</a></span>initialize()</h2>
+<a id="aed02fab6d1cbec91ad7df96de0de42f7" name="aed02fab6d1cbec91ad7df96de0de42f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed02fab6d1cbec91ad7df96de0de42f7">&#9670;&#160;</a></span>init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -158,10 +153,19 @@ Membri pubblici</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void it.unisa.diem.softeng.librarymanager.controllers.forms.FormPrestitoController.initialize </td>
+          <td class="memname">void it.unisa.diem.softeng.librarymanager.controllers.forms.FormPrestitoController.init </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_prestito.html">GestorePrestito</a></td>          <td class="paramname"><span class="paramname"><em>gp</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_libro.html">GestoreLibro</a></td>          <td class="paramname"><span class="paramname"><em>gl</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_utente.html">GestoreUtente</a></td>          <td class="paramname"><span class="paramname"><em>gu</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -171,8 +175,16 @@ Membri pubblici</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Metodo di inizializzazione del controller. </p>
-<p>Viene chiamato automaticamente da JavaFX dopo il caricamento del file FXML. È il luogo ideale per popolare le ComboBox utentiCb e libroCb con i dati provenienti dai rispettivi gestori. </p>
+<p>Consente di impostare il <a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_prestito.html" title="Classe specifica per la gestione delle entità Prestito.">GestorePrestito</a> e di popolare le ComboBox. </p>
+<p>È utilizzato da un <a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_libro_handler.html" title="Gestore della schermata UI Area Libri.">LibroHandler</a> affinché il controller abbia un riferimento al <a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_libro.html" title="Classe specifica per la gestione delle entità Libro.">GestoreLibro</a> corrispondente. </p><dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gp</td><td>Il gestore dellArea Prestiti </td></tr>
+    <tr><td class="paramname">gl</td><td>il gestore dell'Area Libri </td></tr>
+    <tr><td class="paramname">gu</td><td>il gestore dell'Area Utenti</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>Si veda anche</dt><dd></dd></dl>
 
 </div>
 </div>
@@ -199,19 +211,18 @@ Membri pubblici</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Gestisce l'azione di salvataggio di un nuovo prestito. </p>
-<p>Recupera l'utente e il libro selezionati, parsa le date inserite e crea un nuovo oggetto <a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_prestito.html" title="Rappresenta un&#39;operazione di prestito nel sistema Library Manager.">Prestito</a> tramite il gestore.</p>
+<p>Salva il <a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_prestito.html" title="Rappresenta un&#39;operazione di prestito nel sistema Library Manager.">Prestito</a> nella lista corrispondente, rendendolo visibile in tabella. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">event</td><td>L'evento generato dal click sul bottone "Salva". </td></tr>
+    <tr><td class="paramname">event</td><td>L'evento generato dal click sul pulsante salva. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a8c7f5aa19d5eeeb3fa13e5bbff3fd1c6" name="a8c7f5aa19d5eeeb3fa13e5bbff3fd1c6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c7f5aa19d5eeeb3fa13e5bbff3fd1c6">&#9670;&#160;</a></span>setGestore()</h2>
+<a id="a304a112726efe46b3d90ae0ca100de81" name="a304a112726efe46b3d90ae0ca100de81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a304a112726efe46b3d90ae0ca100de81">&#9670;&#160;</a></span>setFormOnEdit()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -220,9 +231,9 @@ Membri pubblici</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void it.unisa.diem.softeng.librarymanager.controllers.forms.FormPrestitoController.setGestore </td>
+          <td class="memname">void it.unisa.diem.softeng.librarymanager.controllers.forms.FormPrestitoController.setFormOnEdit </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_prestito.html">GestorePrestito</a></td>          <td class="paramname"><span class="paramname"><em>gestore</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_prestito.html">Prestito</a></td>          <td class="paramname"><span class="paramname"><em>p</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -233,79 +244,10 @@ Membri pubblici</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Imposta il gestore dei prestiti. </p>
-<p>Permette l'iniezione della dipendenza <a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_prestito.html" title="Classe specifica per la gestione delle entità Prestito.">GestorePrestito</a> necessaria per aggiungere il nuovo prestito al sistema.</p>
+<p>Imposta tutte le informazioni scelte sul form di modifica in modo da renderle modificabili manualmente. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">gestore</td><td>L'istanza di <a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_prestito.html" title="Classe specifica per la gestione delle entità Prestito.">GestorePrestito</a> da utilizzare. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a6c92f349adc04b65c54f1dae14253183" name="a6c92f349adc04b65c54f1dae14253183"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6c92f349adc04b65c54f1dae14253183">&#9670;&#160;</a></span>viewListaLibri()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void it.unisa.diem.softeng.librarymanager.controllers.forms.FormPrestitoController.viewListaLibri </td>
-          <td>(</td>
-          <td class="paramtype">ActionEvent</td>          <td class="paramname"><span class="paramname"><em>event</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Gestisce l'evento di interazione con la lista libri. </p>
-<p>Metodo collegato all'FXML (se presente onAction o onShown) per gestire logiche specifiche quando si interagisce con la ComboBox dei libri.</p>
-<dl class="params"><dt>Parametri</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">event</td><td>L'evento associato alla ComboBox. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a67cf0b0e9dac20ced1c8b79d9c69323b" name="a67cf0b0e9dac20ced1c8b79d9c69323b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a67cf0b0e9dac20ced1c8b79d9c69323b">&#9670;&#160;</a></span>viewListaUtenti()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void it.unisa.diem.softeng.librarymanager.controllers.forms.FormPrestitoController.viewListaUtenti </td>
-          <td>(</td>
-          <td class="paramtype">ActionEvent</td>          <td class="paramname"><span class="paramname"><em>event</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Gestisce l'evento di interazione con la lista utenti. </p>
-<p>Metodo collegato all'FXML (se presente onAction o onShown) per gestire logiche specifiche quando si interagisce con la ComboBox degli utenti.</p>
-<dl class="params"><dt>Parametri</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">event</td><td>L'evento associato alla ComboBox. </td></tr>
+    <tr><td class="paramname">p</td><td>il <a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_prestito.html" title="Rappresenta un&#39;operazione di prestito nel sistema Library Manager.">Prestito</a> da cui estrarre gli attributi da impostare sui vari campi del form </td></tr>
   </table>
   </dd>
 </dl>

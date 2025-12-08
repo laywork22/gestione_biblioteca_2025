@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['filtratabella_0',['filtraTabella',['../interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_handler.html#a0fb9ac0539573b3ee7b9799669032e09',1,'it.unisa.diem.softeng.librarymanager.controllers.AreaHandler.filtraTabella()'],['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_libro_handler.html#ab46d44645182f2afcd1a37b638f6de81',1,'it.unisa.diem.softeng.librarymanager.controllers.LibroHandler.filtraTabella()'],['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_prestito_handler.html#aa9b52cf294363128ecf34ccd645ef960',1,'it.unisa.diem.softeng.librarymanager.controllers.PrestitoHandler.filtraTabella()'],['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_utente_handler.html#abf23f464014078ce94695533c8845c7a',1,'it.unisa.diem.softeng.librarymanager.controllers.UtenteHandler.filtraTabella()']]]
+  ['decrementacopie_0',['decrementaCopie',['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html#a4f8d0a82ab4eb46bbeccb400c3cdab06',1,'it::unisa::diem::softeng::librarymanager::model::Libro']]]
 ];

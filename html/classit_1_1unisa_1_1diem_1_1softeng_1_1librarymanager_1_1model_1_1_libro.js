@@ -1,6 +1,6 @@
 var classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro =
 [
-    [ "Libro", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html#aba21f494f2d4f0ba46725f9bd766f20c", null ],
+    [ "Libro", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html#aaa28e8d89f015d744547813fd71b141e", null ],
     [ "decrementaCopie", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html#a4f8d0a82ab4eb46bbeccb400c3cdab06", null ],
     [ "getAnno", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html#a84371fb6d3611d4f1fb3232a88c77643", null ],
     [ "getAutore", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html#a2ce8e0c64b20ead09a235b3ef78ba06c", null ],

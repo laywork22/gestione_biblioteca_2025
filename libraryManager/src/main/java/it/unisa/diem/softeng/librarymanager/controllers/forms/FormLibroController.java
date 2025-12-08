@@ -46,11 +46,23 @@ public class FormLibroController {
         setInsModLblText();
     }
 
+    /**
+     * @brief Salva il Libro nella lista corrispondente, rendendolo
+     *  visibile in tabella
+     *
+     * @param event L'evento generato dal click sul pulsante salva.
+     */
     @FXML
     private void handleSalva(ActionEvent event) {
 
     }
 
+    /**
+     * @brief Annulla qualsiasi operazione (modifica o inserimento) nel form, chiudendo
+     * la finestra.
+     *
+     * @param event L'evento generato dal click sul pulsante annulla.
+     */
     @FXML
     private void handleAnnulla(ActionEvent event) {
         chiudiFinestra();

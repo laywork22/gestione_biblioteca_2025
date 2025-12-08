@@ -19,14 +19,14 @@ var annotated_dup =
                 [ "AreaHandler", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_handler.html", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_handler" ],
                 [ "LibroHandler", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_libro_handler.html", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_libro_handler" ],
                 [ "PrestitoHandler", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_prestito_handler.html", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_prestito_handler" ],
-                [ "PrincipaleController", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_principale_controller.html", null ],
+                [ "PrincipaleController", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_principale_controller.html", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_principale_controller" ],
                 [ "UtenteHandler", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_utente_handler.html", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_utente_handler" ]
               ] ],
               [ "managers", null, [
                 [ "Gestore", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore.html", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore" ],
-                [ "GestoreLibro", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_libro.html", null ],
-                [ "GestorePrestito", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_prestito.html", null ],
-                [ "GestoreUtente", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_utente.html", null ]
+                [ "GestoreLibro", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_libro.html", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_libro" ],
+                [ "GestorePrestito", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_prestito.html", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_prestito" ],
+                [ "GestoreUtente", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_utente.html", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_utente" ]
               ] ],
               [ "model", null, [
                 [ "Libro", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html", "classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro" ],

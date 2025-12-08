@@ -1,9 +1,10 @@
 var interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_handler =
 [
-    [ "filtraTabella", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_handler.html#a0fb9ac0539573b3ee7b9799669032e09", null ],
-    [ "getCriteriOrdinamento", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_handler.html#a012dccca3614bb369198e4c851d3f200", null ],
-    [ "onAdd", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_handler.html#aab8d53371a232f740c80a38050e48dbe", null ],
-    [ "onEdit", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_handler.html#aa7c771a5d97f51e837218496106ad1fc", null ],
-    [ "ordina", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_handler.html#ae080f4ef9a6266fe5c815236848d7897", null ],
-    [ "setTableView", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_handler.html#af872595db7d26a81055700ce5566e3b5", null ]
+    [ "filtraTabella", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_handler.html#a4b747f1715495a8f283511cbb55e0ca5", null ],
+    [ "getCriteriOrdinamento", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_handler.html#a5ffca113924a56c878b46bb51506b2b9", null ],
+    [ "onAdd", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_handler.html#ac8e934df2412d3e2aceccd9a0b6e1bd9", null ],
+    [ "onEdit", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_handler.html#a7264409a3671fac7807da68395c0afca", null ],
+    [ "onRemove", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_handler.html#ad9181fb6b0ea3daefff79047898a6472", null ],
+    [ "ordina", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_handler.html#a7ca7e504ddba546b469743434873d220", null ],
+    [ "setTableView", "interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_handler.html#a63d3f19b8c918f1df88874a7573c4abc", null ]
 ];

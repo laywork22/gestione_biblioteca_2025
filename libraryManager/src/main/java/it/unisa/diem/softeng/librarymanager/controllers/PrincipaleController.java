@@ -77,6 +77,10 @@ public class PrincipaleController {
     @FXML
     private MenuButton ordineFiltro;
 
+    /**
+     * @brief Inizializza lo stato iniziale della vista.
+     * Imposta la posizione del menu laterale e carica l'Area Prestiti come schermata di default.
+     */
     @FXML
     public void initialize() {
 
@@ -94,12 +98,21 @@ public class PrincipaleController {
 
     }
 
+    /**
+     * @brief Gestisce l'animazione di apertura e chiusura del menu laterale.
+     */
     @FXML
     private void toggleMenu() {
 
     }
 
 
+    /**
+     * @brief Imposta l'area di lavoro corrente (Libri, Utenti o Prestiti).
+     * Aggiorna la tabella e collega le azioni dei pulsanti (Aggiungi, Rimuovi, Modifica)
+     * all'handler specifico dell'area selezionata.
+     * * @param area L'handler dell'area da visualizzare.
+     */
     private void setArea(AreaHandler area) {
         areaCorrente = area;
 
@@ -113,6 +126,10 @@ public class PrincipaleController {
         //areaCorrente.filtraTabella(tabella);
     }
 
+    /**
+     * @brief Passa alla visualizzazione dell'Area Prestiti.
+     * @param actionEvent L'evento generato dal click sul menu.
+     */
     @FXML
     public void setAreaPrestiti(ActionEvent actionEvent) {
 
@@ -123,31 +140,55 @@ public class PrincipaleController {
 
     }
 
+    /**
+     * @brief Passa alla visualizzazione dell'Area Libri.
+     * @param actionEvent L'evento generato dal click sul menu.
+     */
     @FXML
     public void setAreaLibri(ActionEvent actionEvent) {
 
     }
 
+    /**
+     * @brief Passa alla visualizzazione dell'Area Utenti.
+     * @param actionEvent L'evento generato dal click sul menu.
+     */
     @FXML
     public void setAreaUtenti(ActionEvent actionEvent) {
 
     }
 
+    /**
+     * @brief Salva la lista corrente sul file di default.
+     * @param actionEvent L'evento generato dal click sul pulsante salva.
+     */
     @FXML
     public void salvaFile(ActionEvent actionEvent) {
 
     }
 
+    /**
+     * @brief Apre una finestra di dialogo per salvare la lista corrente su un file specifico.
+     * @param actionEvent L'evento generato dal click sul pulsante "Salva con nome".
+     */
     @FXML
     public void salvaConNome(ActionEvent actionEvent) {
 
     }
 
+    /**
+     * @brief Apre una finestra di dialogo per caricare i dati da un file esistente.
+     * @param actionEvent L'evento generato dal click sul pulsante apri.
+     */
     @FXML
     public void apriFile(ActionEvent actionEvent) {
 
     }
 
+    /**
+     * @brief Applica l'ordinamento selezionato alla tabella visualizzata.
+     * @param actionEvent L'evento generato dalla selezione di un criterio di ordinamento.
+     */
     @FXML
     public void ordineTabella(ActionEvent actionEvent) {
     }

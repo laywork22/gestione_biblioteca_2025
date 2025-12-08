@@ -4,20 +4,18 @@ import it.unisa.diem.softeng.librarymanager.controllers.forms.FormPrestitoContro
 import it.unisa.diem.softeng.librarymanager.managers.GestoreLibro;
 import it.unisa.diem.softeng.librarymanager.managers.GestorePrestito;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreUtente;
+import it.unisa.diem.softeng.librarymanager.model.Libro;
 import it.unisa.diem.softeng.librarymanager.model.Prestito;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.List;
 
 /**@brief Gestore della schermata UI Area Prestiti
@@ -28,15 +26,48 @@ import java.util.List;
  *
  */
 public class PrestitoHandler implements AreaHandler<Prestito> {
-    private final GestorePrestito gestore;
+    /**
+     * @brief Gestore dell'area prestiti.
+     */
+    private final GestorePrestito gestorePrestito;
+
+    /**
+     * @brief Gestore ausiliario dell'area libri.
+     */
     private final GestoreLibro gestoreLibro;
+
+    /**
+     * @brief Gestore ausiliario dell'area utenti.
+     */
     private final GestoreUtente gestoreUtente;
 
+    /**
+     * @brief Lista osservabile filtrata secondo un determinato criterio.
+     */
     private FilteredList<Prestito> listaFiltrata;
+
+    /**
+     * @brief Lista osservabile ordinata secondo una relazione d'ordine imposta da un
+     * Comparator.
+     */
     private SortedList<Prestito> listaOrdinata;
 
-    public PrestitoHandler(GestorePrestito gestore, GestoreLibro gestoreLibro, GestoreUtente gestoreUtente) {
-        this.gestore = gestore;
+    /**
+     * @brief Costruttore della classe LibroHandler.
+     *
+     * @param gestore Il GestoreLibro della sessione attuale
+     */
+
+
+    /**
+     * @brief Costruttore della classe PrestitoHandler.
+     *
+     * @param gestorePrestito Il gestore dell'area prestiti.
+     * @param gestoreLibro Gestore ausiliario
+     * @param gestoreUtente Gestore ausiliario
+     */
+    public PrestitoHandler(GestorePrestito gestorePrestito, GestoreLibro gestoreLibro, GestoreUtente gestoreUtente) {
+        this.gestorePrestito = gestorePrestito;
         this.gestoreLibro = gestoreLibro;
         this.gestoreUtente = gestoreUtente;
     }
@@ -56,7 +87,7 @@ public class PrestitoHandler implements AreaHandler<Prestito> {
             FormPrestitoController fu = fxmlLoader.getController();
 
             if(fu != null) {
-                fu.init(gestore, gestoreLibro, gestoreUtente);
+                fu.init(gestorePrestito, gestoreLibro, gestoreUtente);
             }
 
             Stage stage = new Stage();

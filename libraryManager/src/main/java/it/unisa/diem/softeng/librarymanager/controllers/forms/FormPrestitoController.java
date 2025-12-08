@@ -46,6 +46,12 @@ public class FormPrestitoController {
     private Label insModFld;
 
     //salva il libro modificato nella lista
+    /**
+     * @brief Salva il Prestito nella lista corrispondente, rendendolo
+     *  visibile in tabella
+     *
+     * @param event L'evento generato dal click sul pulsante salva.
+     */
     @FXML
     public void salvaNuovoPrestito(ActionEvent event) {
         Prestito p = new Prestito(utentiCb.getValue(), libroCb.getValue(), dataInizioDp.getValue(), dataScadenzaDp.getValue());
@@ -53,13 +59,16 @@ public class FormPrestitoController {
         gp.add(p);
     }
 
-
+    /**
+     * @brief Annulla qualsiasi operazione (modifica o inserimento) nel form, chiudendo
+     * la finestra.
+     *
+     * @param event L'evento generato dal click sul pulsante annulla.
+     */
     @FXML
     public void annullaNuovoPrestito(ActionEvent event) {
         chiudiFinestra();
     }
-
-
 
     /**
      * @brief Consente di impostare il GestorePrestito  e di popolare le ComboBox.

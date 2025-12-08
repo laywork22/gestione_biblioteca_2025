@@ -28,11 +28,33 @@ import java.util.*;
  *
  */
 public class LibroHandler implements AreaHandler<Libro> {
+    /**
+     * @brief Gestore dell'area libri.
+     */
     private final GestoreLibro gestore;
+
+    /**
+     * @brief Coppie di Stringhe-Comparator per trovare il comparatore corrispondente
+     * con una semplice stringa.
+     */
     private final Map<String, Comparator<Libro>> mappaComparatori;
+
+    /**
+     * @brief Lista osservabile filtrata secondo un determinato criterio.
+     */
     private FilteredList<Libro> listaFiltrata;
+
+    /**
+     * @brief Lista osservabile ordinata secondo una relazione d'ordine imposta da un
+     * Comparator.
+     */
     private SortedList<Libro> listaOrdinata;
 
+    /**
+     * @brief Costruttore della classe LibroHandler.
+     *
+     * @param gestore Il GestoreLibro della sessione attuale
+     */
     public LibroHandler(GestoreLibro gestore) {
         this.gestore = gestore;
 

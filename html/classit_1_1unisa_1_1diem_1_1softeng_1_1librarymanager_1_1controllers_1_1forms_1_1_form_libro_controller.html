@@ -92,20 +92,24 @@ $(function(){initNavTree('classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_
 </div><!--header-->
 <div class="contents">
 
-<p>Controller per la gestione del form di inserimento libri.  
+<p>Controller di gestione dell'interfaccia grafica del Form di inserimento/modifica di un <a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html" title="Rappresenta un libro all&#39;interno del catalogo della biblioteca.">Libro</a>. Mette a disposizione dei metodi che consentono all'<a class="el" href="interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_handler.html" title="Interfaccia implementata dai gestori delle aree.">AreaHandler</a> di manipolare la logica della Label e dei campi del form.  
  <a href="#details">Continua...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Membri pubblici</h2></td></tr>
-<tr class="memitem:a4ba4b910d473a71d162c12a7984a1c9d" id="r_a4ba4b910d473a71d162c12a7984a1c9d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ba4b910d473a71d162c12a7984a1c9d">setGestore</a> (<a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_libro.html">GestoreLibro</a> gestore)</td></tr>
-<tr class="memdesc:a4ba4b910d473a71d162c12a7984a1c9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imposta il gestore dei libri.  <br /></td></tr>
+<tr class="memitem:a5a4ce95632bcb3ea4b4c3fd8fa91e516" id="r_a5a4ce95632bcb3ea4b4c3fd8fa91e516"><td class="memItemLeft" align="right" valign="top"><a id="a5a4ce95632bcb3ea4b4c3fd8fa91e516" name="a5a4ce95632bcb3ea4b4c3fd8fa91e516"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>initialize</b> ()</td></tr>
+<tr class="memitem:a4443c5a1cdb5484ec99b63b4f481e749" id="r_a4443c5a1cdb5484ec99b63b4f481e749"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4443c5a1cdb5484ec99b63b4f481e749">init</a> (<a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_libro.html">GestoreLibro</a> gestore)</td></tr>
+<tr class="memdesc:a4443c5a1cdb5484ec99b63b4f481e749"><td class="mdescLeft">&#160;</td><td class="mdescRight">Consente di impostare il <a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_libro.html" title="Classe specifica per la gestione delle entità Libro.">GestoreLibro</a> corrispondente.  <br /></td></tr>
+<tr class="memitem:ac66c81c87fc938294eade6c50a340741" id="r_ac66c81c87fc938294eade6c50a340741"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac66c81c87fc938294eade6c50a340741">setFormOnEdit</a> (<a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html">Libro</a> l)</td></tr>
+<tr class="memdesc:ac66c81c87fc938294eade6c50a340741"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imposta tutte le informazioni scelte sul form di modifica in modo da renderle modificabili manualmeente.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrizione dettagliata</h2>
-<div class="textblock"><p>Controller per la gestione del form di inserimento libri. </p>
-<p>Questa classe gestisce l'interazione con l'utente nella finestra di dialogo per l'inserimento di un nuovo libro. Recupera i dati dai campi di testo, effettua le conversioni necessarie e delega l'aggiunta al <a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_libro.html" title="Classe specifica per la gestione delle entità Libro.">GestoreLibro</a>. </p>
+<div class="textblock"><p>Controller di gestione dell'interfaccia grafica del Form di inserimento/modifica di un <a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html" title="Rappresenta un libro all&#39;interno del catalogo della biblioteca.">Libro</a>. Mette a disposizione dei metodi che consentono all'<a class="el" href="interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_area_handler.html" title="Interfaccia implementata dai gestori delle aree.">AreaHandler</a> di manipolare la logica della Label e dei campi del form. </p>
+<dl class="section author"><dt>Autore</dt><dd>Gruppo 12 </dd></dl>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentazione delle funzioni membro</h2>
-<a id="a4ba4b910d473a71d162c12a7984a1c9d" name="a4ba4b910d473a71d162c12a7984a1c9d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4ba4b910d473a71d162c12a7984a1c9d">&#9670;&#160;</a></span>setGestore()</h2>
+<a id="a4443c5a1cdb5484ec99b63b4f481e749" name="a4443c5a1cdb5484ec99b63b4f481e749"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4443c5a1cdb5484ec99b63b4f481e749">&#9670;&#160;</a></span>init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -114,7 +118,7 @@ Membri pubblici</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void it.unisa.diem.softeng.librarymanager.controllers.forms.FormLibroController.setGestore </td>
+          <td class="memname">void it.unisa.diem.softeng.librarymanager.controllers.forms.FormLibroController.init </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_libro.html">GestoreLibro</a></td>          <td class="paramname"><span class="paramname"><em>gestore</em></span></td><td>)</td>
           <td></td>
@@ -127,11 +131,43 @@ Membri pubblici</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Imposta il gestore dei libri. </p>
-<p>Permette di iniettare l'istanza del <a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_libro.html" title="Classe specifica per la gestione delle entità Libro.">GestoreLibro</a> necessaria per l'aggiunta dei dati.</p>
+<p>Consente di impostare il <a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_libro.html" title="Classe specifica per la gestione delle entità Libro.">GestoreLibro</a> corrispondente. </p>
+<p>È utlizzato da un <a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1controllers_1_1_libro_handler.html" title="Gestore della schermata UI Area Libri.">LibroHandler</a> affinchè il controller abbia un riferimento al <a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_libro.html" title="Classe specifica per la gestione delle entità Libro.">GestoreLibro</a> corrispondente. </p><dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gestore</td><td>Il gestore dell'Area Libri </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac66c81c87fc938294eade6c50a340741" name="ac66c81c87fc938294eade6c50a340741"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac66c81c87fc938294eade6c50a340741">&#9670;&#160;</a></span>setFormOnEdit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void it.unisa.diem.softeng.librarymanager.controllers.forms.FormLibroController.setFormOnEdit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html">Libro</a></td>          <td class="paramname"><span class="paramname"><em>l</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Imposta tutte le informazioni scelte sul form di modifica in modo da renderle modificabili manualmeente. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">gestore</td><td>L'istanza di <a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_libro.html" title="Classe specifica per la gestione delle entità Libro.">GestoreLibro</a> da utilizzare. </td></tr>
+    <tr><td class="paramname">l</td><td>il <a class="el" href="classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1model_1_1_libro.html" title="Rappresenta un libro all&#39;interno del catalogo della biblioteca.">Libro</a> da cui estrarre gli attributi da impostare sui vari campi del form </td></tr>
   </table>
   </dd>
 </dl>

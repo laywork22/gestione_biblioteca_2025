@@ -102,8 +102,15 @@ Membri pubblici</h2></td></tr>
 <tr class="memitem:a0b3c20f75164ccdefd1fda7673a35b6b" id="r_a0b3c20f75164ccdefd1fda7673a35b6b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b3c20f75164ccdefd1fda7673a35b6b">remove</a> (T elem)</td></tr>
 <tr class="memdesc:a0b3c20f75164ccdefd1fda7673a35b6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rimuove un elemento dalla collezione gestita.  <br /></td></tr>
 <tr class="memitem:aa04980126c57d6c61fd1fd5174751d97" id="r_aa04980126c57d6c61fd1fd5174751d97"><td class="memItemLeft" align="right" valign="top">ObservableList&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa04980126c57d6c61fd1fd5174751d97">getLista</a> ()</td></tr>
+<tr class="memdesc:aa04980126c57d6c61fd1fd5174751d97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce la lista osservabile di entita'.  <br /></td></tr>
+<tr class="memitem:a14595bb2506e61fd7ea30620a109b3b0" id="r_a14595bb2506e61fd7ea30620a109b3b0"><td class="memItemLeft" align="right" valign="top"><a id="a14595bb2506e61fd7ea30620a109b3b0" name="a14595bb2506e61fd7ea30620a109b3b0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>modifica</b> (T vecchio, T nuovo)</td></tr>
 <tr class="memitem:a71189dfb684b8811625ebbaca09cbfb2" id="r_a71189dfb684b8811625ebbaca09cbfb2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a71189dfb684b8811625ebbaca09cbfb2">ordinaLista</a> (Comparator&lt; T &gt; comparatore)</td></tr>
+<tr class="memdesc:a71189dfb684b8811625ebbaca09cbfb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ordina la lista in funzione del customComparator in ingresso.  <br /></td></tr>
+<tr class="memitem:ac2d2d19fe617a39b9766006ec2719a1e" id="r_ac2d2d19fe617a39b9766006ec2719a1e"><td class="memItemLeft" align="right" valign="top"><a id="ac2d2d19fe617a39b9766006ec2719a1e" name="ac2d2d19fe617a39b9766006ec2719a1e"></a>
+Predicate&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getPredicato</b> (String filtro)</td></tr>
 <tr class="memitem:a0b1ba58c42155d494cf7572a50d6a1a2" id="r_a0b1ba58c42155d494cf7572a50d6a1a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b1ba58c42155d494cf7572a50d6a1a2">salvaLista</a> (String nomeFile)</td></tr>
+<tr class="memdesc:a0b1ba58c42155d494cf7572a50d6a1a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Salva lo stato corrente su un file.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrizione dettagliata</h2>
 <div class="textblock"><p>Interfaccia generica per la gestione delle entità del sistema. </p>
@@ -150,7 +157,8 @@ Membri pubblici</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>@Brief Restituisce la lista osservabile di entita'</p>
+
+<p>Restituisce la lista osservabile di entita'. </p>
 <p>Restituisce una Lista adatta all'inserimento in una Tableview</p>
 <dl class="section return"><dt>Restituisce</dt><dd>ObservableList di entita' </dd></dl>
 
@@ -170,8 +178,9 @@ Membri pubblici</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Ordina la lista in funzione del customComparator in ingresso</p>
-<p>Ordina la lista e rende possibile rispettare i requisiti di visualizzaziona in ordine (UI-1.1.2,UI-1.2.2).</p>
+
+<p>Ordina la lista in funzione del customComparator in ingresso. </p>
+<p>Ordina la lista e rende possibile rispettare i requisiti di visualizzazione in ordine (UI-1.1.2,UI-1.2.2).</p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
     <tr><td class="paramname">comparatore</td><td>Il comparatore che descrive la logica di ordinamento </td></tr>
@@ -197,7 +206,7 @@ Membri pubblici</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Rimuove un elemento dalla collezione gestita. </p>
-<p>Implementa la logica di rimozione di un elemento dalla collezione.</p>
+<p>Implementa la logica di rimozione di un elemento dalla collezione. </p>
 <p>Le classi che implementano la interfaccia hanno il ruolo di controllare i vari vincoli(es. cancellazione utente con prestiti attivi).</p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
@@ -222,11 +231,12 @@ Membri pubblici</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Salva lo stato corrente su un file</p>
+
+<p>Salva lo stato corrente su un file. </p>
 <p>Implementa il requisito di salvataggio (DF-1.4)</p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">nomeFile</td><td></td></tr>
+    <tr><td class="paramname">nomeFile</td><td>Il nome del file su cui si salverà lo stato di una determinata area </td></tr>
   </table>
   </dd>
 </dl>
