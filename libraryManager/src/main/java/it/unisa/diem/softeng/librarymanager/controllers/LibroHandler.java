@@ -43,11 +43,9 @@ public class LibroHandler implements AreaHandler<Libro> {
     }
 
     @Override
-    public void onRemove(TableView<Libro> tabella) {
-        Libro l = tabella.getSelectionModel().getSelectedItem();
+    public void onRemove(Libro l) {
         if (l != null) gestore.remove(l);
 
-        tabella.refresh();
     }
 
     @Override

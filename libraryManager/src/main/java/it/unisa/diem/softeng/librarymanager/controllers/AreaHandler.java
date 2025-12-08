@@ -18,9 +18,9 @@ public interface AreaHandler<E> {
     /**
      * @brief Gestisce la rimozione dell'elemento selezionato dalla tabella.
      *
-     * @param tabella La tabella da cui rimuovere l'elemento selezionato.
+     * @param elem L' elemento selezionato da rimuovere.
      */
-    void onRemove(TableView<E> tabella);
+    void onRemove(E elem);
 
     /**
      * @brief Gestisce la logica di apertura del form di aggiunta.

@@ -42,7 +42,7 @@ public class PrestitoHandler implements AreaHandler<Prestito> {
     }
 
     @Override
-    public void onRemove(TableView<Prestito> tabella) {
+    public void onRemove(Prestito p) {
 
     }
 

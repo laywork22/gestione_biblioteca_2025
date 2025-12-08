@@ -63,7 +63,7 @@ public class UtenteHandler implements AreaHandler<Utente> {
     }
 
     @Override
-    public void onRemove(TableView<Utente> tabella) {
+    public void onRemove(Utente u) {
     }
 
     @Override
