@@ -1,4 +1,0 @@
-var searchData=
-[
-  ['remove_0',['remove',['../interfaceit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore.html#a0b3c20f75164ccdefd1fda7673a35b6b',1,'it.unisa.diem.softeng.librarymanager.managers.Gestore.remove()'],['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_libro.html#a1a4d307a2a8d2ffae20c0afbd4fbbbd5',1,'it.unisa.diem.softeng.librarymanager.managers.GestoreLibro.remove()'],['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_prestito.html#afe17cef0d46fdcec83d735df04b406f6',1,'it.unisa.diem.softeng.librarymanager.managers.GestorePrestito.remove()'],['../classit_1_1unisa_1_1diem_1_1softeng_1_1librarymanager_1_1managers_1_1_gestore_utente.html#a547149ee5c4a1df03f07aed65b64c294',1,'it.unisa.diem.softeng.librarymanager.managers.GestoreUtente.remove()']]]
-];

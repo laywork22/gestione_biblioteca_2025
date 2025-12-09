@@ -1,4 +1,0 @@
-var searchData=
-[
-  ['e_20installazione_0',['Requisiti e Installazione',['../index.html#install_sec',1,'']]]
-];
