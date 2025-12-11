@@ -1,5 +1,6 @@
 package it.unisa.diem.softeng.librarymanager.managers;
 
+import it.unisa.diem.softeng.librarymanager.exceptions.UserAlrRegisteredException;
 import it.unisa.diem.softeng.librarymanager.model.Prestito;
 import it.unisa.diem.softeng.librarymanager.model.Utente;
 import javafx.collections.FXCollections;
@@ -31,12 +32,11 @@ public class GestoreUtente implements Gestore<Utente> {
      * @see Gestore#add(Object)
      */
     @Override
-    public void add(Utente l) {
+    public void add(Utente l) throws UserAlrRegisteredException {
         if (l == null) return;
 
         if (this.utentiList.contains(l)) {
-            throw new IllegalArgumentException("Utente già presente nel sistema!");
-            //DA GESTIRE IL CATCH CON EVENTUALI AVVISI IN FORMUTENTE
+            throw new UserAlrRegisteredException("Utente già presente nel sistema!");
         }
 
         this.utentiList.add(l);

@@ -1,9 +1,12 @@
 package it.unisa.diem.softeng.librarymanager.managers;
 
+import it.unisa.diem.softeng.librarymanager.exceptions.LimitePrestitoException;
 import it.unisa.diem.softeng.librarymanager.model.Prestito;
+import it.unisa.diem.softeng.librarymanager.model.StatoPrestitoEnum;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.function.Predicate;
 /**
@@ -29,19 +32,28 @@ public class GestorePrestito implements Gestore<Prestito>{
      * @see Gestore#add(Object)
      */
     @Override
-    public void add(Prestito l) {
+    public void add(Prestito l) throws LimitePrestitoException {
         if(l==null){
             return;
         }
-
-        prestitoList.add(l);
+        if(l.getUtente().getCountPrestiti()>=3){
+            throw new LimitePrestitoException("L'utente ha raggiunto il limite dei 3 prestiti");
+        }
+        else{
+            l.getUtente().setCountPrestiti(l.getUtente().getCountPrestiti()+1);
+            l.getLibro().decrementaCopie();
+            prestitoList.add(l);
+        }
     }
 
     @Override
     public void remove(Prestito l) {
         if(l==null){return;}
 
-        prestitoList.remove(l);
+        l.getUtente().setCountPrestiti(l.getUtente().getCountPrestiti()-1);
+        l.getLibro().incrementaCopie();
+        l.setStato(StatoPrestitoEnum.CHIUSO);
+
     }
 
     @Override
@@ -51,7 +63,11 @@ public class GestorePrestito implements Gestore<Prestito>{
 
     @Override
     public void modifica(Prestito vecchio, Prestito nuovo) {
+        int index = prestitoList.indexOf(vecchio);
 
+        if (index != -1) {
+            prestitoList.set(index, nuovo);
+        }
     }
 
     @Override
@@ -91,5 +107,26 @@ public class GestorePrestito implements Gestore<Prestito>{
     public static GestorePrestito caricaListaPrestiti(String nomeFile) {
         return null;
     }
+    /**
+     * @brief Aggiorna lo stato dei prestiti in base alla data corrente.
+     * * Scorre la lista dei prestiti. Se un prestito è ancora ATTIVO ma la data di scadenza
+     * è precedente a oggi, lo stato viene cambiato in SCADUTO.
+     * I prestiti già CHIUSI vengono ignorati.
+     */
+    public void aggiornaStati() {
+        LocalDate oggi = LocalDate.now();
 
+        for (Prestito p : prestitoList) {
+            if (p.getStato() == StatoPrestitoEnum.CHIUSO) {
+                continue;
+            }
+
+            if (p.getDataFine().isBefore(oggi)) {
+                p.setStato(StatoPrestitoEnum.SCADUTO);
+            }
+            else {
+                p.setStato(StatoPrestitoEnum.ATTIVO);
+            }
+        }
+    }
 }

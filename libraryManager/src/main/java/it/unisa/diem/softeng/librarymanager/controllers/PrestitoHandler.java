@@ -56,8 +56,8 @@ public class PrestitoHandler implements AreaHandler<Prestito> {
 
     @Override
     public void onRemove(Prestito p) {
+     gestore.remove(p);
 
-        p.setStato(StatoPrestitoEnum.CHIUSO);
 
     }
 

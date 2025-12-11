@@ -1,5 +1,6 @@
 package it.unisa.diem.softeng.librarymanager.managers;
 
+import it.unisa.diem.softeng.librarymanager.exceptions.LimitePrestitoException;
 import javafx.collections.ObservableList;
 
 import java.util.Comparator;
@@ -23,7 +24,7 @@ public interface Gestore<T> {
      *
      * @param elem L'elemento da aggiungere.
      */
-    void add(T elem);
+    void add(T elem) throws LimitePrestitoException;
 
     /**@brief Rimuove un elemento dalla collezione gestita.
      * <p>

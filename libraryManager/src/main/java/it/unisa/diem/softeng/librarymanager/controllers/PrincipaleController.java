@@ -1,5 +1,6 @@
 package it.unisa.diem.softeng.librarymanager.controllers;
 
+import it.unisa.diem.softeng.librarymanager.exceptions.LimitePrestitoException;
 import it.unisa.diem.softeng.librarymanager.managers.Gestore;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreLibro;
 import it.unisa.diem.softeng.librarymanager.managers.GestorePrestito;
@@ -83,13 +84,17 @@ public class PrincipaleController {
         gestoreLibro = new GestoreLibro();
         gestorePrestito = new GestorePrestito();
         gestoreUtente = new GestoreUtente();
-
+        gestorePrestito.aggiornaStati();
         gestoreLibro.add(new Libro("Evangelion", "Shiro Sagisu", 2012, "983231-12", 10));
         gestoreLibro.add(new Libro("Marc Jerkinson", "Hawk Two A", 2012, "283231-12", 12));
         Libro libro=new Libro("Marc Jerkinson", "Hawk Two A", 2012, "283231-12", 12);
         Utente Fabio=new Utente("fabio","volo","9832193","sasas@gmail.com");
         gestoreUtente.add(Fabio);
+        try{
         gestorePrestito.add(new Prestito(Fabio,libro, LocalDate.now(),LocalDate.of(2036,12,29)));
+        } catch (LimitePrestitoException e) {
+            throw new RuntimeException(e);
+        }
 
         sideMenu.setTranslateX(-200);
 
@@ -119,13 +124,23 @@ public class PrincipaleController {
         areaCorrente = area;
 
         addBtn.setOnAction(e -> areaCorrente.onAdd());
-        removeBtn.setOnAction(e -> areaCorrente.onRemove(tabella.getSelectionModel().getSelectedItem()));
-        modifyButton.setOnAction(e -> areaCorrente.onEdit(tabella));
+        removeBtn.setOnAction(e -> {
 
+            var item = tabella.getSelectionModel().getSelectedItem();
+
+            if (item != null) {
+                areaCorrente.onRemove(item);
+                tabella.refresh();
+
+            }
+        });
+        modifyButton.setOnAction(e -> areaCorrente.onEdit(tabella));
+        tabella.refresh();
         //qui ci va il riempimento del MenuButton con gli ordinamenti disponibili (MenuItem)
 
         areaCorrente.setTableView(tabella);
         //areaCorrente.filtraTabella(tabella);
+
     }
 
     @FXML

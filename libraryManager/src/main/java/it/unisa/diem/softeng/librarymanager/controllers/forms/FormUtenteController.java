@@ -1,14 +1,17 @@
 package it.unisa.diem.softeng.librarymanager.controllers.forms;
 
+import it.unisa.diem.softeng.librarymanager.exceptions.UserAlrRegisteredException;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreUtente;
 import it.unisa.diem.softeng.librarymanager.model.Prestito;
 import it.unisa.diem.softeng.librarymanager.model.Utente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import jdk.jshell.spi.ExecutionControl;
 
 
 /**
@@ -45,9 +48,14 @@ public class FormUtenteController {
         String cognome = cognomeFld.getText();
         String matricola = matricolaFld.getText();
         String email = emailFld.getText();
-        //MANCA GESTORE CAMPI VUOTI
         Utente nuovoUtente = new Utente(nome, cognome, matricola, email);
-        gestore.add(nuovoUtente);
+        try {
+            gestore.add(nuovoUtente);
+        }catch(UserAlrRegisteredException e){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
 
         chiudiFinestra();
     }

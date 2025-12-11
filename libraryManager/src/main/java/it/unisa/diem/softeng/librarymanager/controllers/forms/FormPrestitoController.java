@@ -1,5 +1,6 @@
 package it.unisa.diem.softeng.librarymanager.controllers.forms;
 
+import it.unisa.diem.softeng.librarymanager.exceptions.LimitePrestitoException;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreLibro;
 import it.unisa.diem.softeng.librarymanager.managers.GestorePrestito;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreUtente;
@@ -8,10 +9,7 @@ import it.unisa.diem.softeng.librarymanager.model.Prestito;
 import it.unisa.diem.softeng.librarymanager.model.Utente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
@@ -28,7 +26,7 @@ public class FormPrestitoController {
     private GestorePrestito gp;
     private GestoreLibro gl;
     private GestoreUtente gu;
-    private final Prestito prestitoInModifica = null;
+    private Prestito prestitoInModifica = null;
 
     @FXML
     private ComboBox<Utente> utentiCb;
@@ -48,11 +46,28 @@ public class FormPrestitoController {
     //salva il libro modificato nella lista
     @FXML
     public void salvaNuovoPrestito(ActionEvent event) {
-        Prestito p = new Prestito(utentiCb.getValue(), libroCb.getValue(), dataInizioDp.getValue(), dataScadenzaDp.getValue());
 
-        gp.add(p);
+            Prestito p = new Prestito(utentiCb.getValue(), libroCb.getValue(), dataInizioDp.getValue(), dataScadenzaDp.getValue());
+            try {
+                if (prestitoInModifica == null) {
+                    gp.add(p);
+                } else {
+
+                    p.setStato(prestitoInModifica.getStato());
+
+
+                    gp.modifica(prestitoInModifica, p);
+                }
+            }catch (LimitePrestitoException e) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+
         chiudiFinestra();
-    }
+        }
+
+
 
 
     @FXML
@@ -133,7 +148,19 @@ public class FormPrestitoController {
      * @param p il Prestito da cui estrarre gli attributi da impostare sui vari campi del form
      */
     public void setFormOnEdit(Prestito p) {
+        if (p == null) return;
 
+        this.prestitoInModifica = p;
+
+        utentiCb.setValue(p.getUtente());
+        libroCb.setValue(p.getLibro());
+        dataInizioDp.setValue(p.getDataInizio());
+        dataScadenzaDp.setValue(p.getDataFine());
+
+        utentiCb.setDisable(true);
+        libroCb.setDisable(true);
+
+        setInsModLblText();
     }
 
     /**
@@ -150,7 +177,13 @@ public class FormPrestitoController {
      *
      */
     private void setInsModLblText() {
+        if (insModFld == null) return;
 
+        if (prestitoInModifica == null) {
+            insModFld.setText("Nuovo Prestito");
+        } else {
+            insModFld.setText("Modifica Prestito");
+        }
     }
 
 }
