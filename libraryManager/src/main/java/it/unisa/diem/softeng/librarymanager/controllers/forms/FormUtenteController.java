@@ -44,6 +44,10 @@ public class FormUtenteController {
 
     @FXML
     private void handleSalva(ActionEvent event) {
+        if (isFormNotValid()) {
+            mostraAlert("Alcuni campi del form sono vuoti!");
+        }
+
         String nome = nomeFld.getText();
         String cognome = cognomeFld.getText();
         String matricola = matricolaFld.getText();
@@ -52,9 +56,7 @@ public class FormUtenteController {
         try {
             gestore.add(nuovoUtente);
         }catch(UserAlrRegisteredException e){
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setContentText(e.getMessage());
-            alert.showAndWait();
+            mostraAlert(e.getMessage());
         }
 
         chiudiFinestra();
@@ -90,7 +92,16 @@ public class FormUtenteController {
      */
     public void setFormOnEdit(Utente u) {
         //imposta tutti i campi del form
+        if (u == null) return;
 
+        this.utenteInModifica = u;
+
+        nomeFld.setText(u.getNome());
+        cognomeFld.setText(u.getCognome());
+        matricolaFld.setText(u.getMatricola());
+        emailFld.setText(u.getEmail());
+
+        setInsModLblText();
     }
 
     /**
@@ -99,7 +110,10 @@ public class FormUtenteController {
      * @return true se almeno un campo è vuoto, false se tutti sono pieni.
      */
     private boolean isFormNotValid() {
-        return false;
+        return nomeFld.getText().isEmpty() ||
+                cognomeFld.getText().isEmpty() ||
+                matricolaFld.getText().isEmpty() ||
+                emailFld.getText().isEmpty();
     }
 
     /**
@@ -107,6 +121,23 @@ public class FormUtenteController {
      *
      */
     private void setInsModLblText() {
+        if (insModLbl == null) return;
 
+        if (utenteInModifica == null) {
+            insModLbl.setText("Nuovo utente");
+        }
+        else {
+            insModLbl.setText("Modifica utente");
+        }
+    }
+
+    /**
+     * @brief Comodo metodo per impostare un Alert di tipo Warning.
+     * @param msg Il messaggio da stampare a schermo nell'Alert quando il metodo è invocato
+     */
+    private void mostraAlert(String msg) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
 }
