@@ -1,18 +1,32 @@
+
+
+
 package it.unisa.diem.softeng.librarymanager.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * @brief Rappresenta un'operazione di prestito nel sistema Library Manager.
  *
  * Questa classe associa un {@link Utente} a un {@link Libro}, definendo un arco temporale
  * per il prestito.
- * Implementa le specifiche relative ai dati definite nel requisito **DF-1.3**.
+ * Implementa le specifiche relative ai dati definite nel requisito *DF-1.3*.
  *
  * @author Gruppo 12
  * @version 1.0
  */
-public class Prestito implements Comparable<Prestito> {
+public class Prestito implements Comparable<Prestito>, Serializable {
+    /**
+     * @brief ID del prossimo prestito.
+     */
+    private static int nextId = 1;
+
+    /**
+     * @brief ID del prestito corrente.
+     */
+    private final int id;
 
     /**
      * @brief L'utente che ha richiesto il prestito.
@@ -34,7 +48,7 @@ public class Prestito implements Comparable<Prestito> {
 
     /**
      * @brief La data prevista per la restituzione.
-     * Come specificato in **IF-2.6**, questa data è arbitraria e viene inserita dall'operatore.
+     * Come specificato in *IF-2.6*, questa data è arbitraria e viene inserita dall'operatore.
      */
     private LocalDate dataFine;
     /**
@@ -53,15 +67,44 @@ public class Prestito implements Comparable<Prestito> {
      * @param dataInizio La data di inizio prestito (se null, usa LocalDate.now()).
      * @param dataFine La data di scadenza/restituzione prevista.
      */
-
     public Prestito(Utente utente, Libro libro, LocalDate dataInizio, LocalDate dataFine) {
+        this.id = nextId;
+
         this.utente = utente;
         this.libro = libro;
-        //trattamento caso di default con campo dataInizio vuota
-        this.dataInizio = (dataInizio == null) ? LocalDate.now() : dataInizio;
-        this.dataFine = dataFine;
+
+        // 1. Gestione Data Inizio
+        if (dataInizio == null) {
+            this.dataInizio = LocalDate.now();
+        } else {
+            this.dataInizio = dataInizio;
+        }
+
+        // 2. Gestione Data Fine
+        if (dataFine == null) {
+            // Default: prestito standard di 30 giorni
+            this.dataFine = this.dataInizio.plusDays(30);
+        } else {
+            // Controllo coerenza: la fine non può essere prima dell'inizio
+            if (dataFine.isBefore(this.dataInizio)) {
+                throw new IllegalArgumentException("La data di fine non può essere antecedente alla data di inizio!");
+            }
+            this.dataFine = dataFine;
+        }
+
         this.stato = StatoPrestitoEnum.ATTIVO;
-        //DA IMPLEMENTARE GESTIONE DATE ERRATE
+
+        nextId++;
+    }
+
+
+    /**
+     * @brief Restituisce l'ID del prestito selezionato.
+     *
+     * @return L'ID del prestito corrente.
+     */
+    public int getId() {
+        return id;
     }
 
     /**
@@ -134,6 +177,16 @@ public class Prestito implements Comparable<Prestito> {
     public void setDataFine(LocalDate dataFine) {
         this.dataFine = dataFine;
     }
+
+    /**
+     * @brief imposta un nuovo stato.
+     *
+     * @param stato Nuovo stato del prestito.
+     */
+    public void setStato(StatoPrestitoEnum stato) {
+        this.stato = stato;
+    }
+
     /**
      * @brief Restituisce una rappresentazione testuale del prestito.
      * @return Stringa descrittiva con nome utente, titolo libro e date.
@@ -146,11 +199,25 @@ public class Prestito implements Comparable<Prestito> {
 
     @Override
     public boolean equals(Object o) {
-        return false;
+        if (o == null) return false;
+
+        if (this == o) return true;
+
+        if (this.getClass() != o.getClass()) return false;
+
+        Prestito u = (Prestito) o;
+
+        return this.id == u.id;
     }
 
     @Override
     public int compareTo(Prestito o) {
-        return 0;
-    }
+        int cmp = 0;
+
+        if (this.equals(o)) {
+            cmp = this.getDataInizio().compareTo(o.getDataInizio());
+        }
+
+        return cmp;
+}
 }

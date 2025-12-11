@@ -51,6 +51,7 @@ public class FormPrestitoController {
         Prestito p = new Prestito(utentiCb.getValue(), libroCb.getValue(), dataInizioDp.getValue(), dataScadenzaDp.getValue());
 
         gp.add(p);
+        chiudiFinestra();
     }
 
 

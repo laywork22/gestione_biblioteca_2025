@@ -1,44 +1,49 @@
 package it.unisa.diem.softeng.librarymanager.model;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
 /**
  * @brief Rappresenta un utente (studente o personale) della biblioteca.
  *
  * Questa classe definisce il modello dati per gli utenti registrati al sistema Library Manager.
- * Implementa le specifiche definite nel requisito **DF-1.2**, che richiede la memorizzazione
+ * Implementa le specifiche definite nel requisito *DF-1.2*, che richiede la memorizzazione
  * di Nome, Cognome, Matricola ed Email.
  *
  * @author Gruppo 12
  * @version 1.0
  */
-public class Utente implements Comparable<Utente> {
+public class Utente implements Comparable<Utente>, Serializable {
+    public static final int MAX_PRESTITI = 3;
 
     /**
      * @brief Il nome di battesimo dell'utente.
      * Utilizzato insieme al cognome per l'ordinamento delle liste (IF-2.4).
      */
-    String nome;
+    private String nome;
 
     /**
      * @brief Il cognome dell'utente.
      * Campo chiave per l'ordinamento (IF-2.4) e la ricerca (IF-2.5).
      */
-    String cognome;
+    private String cognome;
 
     /**
      * @brief Il numero di matricola univoco dell'utente.
      * Identifica univocamente l'utente nel sistema.
      * [cite_start]È soggetto al vincolo di unicità durante la registrazione (IF-2.1)[cite: 61].
      */
-    String matricola;
+    private String matricola;
 
     /**
      * @brief L'indirizzo email istituzionale dell'utente.
-     * [cite_start]Secondo il requisito **DF-1.2**, deve rispettare il formato "*@studenti.unisa.it"[cite: 128].
+     * [cite_start]Secondo il requisito *DF-1.2, deve rispettare il formato "@studenti.unisa.it"[cite: 128].
      */
-    String email;
+    private String email;
 
+    private int countPrestiti;
+
+    private boolean attivo;
     /**
      * @brief Costruttore della classe Utente.
      *
@@ -54,6 +59,9 @@ public class Utente implements Comparable<Utente> {
         this.cognome = cognome;
         this.matricola = matricola;
         this.email = email;
+
+        this.countPrestiti = 0;
+        this.attivo = true;
     }
 
     /**
@@ -121,6 +129,24 @@ public class Utente implements Comparable<Utente> {
         this.email = email;
     }
 
+    public int getCountPrestiti() {
+        return countPrestiti;
+    }
+
+    public void setCountPrestiti(int countPrestiti) {
+        this.countPrestiti = countPrestiti;
+    }
+
+    public boolean isAttivo() {
+        return attivo;
+    }
+
+    public void setAttivo(boolean attivo) {
+        this.attivo = attivo;
+    }
+
+
+
     /**
      * @brief Restituisce una rappresentazione in formato stringa dell'utente.
      * @return Stringa formattata con i dati anagrafici.
@@ -146,6 +172,6 @@ public class Utente implements Comparable<Utente> {
 
     @Override
     public int compareTo(Utente o) {
-        return 0;
+        return this.getMatricola().compareTo(o.getMatricola());
     }
 }

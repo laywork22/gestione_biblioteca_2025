@@ -84,9 +84,9 @@ public class PrincipaleController {
         gestorePrestito = new GestorePrestito();
         gestoreUtente = new GestoreUtente();
 
-        gestoreLibro.add(new Libro("Evangelion", "Shiro Sagisu", 2012, "983231-12", 10, 10));
-        gestoreLibro.add(new Libro("Marc Jerkinson", "Hawk Two A", 2012, "283231-12", 12, 12));
-        Libro libro=new Libro("Marc Jerkinson", "Hawk Two A", 2012, "283231-12", 12, 12);
+        gestoreLibro.add(new Libro("Evangelion", "Shiro Sagisu", 2012, "983231-12", 10));
+        gestoreLibro.add(new Libro("Marc Jerkinson", "Hawk Two A", 2012, "283231-12", 12));
+        Libro libro=new Libro("Marc Jerkinson", "Hawk Two A", 2012, "283231-12", 12);
         Utente Fabio=new Utente("fabio","volo","9832193","sasas@gmail.com");
         gestoreUtente.add(Fabio);
         gestorePrestito.add(new Prestito(Fabio,libro, LocalDate.now(),LocalDate.of(2036,12,29)));

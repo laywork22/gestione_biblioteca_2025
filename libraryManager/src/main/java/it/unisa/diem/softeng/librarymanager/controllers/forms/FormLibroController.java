@@ -63,8 +63,7 @@ public class FormLibroController {
         String isbn = isbnFld.getText();
         int copieDisponibili = Integer.parseInt(copieDisponibiliFld.getText());
         int copieTotali = Integer.parseInt(copieTotaliFld.getText());
-        //MANCA GESTORE CAMPI VUOTI E GESTIONE ISBN DUPLICATI!!!
-        Libro nuovoLibro = new Libro(titolo,autore, anno,isbn, copieTotali, copieDisponibili);
+        Libro nuovoLibro = new Libro(titolo,autore, anno,isbn, copieTotali);
 
 
 
