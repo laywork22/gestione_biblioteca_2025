@@ -46,7 +46,14 @@ public class FormPrestitoController {
     //salva il libro modificato nella lista
     @FXML
     public void salvaNuovoPrestito(ActionEvent event) {
+        if (isFormNotValid()) {
+            Alert al = new Alert(Alert.AlertType.ERROR);
+            al.setTitle("Campi vuoti");
+            al.setHeaderText(null);
+            al.setContentText("Alcuni campi sono vuoti, impossibile salvare le modifiche effettuate");
 
+            al.showAndWait();
+        }
             Prestito p = new Prestito(utentiCb.getValue(), libroCb.getValue(), dataInizioDp.getValue(), dataScadenzaDp.getValue());
             try {
                 if (prestitoInModifica == null) {
@@ -54,8 +61,6 @@ public class FormPrestitoController {
                 } else {
 
                     p.setStato(prestitoInModifica.getStato());
-
-
                     gp.modifica(prestitoInModifica, p);
                 }
             }catch (LimitePrestitoException e) {
