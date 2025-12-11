@@ -13,6 +13,15 @@ import java.time.LocalDate;
  * @version 1.0
  */
 public class Prestito implements Comparable<Prestito> {
+    /**
+     * @brief ID del prossimo prestito.
+     */
+    private static int nextID = 1;
+
+    /**
+     * @brief L'ID del prestito. È univoco e non può essere modificato.
+     */
+    private final int id;
 
     /**
      * @brief L'utente che ha richiesto il prestito.
@@ -55,7 +64,17 @@ public class Prestito implements Comparable<Prestito> {
      */
 
     public Prestito(Utente utente, Libro libro, LocalDate dataInizio, LocalDate dataFine) {
+        this.id = nextID;
 
+        nextID++;
+    }
+
+    /**
+     * @brief metodo getter dell'attributo id.
+     * @return L'id del prestito corrispondente.
+     */
+    public int getId() {
+        return id;
     }
 
     /**
@@ -128,6 +147,15 @@ public class Prestito implements Comparable<Prestito> {
     public void setDataFine(LocalDate dataFine) {
         this.dataFine = dataFine;
     }
+
+    /**
+     * @brief Metodo setter dell'attributo stato.
+     * @param stato Nuovo stato da settare.
+     */
+    public void setStato(StatoPrestitoEnum stato) {
+        this.stato = stato;
+    }
+
     /**
      * @brief Restituisce una rappresentazione testuale del prestito.
      * @return Stringa descrittiva con nome utente, titolo libro e date.
