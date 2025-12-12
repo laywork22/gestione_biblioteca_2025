@@ -27,6 +27,8 @@ public interface AreaHandler<E> {
      *
      * Consente il caricamento delle scene FXML e l'inizializzazione dei
      * rispettivi controller per i form di inserimento.
+     *
+     * @throws
      */
     void onAdd();
 

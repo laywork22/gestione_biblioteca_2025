@@ -22,12 +22,23 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.*;
-/**@brief Gestore della schermata UI Area utenti
+/**@brief Gestore della schermata UI Area utenti.
  *
  * Implementa la logica di visualizzazione della tabella
- * e di caricamento FXML del file del form al
- * gestore del form
+ * e di caricamento FXML del file di inserimento o
+ * modifica di un utente.
  *
+ * @invariant La TableView visualizza sempre una SortedList che avvolge una FilteredList.
+ * Questo garantisce che le operazioni di filtraggio e ordinamento non modifichino
+ * l'ordine o il contenuto della lista dati originale nel Manager.
+ * @invariant La colonna "Prestiti Attivi" riflette sempre il rapporto:
+ * (Prestiti in corso / MAX_PRESTITI).
+ *
+ * @see GestoreUtente
+ * @see FormUtenteController
+ *
+ * @note L'aggiornamento delle colonne è differito tramite Platform.runLater per
+ * garantire la corretta inizializzazione del layout.
  */
 public class UtenteHandler implements AreaHandler<Utente> {
     private final GestoreUtente gestore;
@@ -42,6 +53,11 @@ public class UtenteHandler implements AreaHandler<Utente> {
         mappaOrdinamento.put("Cognome (A-Z)", new CognomeUtenteComparator());
     }
 
+    /**
+     * @brief Apre la finestra modale per l'inserimento di un nuovo utente.
+     * * Carica il file FXML 'UtenteView.fxml', inizializza il form e attende la chiusura
+     * della finestra (modalità WINDOW_MODAL).
+     */
     @Override
     public void onAdd() {
         try {
@@ -64,20 +80,38 @@ public class UtenteHandler implements AreaHandler<Utente> {
             stage.show();
 
         } catch (IOException e) {
-            System.out.println("Errore nel caricamento di UtenteView.fxml");
+            mostraAlert("Errore nel caricamento di UtenteView.fxml");
         }
     }
 
+
+    /**
+     * @brief Gestisce la rimozione di un utente.
+     * * Verifica che l'utente non abbia prestiti attivi prima di procedere alla rimozione.
+     * In caso di violazione del vincolo, mostra un messaggio di errore.
+     *
+     * @param u L'utente da rimuovere.
+     * @throws PrestitoException Gestita internamente (mostra Alert) se l'utente ha prestiti in corso.
+     */
     @Override
     public void onRemove(Utente u) {
-        if (u == null) throw new RuntimeException();
-        try {
-            gestore.remove(u);
-        } catch (PrestitoException e) {
-            mostraAlert(e.getMessage());
+        if (u != null) {
+            try {
+                gestore.remove(u);
+            } catch (PrestitoException e) {
+                mostraAlert(e.getMessage());
+            }
         }
     }
 
+    /**
+     * @brief Apre la finestra modale per la modifica di un utente esistente.
+     * * Recupera l'elemento selezionato dalla tabella, popola il form con i dati attuali
+     * e permette la modifica.
+     *
+     * @param tabella La TableView da cui recuperare l'elemento selezionato.
+     * @pre La tabella deve avere un elemento selezionato.
+     */
     @Override
     public void onEdit(TableView<Utente> tabella) {
         Utente u = tabella.getSelectionModel().getSelectedItem();
@@ -106,33 +140,38 @@ public class UtenteHandler implements AreaHandler<Utente> {
             stage.show();
 
         } catch (IOException e) {
-            e.printStackTrace(); // Meglio stampare lo stack trace completo per debug
-            System.out.println("Errore nel caricamento di UtenteView.fxml");
+            mostraAlert("Errore nel caricamento di UtenteView.fxml");
         }
 
         tabella.refresh();
     }
 
 
+    /**
+     * @brief Configura la TableView per la visualizzazione degli utenti.
+     * * Imposta le colonne per i dati anagrafici e la colonna calcolata per i prestiti attivi.
+     * Utilizza Platform.runLater per garantire la coerenza del layout al caricamento della vista.
+     *
+     * @param[inout] table La TableView da configurare.
+     */
     @Override
     public void setTableView(TableView<Utente> table) {
-        // --- FASE 1: PULIZIA PROFONDA (Immediata) ---
-
-        // 1. Pulisce selezione e ordinamento
+        //puliamo la tabella dalla selezione e dalla lista ordinata precedente
         table.getSelectionModel().clearSelection();
         table.getSortOrder().clear();
 
-        // 2. Svuota gli elementi
+        //rimpiazziamo la lista precdente con una vuota
         table.setItems(FXCollections.emptyObservableList());
 
-        // 3. Rimuove colonne e factory
+        //rimuoviamo le colonne e il RowFactory precedente
         table.getColumns().clear();
         table.setRowFactory(null);
 
-        // 4. Forza refresh grafico
         table.refresh();
 
-        // --- FASE 2: RICOSTRUZIONE (Posticipata) ---
+        /*ricostruzione posticipata della tabella
+          per far in modo che carichi tutto correttamente senza sovrapporsi
+          alle altre aree */
         Platform.runLater(() -> {
             // Definizione Colonne
             TableColumn<Utente, String> nomeClm = new TableColumn<>("Nome");
@@ -153,34 +192,39 @@ public class UtenteHandler implements AreaHandler<Utente> {
                 return new SimpleStringProperty(count + " / " + Utente.MAX_PRESTITI);
             });
 
-            // Aggiunta colonne
             table.getColumns().addAll(nomeClm, cognomeClm, matricolaClm, emailClm, prestitiAttiviClm);
 
             table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-            // RowFactory (Evidenzia limite raggiunto)
             setRigheTabella(table);
 
-            // Binding e Popolamento
-            // CORREZIONE: Slegare la LISTA, non la TABELLA
+            //sleghiamo la lista precedente dal binding con la tabella
             if (this.listaOrdinata != null && this.listaOrdinata.comparatorProperty().isBound()) {
                 this.listaOrdinata.comparatorProperty().unbind();
             }
 
+            //creiamo una nuova lista ordinata e filtrata
             this.listaFiltrata = new FilteredList<>(gestore.getLista(), p -> true);
             this.listaOrdinata = new SortedList<>(listaFiltrata);
 
-            // Qui avviene il legame corretto: la lista ascolta la tabella
             this.listaOrdinata.comparatorProperty().bind(table.comparatorProperty());
 
             table.setItems(listaOrdinata);
+
+            table.refresh();
         });
     }
 
+
+    /**
+     * @brief Aggiorna il predicato della FilteredList in base al testo di ricerca.
+     * @param[in] filtro La stringa da cercare (match parziale su nome, cognome o matricola).
+     */
     @Override
     public void filtraTabella(String filtro) {
         listaFiltrata.setPredicate(gestore.getPredicato(filtro));
     }
+
 
     @Override
     public List<String> getCriteriOrdinamento() {
@@ -188,6 +232,11 @@ public class UtenteHandler implements AreaHandler<Utente> {
     }
 
 
+    /**
+     *
+     * @param[in] criterio Il nome del criterio di ordinamento da applicare
+     * (ordinamento su nome o cognome).
+     */
     @Override
     public void ordina(String criterio) {
         if (listaOrdinata != null && mappaOrdinamento.containsKey(criterio)) {
@@ -198,6 +247,14 @@ public class UtenteHandler implements AreaHandler<Utente> {
         }
     }
 
+
+    /**
+     * @brief Imposta il RowFactory della
+     * tabella per evidenziare utenti cancellati
+     * logicamente.
+     *
+     * @param[inout] t La tabella di cui impostare il RowFactory.
+     */
     private void setRigheTabella(TableView<Utente> t) {
         t.setRowFactory(tv -> new TableRow() { // RAW TYPE
             @Override
@@ -209,15 +266,22 @@ public class UtenteHandler implements AreaHandler<Utente> {
                     return;
                 }
 
-                Utente libro = (Utente) item;
-                if (!libro.isAttivo()) {
-                    setStyle("-fx-background-color: lightgray; -fx-text-fill: darkgray;");
+                Utente utente = (Utente) item;
+                if (!utente.isAttivo()) {
+                    setStyle("-fx-background-color: orange; -fx-text-fill: darkgray;");
                 } else {
                     setStyle("");
                 }
             }
         });
     }
+
+    /**
+     * @brief Mostra su schermo l'alert con il messaggio
+     * passato come parametro
+     *
+     * @param[in] msg Il messaggio di errore/avviso da mostrare su schermo.
+     */
     private void mostraAlert(String msg) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setContentText(msg);

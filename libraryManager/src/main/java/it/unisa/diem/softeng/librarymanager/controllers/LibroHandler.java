@@ -6,8 +6,10 @@ import it.unisa.diem.softeng.librarymanager.exceptions.LibroException;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreLibro;
 import it.unisa.diem.softeng.librarymanager.model.Libro;
 import it.unisa.diem.softeng.librarymanager.model.Utente;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -25,9 +28,18 @@ import java.util.*;
 /**@brief Gestore della schermata UI Area Libri
  *
  * Implementa la logica di visualizzazione della tabella
- * e di caricamento FXML del file del form al
- * gestore del form
+ * e di caricamento FXML del file del di inserimento o
+ * modifica di un Libro.
  *
+ * @invariant La TableView visualizza sempre una SortedList che avvolge una FilteredList.
+ * Questo garantisce che le operazioni di filtraggio e ordinamento non modifichino
+ * l'ordine o il contenuto della lista dati originale nel Manager.
+ *
+ * @see GestoreLibro
+ * @see FormLibroController
+ *
+ * @note L'aggiornamento delle colonne è differito tramite Platform.runLater per
+ * garantire la corretta inizializzazione del layout.
  */
 public class LibroHandler implements AreaHandler<Libro> {
     private final GestoreLibro gestore;
@@ -44,6 +56,14 @@ public class LibroHandler implements AreaHandler<Libro> {
         mappaComparatori.put("Autore (A-Z)", new AutoreLibroComparator());
     }
 
+    /**
+     * @brief Gestisce la rimozione di un libro.
+     * Tenta di rimuovere il libro selezionato tramite il gestore.
+     * Se il libro non può essere rimosso (es. copie in prestito), l'eccezione
+     * viene catturata e mostrata come Alert all'utente.
+     *
+     * @param[inout] l Il libro da rimuovere. Se null, l'operazione viene ignorata.
+     */
     @Override
     public void onRemove(Libro l) {
         if (l != null) {
@@ -55,6 +75,11 @@ public class LibroHandler implements AreaHandler<Libro> {
         }
     }
 
+    /**
+     * @brief Apre la finestra modale per l'inserimento di un nuovo libro.
+     * * Carica il file FXML 'LibroView.fxml', inizializza il form e attende la chiusura
+     * della finestra (modalità WINDOW_MODAL).
+     */
     @Override
     public void onAdd() {
         try {
@@ -80,10 +105,19 @@ public class LibroHandler implements AreaHandler<Libro> {
             stage.show();
 
         } catch (IOException e) {
-            System.out.println("Errore nel caricamento di LibroView.fxml");
+            mostraAlert("Errore nel caricamento di LibroView.fxml");
         }
     }
 
+
+    /**
+     * @brief Apre la finestra modale per la modifica di un libro esistente.
+     * * Recupera l'elemento selezionato dalla tabella, popola il form con i dati attuali
+     * e permette la modifica.
+     *
+     * @param tabella La TableView da cui recuperare l'elemento selezionato.
+     * @pre La tabella deve avere un elemento selezionato.
+     */
     @Override
     public void onEdit(TableView<Libro> tabella) {
         //prendi il libro dalla tabella
@@ -119,60 +153,145 @@ public class LibroHandler implements AreaHandler<Libro> {
         } catch (IOException e) {
             System.out.println("Errore nel caricamento di LibroView.fxml");
         }
-        //apri il form con i campi riempiti
 
         tabella.refresh();
     }
 
 
+    /**
+     * @brief Configura la TableView per la visualizzazione del catalogo libri.
+     * Imposta le colonne per i dati anagrafici e la colonna calcolata per i prestiti attivi.
+     * Utilizza Platform.runLater per garantire la coerenza del layout al caricamento della vista.
+     *
+     * @param[inout] table La TableView da configurare.
+     */
     @Override
     public void setTableView(TableView<Libro> table) {
-        TableView<Libro> t = table;
+        //puliamo la tabella dalla selezione e dalla lista ordinata precedente
+        table.getSelectionModel().clearSelection();
+        table.getSortOrder().clear();
 
-        t.getColumns().clear();
+        //rimpiazziamo la lista precdente con una vuota
+        table.setItems(FXCollections.emptyObservableList());
 
-        TableColumn<Libro, String> autoreClm = new TableColumn<>("Autore");
-        TableColumn<Libro, String> titoloClm = new TableColumn<>("Titolo");
-        TableColumn<Libro, String> isbnClm = new TableColumn<>("ISBN");
-        TableColumn<Libro, Integer> annoClm = new TableColumn<>("Anno");
-        TableColumn<Libro, Integer> copieDisponibiliClm = new TableColumn<>("Copie Disponibili");
-        TableColumn<Libro, Integer> copieTotaliClm = new TableColumn<>("Copie Totali");
+        //rimuoviamo le colonne e il RowFactory precedente
+        table.getColumns().clear();
+        table.setRowFactory(null);
 
 
-        titoloClm.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getTitolo()));
-        autoreClm.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getAutore()));
-        isbnClm.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getIsbn()));
-        isbnClm.setSortable(false);
-        annoClm.setCellValueFactory(r -> new SimpleObjectProperty<>(r.getValue().getAnno()));
-        copieTotaliClm.setCellValueFactory(r -> new SimpleObjectProperty<>(r.getValue().getCopieTotali()));
-        copieTotaliClm.setSortable(false);
-        copieDisponibiliClm.setCellValueFactory(r -> new SimpleObjectProperty<>(r.getValue().getCopieDisponibili()));
-        copieDisponibiliClm.setSortable(false);
+        table.refresh();
 
-        t.getColumns().addAll(titoloClm, autoreClm, annoClm, isbnClm, copieDisponibiliClm, copieTotaliClm);
+         /*
+          ricostruzione posticipata della tabella
+          per far in modo che carichi tutto correttamente senza sovrapporsi
+          alle altre aree
+         */
+        Platform.runLater(() -> {
+            TableColumn<Libro, String> autoreClm = new TableColumn<>("Autore");
+            TableColumn<Libro, String> titoloClm = new TableColumn<>("Titolo");
+            TableColumn<Libro, String> isbnClm = new TableColumn<>("ISBN");
+            TableColumn<Libro, Integer> annoClm = new TableColumn<>("Anno");
+            TableColumn<Libro, Integer> copieDisponibiliClm = new TableColumn<>("Copie Disponibili");
+            TableColumn<Libro, Integer> copieTotaliClm = new TableColumn<>("Copie Totali");
 
-        t.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
 
-        t.setItems(gestore.getLista());
+            titoloClm.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getTitolo()));
+            autoreClm.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getAutore()));
+            isbnClm.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getIsbn()));
+            isbnClm.setSortable(false);
+            annoClm.setCellValueFactory(r -> new SimpleObjectProperty<>(r.getValue().getAnno()));
+            copieTotaliClm.setCellValueFactory(r -> new SimpleObjectProperty<>(r.getValue().getCopieTotali()));
+            copieTotaliClm.setSortable(false);
+            copieDisponibiliClm.setCellValueFactory(r -> new SimpleObjectProperty<>(r.getValue().getCopieDisponibili()));
+            copieDisponibiliClm.setSortable(false);
 
-        t.refresh();
+            table.getColumns().addAll(titoloClm, autoreClm, annoClm, isbnClm, copieDisponibiliClm, copieTotaliClm);
+
+
+            setRigheTabella(table);
+
+            table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
+
+            //sleghiamo la lista precedente dal binding con la tabella
+            if (this.listaOrdinata != null && this.listaOrdinata.comparatorProperty().isBound()) {
+                this.listaOrdinata.comparatorProperty().unbind();
+            }
+
+            //creiamo una nuova lista ordinata e filtrata
+            this.listaFiltrata = new FilteredList<>(gestore.getLista(), p -> true);
+            this.listaOrdinata = new SortedList<>(listaFiltrata);
+
+            //binding della lista alla tabella
+            this.listaOrdinata.comparatorProperty().bind(table.comparatorProperty());
+
+            table.setItems(listaOrdinata);
+
+            table.refresh();
+
+        });
+
 
     }
 
+    /**
+     * @brief Imposta il RowFactory della
+     * tabella per evidenziare libri cancellati
+     * logicamente.
+     *
+     * @param[inout] t La tabella di cui impostare il RowFactory.
+     */
+    private void setRigheTabella(TableView<Libro> table) {
+        table.setRowFactory(tv -> new TableRow() {
+            @Override
+            protected void updateItem(Object item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty || !(item instanceof Libro)) {
+                    setStyle("");
+                    return;
+                }
+
+                Libro libro = (Libro) item;
+                if(!libro.isAttivo()) {
+                    setStyle("-fx-background-color: lightgray; -fx-text-fill: darkgray;");
+                }
+                else {
+                    setStyle("");
+                }
+            }
+        });
+    }
+
+    /**
+     * @brief Aggiorna il predicato della FilteredList in base al testo di ricerca.
+     * @param filtro La stringa da cercare (match parziale su titolo o autore).
+     */
     @Override
     public void filtraTabella(String filtro) {
-
+        listaFiltrata.setPredicate(gestore.getPredicato(filtro));
     }
 
     @Override
     public List<String> getCriteriOrdinamento() {
-        return List.of();
+        return new ArrayList<>(mappaComparatori.keySet());
     }
 
     @Override
     public void ordina(String criterio) {
-
+        if (listaOrdinata != null && mappaComparatori.containsKey(criterio)) {
+            if (listaOrdinata.comparatorProperty().isBound()) {
+                listaOrdinata.comparatorProperty().unbind();
+            }
+            listaOrdinata.setComparator(mappaComparatori.get(criterio));
+        }
     }
+
+    /**
+     * @brief Mostra su schermo l'alert con il messaggio
+     * passato come parametro
+     *
+     * @param[in] msg Il messaggio di errore/avviso da mostrare su schermo.
+     */
     private void mostraAlert(String msg) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setContentText(msg);

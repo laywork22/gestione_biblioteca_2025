@@ -29,9 +29,20 @@ import java.util.*;
 
 /**@brief Gestore della schermata UI Area Prestiti
  * Implementa la logica di visualizzazione della tabella
- * e di caricamento FXML del file del form al
- * gestore del form
+ * e di caricamento FXML del form grafico di inserimento o
+ * modifica di un prestito.
  *
+ * @invariant La TableView visualizza sempre una SortedList che avvolge una FilteredList.
+ * Questo garantisce che le operazioni di filtraggio e ordinamento non modifichino
+ * l'ordine o il contenuto della lista dati originale nel Manager.
+ * @invariant La colonna "Prestiti Attivi" riflette sempre il rapporto:
+ * (Prestiti in corso / MAX_PRESTITI).
+ *
+ * @note L'aggiornamento delle colonne è differito tramite Platform.runLater per
+ * garantire la corretta inizializzazione del layout.
+ *
+ * @see GestorePrestito
+ * @see FormPrestitoController
  */
 public class PrestitoHandler implements AreaHandler<Prestito> {
     private final GestorePrestito gestore;
@@ -56,16 +67,30 @@ public class PrestitoHandler implements AreaHandler<Prestito> {
         mappaComparatori.put("Stato", Comparator.comparing(p -> p.getStato().toString()));
     }
 
+
+    /**
+     * @brief Rimuove un prestito (Restituzione/Cancellazione).
+     * * @param p Il prestito da rimuovere.
+     * @note La rimozione comporta il ripristino della disponibilità del libro
+     * e il decremento del contatore prestiti dell'utente (gestito dal Manager).
+     */
     @Override
     public void onRemove(Prestito p) {
-        if(p == null) throw new NullPointerException("Prestito non rilevato, per favore sceglierne uno  dalla tabella");
-        try {
-            this.gestore.remove(p);
-        } catch (PrestitoException e) {
-            mostraAlert(e.getMessage());
+        if(p != null) {
+            try {
+                this.gestore.remove(p);
+            } catch (PrestitoException e) {
+                mostraAlert(e.getMessage());
+            }
         }
     }
 
+
+    /**
+     * @brief Apre la finestra modale per l'inserimento di un nuovo prestito.
+     * Carica il file FXML 'PrestitoView.fxml', inizializza il form e attende la chiusura
+     * della finestra (modalità WINDOW_MODAL)
+    */
     @Override
     public void onAdd() {
         try{
@@ -88,12 +113,19 @@ public class PrestitoHandler implements AreaHandler<Prestito> {
             stage.initModality(Modality.WINDOW_MODAL);
             stage.showAndWait();
         } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Errore caricamento PrestitoView.fxml");
+            mostraAlert("Errore caricamento PrestitoView.fxml");
         }
 
     }
 
+     /**
+      * @brief Apre la finestra modale per la modifica di un libro esistente.
+      *Recupera l'elemento selezionato dalla tabella, popola il form con i dati attuali
+      * e permette la modifica.
+      *
+      * @param tabella La TableView da cui recuperare l'elemento selezionato.
+      * @pre La tabella deve avere un elemento selezionato.
+     */
     @Override
     public void onEdit(TableView<Prestito> tabella) {
         Prestito p = tabella.getSelectionModel().getSelectedItem();
@@ -127,35 +159,42 @@ public class PrestitoHandler implements AreaHandler<Prestito> {
             stage.showAndWait();
 
         } catch (IOException e) {
-            System.out.println("Errore nel caricamento di LibroView.fxml");
+            mostraAlert("Errore nel caricamento di LibroView.fxml");
         }
 
         tabella.refresh();
     }
 
+
+    /**
+     * @brief Configura la TableView dei prestiti.
+     * * Crea colonne composte (Nested Columns) per raggruppare visivamente i dati
+     * dell'Utente, del Libro e le Date, migliorando la leggibilità.
+     *
+     * @param[inout] table La TableView da configurare.
+     */
     @Override
     public void setTableView(TableView<Prestito> table) {
-        // --- FASE 1: PULIZIA PROFONDA (Immediata) ---
-
-        // 1. Pulisce selezione e ordinamento
-        // (Nota: Non chiamiamo unbind sulla tabella perché è ReadOnly)
+        //puliamo la tabella dalla selezione e dalla lista ordinata precedente
         table.getSelectionModel().clearSelection();
         table.getSortOrder().clear();
 
-        // 2. Svuota gli elementi
+        //rimpiazziamo la lista precdente con una vuota
         table.setItems(FXCollections.emptyObservableList());
 
-        // 3. Rimuove colonne e factory
+        //rimuoviamo le colonne e il RowFactory precedente
         table.getColumns().clear();
         table.setRowFactory(null);
 
-        // 4. Forza il refresh grafico
+
         table.refresh();
 
-        // --- FASE 2: RICOSTRUZIONE (Posticipata) ---
-        Platform.runLater(() -> {
-
-            // --- Definizione Colonne ---
+        /*
+          ricostruzione posticipata della tabella
+          per far in modo che carichi tutto correttamente senza sovrapporsi
+          alle altre aree
+         */
+        Platform.runLater( () -> {
             TableColumn<Prestito, Integer> idClm = new TableColumn<>("ID");
             idClm.setCellValueFactory(r -> new SimpleObjectProperty<>(r.getValue().getId()));
             idClm.setMaxWidth(100);
@@ -191,28 +230,37 @@ public class PrestitoHandler implements AreaHandler<Prestito> {
             table.getColumns().add(dataClm);
             table.getColumns().add(statoClm);
 
-            // --- Row Factory (Colori) ---
+            //settiamo il row factory (colore delle righe)
             setRigheTabella(table);
 
             table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-            // --- Binding e Popolamento ---
-            // Se c'era una vecchia listaOrdinata legata, la sleghiamo (pulizia opzionale ma consigliata)
+            //sleghiamo la lista precedente dal binding con la tabella
             if (this.listaOrdinata != null && this.listaOrdinata.comparatorProperty().isBound()) {
                 this.listaOrdinata.comparatorProperty().unbind();
             }
 
+            //creiamo una nuova lista ordinata e filtrata
             this.listaFiltrata = new FilteredList<>(gestore.getLista(), p -> true);
             this.listaOrdinata = new SortedList<>(listaFiltrata);
 
-            // Qui avviene il legame: la lista ascolta la tabella
+            //binding della lista alla tabella
             this.listaOrdinata.comparatorProperty().bind(table.comparatorProperty());
 
             table.setItems(listaOrdinata);
+
+            table.refresh();
         });
     }
 
 
+    /**
+     * @brief Aggiorna il predicato della FilteredList in base al testo di ricerca.
+     * @param filtro La stringa da cercare (match parziale per utente, libro o stato).
+     *
+     * @see LibroHandler#ordina(String)
+     * @see UtenteHandler#ordina(String)
+     */
     @Override
     public void filtraTabella(String filtro) {
         listaFiltrata.setPredicate(gestore.getPredicato(filtro));
@@ -223,6 +271,16 @@ public class PrestitoHandler implements AreaHandler<Prestito> {
         return new ArrayList<>(mappaComparatori.keySet());
     }
 
+    /**
+     * @brief Ordina la tabella in base al criterio selezionato.
+     * * Supporta ordinamenti complessi:
+     * - Per Utente (alfabetico sul cognome).
+     * - Per Libro (alfabetico sul titolo).
+     * - Per Data Inizio (cronologico).
+     * - Per Stato.
+     *
+     * @param[in] criterio La stringa che identifica il comparatore da usare.
+     */
     @Override
     public void ordina(String criterio) {
         if (listaOrdinata != null && mappaComparatori.containsKey(criterio)) {
@@ -234,8 +292,15 @@ public class PrestitoHandler implements AreaHandler<Prestito> {
     }
 
 
+    /**
+     * @brief Imposta il RowFactory della
+     * tabella per evidenziare prestiti in scandenza o scaduti
+     * e chiusi.
+     *
+     * @param[inout] t La tabella di cui impostare il RowFactory.
+     */
     private void setRigheTabella(TableView<Prestito> t) {
-        t.setRowFactory(tv -> new TableRow() { // RAW TYPE
+        t.setRowFactory(tv -> new TableRow() {
             @Override
             protected void updateItem(Object item, boolean empty) {
                 super.updateItem(item, empty);
@@ -263,6 +328,13 @@ public class PrestitoHandler implements AreaHandler<Prestito> {
             }
         });
     }
+
+    /**
+     * @brief Mostra su schermo l'alert con il messaggio
+     * passato come parametro
+     *
+     * @param[in] msg Il messaggio di errore/avviso da mostrare su schermo.
+     */
     private void mostraAlert(String msg) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setContentText(msg);

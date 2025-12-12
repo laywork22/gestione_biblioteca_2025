@@ -12,6 +12,11 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
+/**
+ * @brief NB. Il test non può verificare alcune delle specifiche del contratto, come ad esempio la gestione delle
+ * eccezioni con gli alert.
+ */
 public class PrestitoHandlerTest {
     private PrestitoHandler handler;
     private GestorePrestito gestorePrestito;

@@ -26,7 +26,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>it.unisa.diem.softeng.librarymanager.libraryManagerApp</mainClass>
+                    <mainClass>it.unisa.diem.softeng.librarymanager.LibraryManagerApp</mainClass>
                 </configuration>
                 <executions>
                     <execution>
