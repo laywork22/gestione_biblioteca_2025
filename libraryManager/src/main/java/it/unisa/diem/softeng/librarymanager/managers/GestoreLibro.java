@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.Comparator;
+import java.util.Locale;
 import java.util.function.Predicate;
 /**
  * @brief Classe specifica per la gestione delle entità Libro.
@@ -118,7 +119,7 @@ public class GestoreLibro implements Gestore<Libro> {
      */
     @Override
     public Predicate<Libro> getPredicato(String str) {
-        return r -> true;
+        return libro -> true;
     }
 
 

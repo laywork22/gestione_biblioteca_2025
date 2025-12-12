@@ -7,6 +7,7 @@ import it.unisa.diem.softeng.librarymanager.managers.GestoreUtente;
 import it.unisa.diem.softeng.librarymanager.model.Libro;
 import it.unisa.diem.softeng.librarymanager.model.Prestito;
 import it.unisa.diem.softeng.librarymanager.model.Utente;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -62,14 +63,11 @@ public class FormPrestitoController {
                 }
                 chiudiFinestra();
             }
-            catch(IllegalArgumentException e){
-                mostraAlert(e.getMessage());
-            }
-            catch (PrestitoException e) {
+            catch(IllegalArgumentException | PrestitoException e){
                 mostraAlert(e.getMessage());
             }
 
-        }
+    }
 
 
 
@@ -104,8 +102,12 @@ public class FormPrestitoController {
      * @brief Popola le ComboBox con le rispettive liste.
      */
     private void setComboBox() {
-        utentiCb.setItems(gu.getLista());
-        libroCb.setItems(gl.getLista());
+        FilteredList<Utente> utentiFiltrati = new FilteredList<>(gu.getLista(), utente -> utente != null && utente.isAttivo());
+
+        FilteredList<Libro> libriFiltrati = new FilteredList<>(gl.getLista(), libro -> libro != null && libro.isAttivo());
+
+        utentiCb.setItems(utentiFiltrati);
+        libroCb.setItems(libriFiltrati);
 
         utentiCb.setPromptText("Selezionare  Utente");
         libroCb.setPromptText("Selezionare  Libro");
