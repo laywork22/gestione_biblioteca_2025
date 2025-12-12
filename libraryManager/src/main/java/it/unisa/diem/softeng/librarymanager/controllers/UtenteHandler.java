@@ -2,6 +2,7 @@ package it.unisa.diem.softeng.librarymanager.controllers;
 
 import it.unisa.diem.softeng.librarymanager.comparators.CognomeUtenteComparator;
 import it.unisa.diem.softeng.librarymanager.controllers.forms.FormUtenteController;
+import it.unisa.diem.softeng.librarymanager.exceptions.PrestitoException;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreUtente;
 import it.unisa.diem.softeng.librarymanager.model.Utente;
 import javafx.application.Platform;
@@ -12,6 +13,7 @@ import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
@@ -69,8 +71,11 @@ public class UtenteHandler implements AreaHandler<Utente> {
     @Override
     public void onRemove(Utente u) {
         if (u == null) throw new RuntimeException();
-
-        u.setAttivo(false);
+        try {
+            gestore.remove(u);
+        } catch (PrestitoException e) {
+            mostraAlert("Impossibile rimuovere utente con prestito attivo");
+        }
     }
 
     @Override
@@ -213,4 +218,10 @@ public class UtenteHandler implements AreaHandler<Utente> {
             }
         });
     }
+    private void mostraAlert(String msg) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setContentText(msg);
+        alert.showAndWait();
+    }
+
 }

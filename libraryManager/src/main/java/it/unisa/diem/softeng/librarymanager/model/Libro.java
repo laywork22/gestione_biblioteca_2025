@@ -192,6 +192,9 @@ public class Libro implements Comparable<Libro>, Serializable {
     public void setAttivo(boolean attivo) {
         this.attivo = attivo;
     }
+    public boolean getAttivo(){
+        return this.attivo;
+    }
 
     /**
      * @brief Restituisce una rappresentazione in formato stringa dell'oggetto Libro.

@@ -43,6 +43,12 @@ public class GestorePrestito implements Gestore<Prestito>{
             if (l.getLibro().getCopieDisponibili() <= 0) {
                 throw new PrestitoException("Non ci sono copie disponibili per il libro: " + l.getLibro().getTitolo());
             }
+            if(l.getLibro().getAttivo()){
+                throw new PrestitoException("Il libro risulta non attivo");
+            }
+            if(l.getUtente().getAttivo()){
+                throw new PrestitoException("L'utente risulta non attivo");
+            }
             l.getUtente().setCountPrestiti(l.getUtente().getCountPrestiti()+1);
             l.getLibro().decrementaCopie();
             prestitoList.add(l);

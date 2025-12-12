@@ -49,7 +49,7 @@ public class GestoreUtente implements Gestore<Utente> {
         if(l.getCountPrestiti()!=0)
             throw new PrestitoException("L'utente ha almeno un prestito attivo");
         else
-            this.utentiList.remove(l);
+            l.setAttivo(false);
     }
 
     @Override

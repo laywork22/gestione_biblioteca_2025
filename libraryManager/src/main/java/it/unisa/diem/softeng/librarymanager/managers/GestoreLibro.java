@@ -51,8 +51,8 @@ public class GestoreLibro implements Gestore<Libro> {
     @Override
     public void remove(Libro l) {
         if(l == null) return;
+        l.setAttivo(false);
 
-        listaLibri.remove(l);
     }
 
     @Override
