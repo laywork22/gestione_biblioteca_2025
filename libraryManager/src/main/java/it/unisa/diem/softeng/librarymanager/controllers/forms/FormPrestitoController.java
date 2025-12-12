@@ -1,6 +1,6 @@
 package it.unisa.diem.softeng.librarymanager.controllers.forms;
 
-import it.unisa.diem.softeng.librarymanager.exceptions.LimitePrestitoException;
+import it.unisa.diem.softeng.librarymanager.exceptions.PrestitoException;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreLibro;
 import it.unisa.diem.softeng.librarymanager.managers.GestorePrestito;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreUtente;
@@ -65,7 +65,7 @@ public class FormPrestitoController {
             catch(IllegalArgumentException e){
                 mostraAlert(e.getMessage());
             }
-            catch (LimitePrestitoException e) {
+            catch (PrestitoException e) {
                 mostraAlert(e.getMessage());
             }
 

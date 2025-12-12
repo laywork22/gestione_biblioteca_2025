@@ -1,13 +1,9 @@
 package it.unisa.diem.softeng.librarymanager.controllers;
 
-import it.unisa.diem.softeng.librarymanager.exceptions.LimitePrestitoException;
 import it.unisa.diem.softeng.librarymanager.managers.Gestore;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreLibro;
 import it.unisa.diem.softeng.librarymanager.managers.GestorePrestito;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreUtente;
-import it.unisa.diem.softeng.librarymanager.model.Libro;
-import it.unisa.diem.softeng.librarymanager.model.Prestito;
-import it.unisa.diem.softeng.librarymanager.model.Utente;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,7 +19,6 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.File;
-import java.time.LocalDate;
 
 /**@brief Gestore principale di schermata
  *

@@ -1,6 +1,5 @@
 package it.unisa.diem.softeng.librarymanager.managers;
 
-import it.unisa.diem.softeng.librarymanager.exceptions.LimitePrestitoException;
 import javafx.collections.ObservableList;
 
 import java.util.Comparator;

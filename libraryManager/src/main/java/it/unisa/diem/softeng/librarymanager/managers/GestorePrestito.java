@@ -1,6 +1,6 @@
 package it.unisa.diem.softeng.librarymanager.managers;
 
-import it.unisa.diem.softeng.librarymanager.exceptions.LimitePrestitoException;
+import it.unisa.diem.softeng.librarymanager.exceptions.PrestitoException;
 import it.unisa.diem.softeng.librarymanager.model.Prestito;
 import it.unisa.diem.softeng.librarymanager.model.StatoPrestitoEnum;
 import javafx.collections.FXCollections;
@@ -32,15 +32,17 @@ public class GestorePrestito implements Gestore<Prestito>{
      * @see Gestore#add(Object)
      */
     @Override
-    public void add(Prestito l) throws LimitePrestitoException {
+    public void add(Prestito l) throws PrestitoException {
         if(l==null){
             return;
         }
         if(l.getUtente().getCountPrestiti()>=3){
-            throw new LimitePrestitoException("L'utente ha raggiunto il limite dei 3 prestiti");
+            throw new PrestitoException("L'utente ha raggiunto il limite dei 3 prestiti");
         }
         else {
-
+            if (l.getLibro().getCopieDisponibili() <= 0) {
+                throw new PrestitoException("Non ci sono copie disponibili per il libro: " + l.getLibro().getTitolo());
+            }
             l.getUtente().setCountPrestiti(l.getUtente().getCountPrestiti()+1);
             l.getLibro().decrementaCopie();
             prestitoList.add(l);
@@ -49,12 +51,16 @@ public class GestorePrestito implements Gestore<Prestito>{
 
     @Override
     public void remove(Prestito l) {
-        if(l==null){return;}
+        if(l == null) return;
 
-        l.getUtente().setCountPrestiti(l.getUtente().getCountPrestiti()-1);
-        l.getLibro().incrementaCopie(1);
+        if (l.getStato() == StatoPrestitoEnum.CHIUSO) {
+            return;
+        }
+
+        l.getUtente().setCountPrestiti(l.getUtente().getCountPrestiti() - 1);
+        l.getLibro().setCopieDisponibili(l.getLibro().getCopieDisponibili() + 1);
+
         l.setStato(StatoPrestitoEnum.CHIUSO);
-
     }
 
     @Override

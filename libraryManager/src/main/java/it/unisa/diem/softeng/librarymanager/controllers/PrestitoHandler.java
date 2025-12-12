@@ -57,8 +57,7 @@ public class PrestitoHandler implements AreaHandler<Prestito> {
     @Override
     public void onRemove(Prestito p) {
         if(p == null) throw new NullPointerException("Prestito non rilevato, per favore sceglierne uno  dalla tabella");
-
-        p.setStato(StatoPrestitoEnum.CHIUSO);
+        this.gestore.remove(p);;
     }
 
     @Override

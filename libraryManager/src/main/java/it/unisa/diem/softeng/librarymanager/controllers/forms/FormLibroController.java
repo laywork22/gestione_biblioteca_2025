@@ -60,14 +60,17 @@ public class FormLibroController {
 
 
             if (libroInModifica != null) {
-                gestore.modifica(libroInModifica, nuovoLibro);
+                    gestore.modifica(libroInModifica, nuovoLibro);
             } else {
                 gestore.add(nuovoLibro);
             }
 
             chiudiFinestra();
         }catch(NumberFormatException e){
-            mostraAlert("Formato errato nei campi copie Diponibili,copie Totali oppure anno");
+            mostraAlert("Formato errato nei campi copie Totali oppure anno");
+        }
+        catch(IllegalArgumentException e){
+            mostraAlert(e.getMessage());
         }
 
     }

@@ -37,7 +37,8 @@ public class GestoreLibro implements Gestore<Libro> {
         if (index != -1) {
             Libro libroEsistente = listaLibri.get(index);
 
-            libroEsistente.incrementaCopie(l.getCopieTotali());
+            libroEsistente.setCopieTotali(libroEsistente.getCopieTotali()+l.getCopieTotali());
+            libroEsistente.setCopieDisponibili(libroEsistente.getCopieDisponibili()+l.getCopieTotali());
 
             listaLibri.set(index, libroEsistente);
 
@@ -65,11 +66,29 @@ public class GestoreLibro implements Gestore<Libro> {
     }
 
     @Override
-    public void modifica(Libro vecchio, Libro nuovo) {
+    public void modifica(Libro vecchio, Libro nuovo) throws IllegalArgumentException {
         int index = listaLibri.indexOf(vecchio);
 
         if (index != -1) {
-            listaLibri.set(index, nuovo);
+            int copieNonDisponibili = vecchio.getCopieTotali() - vecchio.getCopieDisponibili();
+
+            if (copieNonDisponibili > nuovo.getCopieTotali()) {
+                throw new IllegalArgumentException("Impossibile ridurre le copie totali a " + nuovo.getCopieTotali() +
+                        " perché ci sono " + copieNonDisponibili + " copie ancora in prestito.");
+            }
+
+            int nuoveDisponibili = nuovo.getCopieTotali() - copieNonDisponibili;
+
+            vecchio.setTitolo(nuovo.getTitolo());
+            vecchio.setAutore(nuovo.getAutore());
+            vecchio.setAnno(nuovo.getAnno());
+            vecchio.setIsbn(nuovo.getIsbn());
+            vecchio.setCopieTotali(nuovo.getCopieTotali());
+
+
+            vecchio.setCopieDisponibili(nuoveDisponibili);
+
+            listaLibri.set(index, vecchio);
         }
     }
 
