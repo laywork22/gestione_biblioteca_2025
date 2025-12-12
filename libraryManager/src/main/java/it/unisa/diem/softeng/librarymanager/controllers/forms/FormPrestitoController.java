@@ -174,7 +174,10 @@ public class FormPrestitoController {
      * @return true se almeno un campo è vuoto, false se tutti sono pieni.
      */
     private boolean isFormNotValid() {
-        return false;
+        return utentiCb.getValue() == null ||
+                libroCb.getValue() == null ||
+                dataInizioDp.getValue() == null ||
+                dataScadenzaDp.getValue() == null;
     }
 
     /**

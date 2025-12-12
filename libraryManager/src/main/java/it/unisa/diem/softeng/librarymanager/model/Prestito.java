@@ -212,12 +212,13 @@ public class Prestito implements Comparable<Prestito>, Serializable {
 
     @Override
     public int compareTo(Prestito o) {
-        int cmp = 0;
+        if (this.dataFine.equals(o.dataFine)) {
+            if(this.getUtente().equals(o.getUtente())) {
+                return this.getLibro().compareTo(o.getLibro());
+            }
+            else return this.getUtente().compareTo(o.getUtente());
 
-        if (this.equals(o)) {
-            cmp = this.getDataInizio().compareTo(o.getDataInizio());
         }
-
-        return cmp;
+        return this.dataFine.compareTo(o.dataFine);
 }
 }

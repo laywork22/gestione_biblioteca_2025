@@ -133,13 +133,31 @@ public class PrincipaleController {
                 tabella.refresh();
 
             }
+
         });
         modifyButton.setOnAction(e -> areaCorrente.onEdit(tabella));
         tabella.refresh();
         //qui ci va il riempimento del MenuButton con gli ordinamenti disponibili (MenuItem)
 
         areaCorrente.setTableView(tabella);
-        //areaCorrente.filtraTabella(tabella);
+        ordineFiltro.getItems().clear();
+        ordineFiltro.setText("Ordina per...");
+
+        if (areaCorrente.getCriteriOrdinamento() != null) {
+
+            for (String criterio : (java.util.List<String>) areaCorrente.getCriteriOrdinamento()) {
+                javafx.scene.control.MenuItem item = new javafx.scene.control.MenuItem(criterio);
+                item.setOnAction(event -> {
+
+                    areaCorrente.ordina(criterio);
+                    ordineFiltro.setText("Ordina: " + criterio);
+                    tabella.refresh();
+                });
+
+                ordineFiltro.getItems().add(item);
+            }
+
+        }
 
     }
 
