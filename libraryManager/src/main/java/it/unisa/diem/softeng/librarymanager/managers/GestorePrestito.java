@@ -39,7 +39,8 @@ public class GestorePrestito implements Gestore<Prestito>{
         if(l.getUtente().getCountPrestiti()>=3){
             throw new LimitePrestitoException("L'utente ha raggiunto il limite dei 3 prestiti");
         }
-        else{
+        else {
+
             l.getUtente().setCountPrestiti(l.getUtente().getCountPrestiti()+1);
             l.getLibro().decrementaCopie();
             prestitoList.add(l);
@@ -51,7 +52,7 @@ public class GestorePrestito implements Gestore<Prestito>{
         if(l==null){return;}
 
         l.getUtente().setCountPrestiti(l.getUtente().getCountPrestiti()-1);
-        l.getLibro().incrementaCopie();
+        l.getLibro().incrementaCopie(1);
         l.setStato(StatoPrestitoEnum.CHIUSO);
 
     }

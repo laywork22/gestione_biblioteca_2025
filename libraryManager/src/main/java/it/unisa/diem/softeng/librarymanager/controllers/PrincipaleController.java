@@ -85,16 +85,6 @@ public class PrincipaleController {
         gestorePrestito = new GestorePrestito();
         gestoreUtente = new GestoreUtente();
         gestorePrestito.aggiornaStati();
-        gestoreLibro.add(new Libro("Evangelion", "Shiro Sagisu", 2012, "983231-12", 10));
-        gestoreLibro.add(new Libro("Marc Jerkinson", "Hawk Two A", 2012, "283231-12", 12));
-        Libro libro=new Libro("Marc Jerkinson", "Hawk Two A", 2012, "283231-12", 12);
-        Utente Fabio=new Utente("fabio","volo","9832193","sasas@gmail.com");
-        gestoreUtente.add(Fabio);
-        try{
-        gestorePrestito.add(new Prestito(Fabio,libro, LocalDate.now(),LocalDate.of(2036,12,29)));
-        } catch (LimitePrestitoException e) {
-            throw new RuntimeException(e);
-        }
 
         sideMenu.setTranslateX(-200);
 
@@ -210,10 +200,6 @@ public class PrincipaleController {
         Stage stage = (Stage) source.getScene().getWindow();
 
         File file = fc.showOpenDialog(stage);
-    }
-
-    @FXML
-    public void ordineTabella(ActionEvent actionEvent) {
     }
 
 

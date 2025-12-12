@@ -46,20 +46,32 @@ public class FormUtenteController {
     private void handleSalva(ActionEvent event) {
         if (isFormNotValid()) {
             mostraAlert("Alcuni campi del form sono vuoti!");
+            return; // Blocca l'esecuzione
         }
-
         String nome = nomeFld.getText();
         String cognome = cognomeFld.getText();
         String matricola = matricolaFld.getText();
         String email = emailFld.getText();
+
         Utente nuovoUtente = new Utente(nome, cognome, matricola, email);
-        try {
-            gestore.add(nuovoUtente);
-        }catch(UserAlrRegisteredException e){
-            mostraAlert(e.getMessage());
+
+        if (utenteInModifica != null) {
+            nuovoUtente.setCountPrestiti(utenteInModifica.getCountPrestiti());
         }
 
-        chiudiFinestra();
+        try {
+            if (utenteInModifica == null) {
+                gestore.add(nuovoUtente);
+            } else {
+                gestore.modifica(utenteInModifica, nuovoUtente);
+            }
+
+            chiudiFinestra();
+
+        } catch (UserAlrRegisteredException e) {
+            mostraAlert(e.getMessage());
+
+        }
     }
 
     @FXML
@@ -91,7 +103,6 @@ public class FormUtenteController {
      * @param u l'utente da cui estrarre gli attributi da impostare sui vari campi del form
      */
     public void setFormOnEdit(Utente u) {
-        //imposta tutti i campi del form
         if (u == null) return;
 
         this.utenteInModifica = u;

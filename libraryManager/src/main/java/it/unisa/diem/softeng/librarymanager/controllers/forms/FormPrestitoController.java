@@ -47,29 +47,28 @@ public class FormPrestitoController {
     @FXML
     public void salvaNuovoPrestito(ActionEvent event) {
         if (isFormNotValid()) {
-            Alert al = new Alert(Alert.AlertType.ERROR);
-            al.setTitle("Campi vuoti");
-            al.setHeaderText(null);
-            al.setContentText("Alcuni campi sono vuoti, impossibile salvare le modifiche effettuate");
-
-            al.showAndWait();
+            mostraAlert("Alcuni campi sono vuoti");
+            return;
         }
-            Prestito p = new Prestito(utentiCb.getValue(), libroCb.getValue(), dataInizioDp.getValue(), dataScadenzaDp.getValue());
-            try {
+            try{
+                Prestito p = new Prestito(utentiCb.getValue(), libroCb.getValue(), dataInizioDp.getValue(), dataScadenzaDp.getValue());
                 if (prestitoInModifica == null) {
                     gp.add(p);
-                } else {
+            }
+                else {
 
                     p.setStato(prestitoInModifica.getStato());
                     gp.modifica(prestitoInModifica, p);
                 }
-            }catch (LimitePrestitoException e) {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setContentText(e.getMessage());
-                alert.showAndWait();
+                chiudiFinestra();
+            }
+            catch(IllegalArgumentException e){
+                mostraAlert(e.getMessage());
+            }
+            catch (LimitePrestitoException e) {
+                mostraAlert(e.getMessage());
             }
 
-        chiudiFinestra();
         }
 
 
@@ -192,6 +191,11 @@ public class FormPrestitoController {
         } else {
             insModFld.setText("Modifica Prestito");
         }
+    }
+    private void mostraAlert(String msg) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
 
 }

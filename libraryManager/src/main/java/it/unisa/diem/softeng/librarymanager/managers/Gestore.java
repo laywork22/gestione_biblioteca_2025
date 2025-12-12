@@ -24,7 +24,7 @@ public interface Gestore<T> {
      *
      * @param elem L'elemento da aggiungere.
      */
-    void add(T elem) throws LimitePrestitoException;
+    void add(T elem) throws Exception;
 
     /**@brief Rimuove un elemento dalla collezione gestita.
      * <p>
@@ -35,7 +35,7 @@ public interface Gestore<T> {
      *
      * @param elem L'elemento da rimuovere
      */
-    void remove(T elem);
+    void remove(T elem) throws Exception;
 
     /**@brief Restituisce la lista osservabile di entita'
      *

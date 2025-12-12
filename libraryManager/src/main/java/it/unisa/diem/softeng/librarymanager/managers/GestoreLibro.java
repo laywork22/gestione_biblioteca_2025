@@ -37,7 +37,7 @@ public class GestoreLibro implements Gestore<Libro> {
         if (index != -1) {
             Libro libroEsistente = listaLibri.get(index);
 
-            libroEsistente.incrementaCopie();
+            libroEsistente.incrementaCopie(l.getCopieTotali());
 
             listaLibri.set(index, libroEsistente);
 

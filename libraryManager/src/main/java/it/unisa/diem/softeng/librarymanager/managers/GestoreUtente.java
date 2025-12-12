@@ -1,5 +1,6 @@
 package it.unisa.diem.softeng.librarymanager.managers;
 
+import it.unisa.diem.softeng.librarymanager.exceptions.PrestitoAttivoException;
 import it.unisa.diem.softeng.librarymanager.exceptions.UserAlrRegisteredException;
 import it.unisa.diem.softeng.librarymanager.model.Prestito;
 import it.unisa.diem.softeng.librarymanager.model.Utente;
@@ -43,8 +44,11 @@ public class GestoreUtente implements Gestore<Utente> {
     }
 
     @Override
-    public void remove(Utente l) {
-
+    public void remove(Utente l) throws PrestitoAttivoException {
+        if(l.getCountPrestiti()!=0)
+            throw new PrestitoAttivoException("L'utente ha almeno un prestito attivo");
+        else
+            this.utentiList.remove(l);
     }
 
     @Override

@@ -31,8 +31,6 @@ public class FormLibroController {
     @FXML
     private Button salvaLibroBtn;
     @FXML
-    private TextField copieDisponibiliFld;
-    @FXML
     private TextField isbnFld;
     @FXML
     private TextField copieTotaliFld;
@@ -49,31 +47,29 @@ public class FormLibroController {
     @FXML
     private void handleSalva(ActionEvent event) {
         if (isFormNotValid()) {
-            Alert al = new Alert(Alert.AlertType.ERROR);
-            al.setTitle("Campi vuoti");
-            al.setHeaderText(null);
-            al.setContentText("Alcuni campi sono vuoti, impossibile salvare le modifiche effettuate");
+            mostraAlert("Alcuni campi sono vuoti");
+            return;
+        }
+        try {
+            String titolo = titoloFld.getText();
+            String autore = autoreFld.getText();
+            int anno = Integer.parseInt(annoFld.getText());
+            String isbn = isbnFld.getText();
+            int copieTotali = Integer.parseInt(copieTotaliFld.getText());
+            Libro nuovoLibro = new Libro(titolo, autore, anno, isbn, copieTotali);
 
-            al.showAndWait();
+
+            if (libroInModifica != null) {
+                gestore.modifica(libroInModifica, nuovoLibro);
+            } else {
+                gestore.add(nuovoLibro);
+            }
+
+            chiudiFinestra();
+        }catch(NumberFormatException e){
+            mostraAlert("Formato errato nei campi copie Diponibili,copie Totali oppure anno");
         }
 
-        String titolo = titoloFld.getText();
-        String autore = autoreFld.getText();
-        int anno = Integer.parseInt(annoFld.getText());
-        String isbn = isbnFld.getText();
-        int copieDisponibili = Integer.parseInt(copieDisponibiliFld.getText());
-        int copieTotali = Integer.parseInt(copieTotaliFld.getText());
-        Libro nuovoLibro = new Libro(titolo,autore, anno,isbn, copieTotali);
-
-
-
-        if (libroInModifica != null) {
-            gestore.modifica(libroInModifica, nuovoLibro);
-        } else {
-            gestore.add(nuovoLibro);
-        }
-
-        chiudiFinestra();
     }
 
     @FXML
@@ -115,7 +111,6 @@ public class FormLibroController {
         autoreFld.setText(l.getAutore());
         annoFld.setText(String.valueOf(l.getAnno()));
         isbnFld.setText(l.getIsbn());
-        copieDisponibiliFld.setText(String.valueOf(l.getCopieDisponibili()));
         copieTotaliFld.setText(String.valueOf(l.getCopieTotali()));
 
         setInsModLblText();
@@ -133,7 +128,6 @@ public class FormLibroController {
                 autoreFld.getText().isEmpty() ||
                 annoFld.getText().isEmpty() ||
                 isbnFld.getText().isEmpty() ||
-                copieDisponibiliFld.getText().isEmpty() ||
                 copieTotaliFld.getText().isEmpty();
     }
 
@@ -147,6 +141,11 @@ public class FormLibroController {
         } else {
             insModLbl.setText("Inserimento nuovo libro");
         }
+    }
+    private void mostraAlert(String msg) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
 
 }

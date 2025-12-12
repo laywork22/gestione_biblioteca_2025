@@ -167,8 +167,8 @@ public class Libro implements Comparable<Libro>, Serializable {
      * @brief Incrementa le copie totali di un libro
      * @return Incrementa le copie totali di un libro di uno.
      */
-    public void incrementaCopie() {
-        this.copieTotali ++;
+    public void incrementaCopie(int x) {
+        this.copieTotali +=x;
     }
 
     /**
