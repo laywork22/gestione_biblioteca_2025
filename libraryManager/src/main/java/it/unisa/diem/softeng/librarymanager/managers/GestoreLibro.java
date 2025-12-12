@@ -56,6 +56,8 @@ public class GestoreLibro implements Gestore<Libro> {
         if(l == null) return;
         if(!l.isAttivo())
             throw new LibroException("Il libro risulta non attivo");
+        if(l.getCopieDisponibili()!=l.getCopieTotali())
+            throw new LibroException("Il libro ha copie ancora in prestito");
         l.setAttivo(false);
 
     }
@@ -75,7 +77,7 @@ public class GestoreLibro implements Gestore<Libro> {
 
 
         int index = listaLibri.indexOf(vecchio);
-        if(vecchio.isAttivo()){
+        if(!vecchio.isAttivo()){
             throw new LibroException("Il libro non è attivo");
         }
         if (index != -1) {
