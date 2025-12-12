@@ -2,8 +2,7 @@ package it.unisa.diem.softeng.librarymanager.managers;
 
 
 import it.unisa.diem.softeng.librarymanager.exceptions.PrestitoException;
-import it.unisa.diem.softeng.librarymanager.exceptions.UserAlrRegisteredException;
-import it.unisa.diem.softeng.librarymanager.model.Prestito;
+import it.unisa.diem.softeng.librarymanager.exceptions.UtenteException;
 import it.unisa.diem.softeng.librarymanager.model.Utente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -34,11 +33,10 @@ public class GestoreUtente implements Gestore<Utente> {
      * @see Gestore#add(Object)
      */
     @Override
-    public void add(Utente l) throws UserAlrRegisteredException {
+    public void add(Utente l) throws UtenteException {
         if (l == null) return;
-
         if (this.utentiList.contains(l)) {
-            throw new UserAlrRegisteredException("Utente già presente nel sistema!");
+            throw new UtenteException("Utente già presente nel sistema!");
         }
 
         this.utentiList.add(l);
@@ -46,6 +44,10 @@ public class GestoreUtente implements Gestore<Utente> {
 
     @Override
     public void remove(Utente l) throws PrestitoException {
+        if(!l.isAttivo()){
+            throw new PrestitoException("L'utente risulta non attivo");
+        }
+
         if(l.getCountPrestiti()!=0)
             throw new PrestitoException("L'utente ha almeno un prestito attivo");
         else
@@ -59,6 +61,7 @@ public class GestoreUtente implements Gestore<Utente> {
 
     @Override
     public void modifica(Utente vecchio, Utente nuovo) {
+
 
     }
 

@@ -1,5 +1,6 @@
 package it.unisa.diem.softeng.librarymanager.controllers.forms;
 
+import it.unisa.diem.softeng.librarymanager.exceptions.LibroException;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreLibro;
 import it.unisa.diem.softeng.librarymanager.model.Libro;
 import javafx.event.ActionEvent;
@@ -67,9 +68,11 @@ public class FormLibroController {
 
             chiudiFinestra();
         }catch(NumberFormatException e){
-            mostraAlert("Formato errato nei campi copie Totali oppure anno");
+            mostraAlert("Formato errato nei campi anno oppure copie totali");
         }
         catch(IllegalArgumentException e){
+            mostraAlert(e.getMessage());
+        } catch (LibroException e) {
             mostraAlert(e.getMessage());
         }
 

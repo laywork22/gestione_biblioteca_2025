@@ -1,8 +1,7 @@
 package it.unisa.diem.softeng.librarymanager.controllers.forms;
 
-import it.unisa.diem.softeng.librarymanager.exceptions.UserAlrRegisteredException;
+import it.unisa.diem.softeng.librarymanager.exceptions.UtenteException;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreUtente;
-import it.unisa.diem.softeng.librarymanager.model.Prestito;
 import it.unisa.diem.softeng.librarymanager.model.Utente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import jdk.jshell.spi.ExecutionControl;
 
 
 /**
@@ -68,7 +66,7 @@ public class FormUtenteController {
 
             chiudiFinestra();
 
-        } catch (UserAlrRegisteredException e) {
+        } catch (UtenteException e) {
             mostraAlert(e.getMessage());
 
         }

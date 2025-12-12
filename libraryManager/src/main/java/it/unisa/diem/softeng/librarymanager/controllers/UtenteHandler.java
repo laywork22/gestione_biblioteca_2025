@@ -74,7 +74,7 @@ public class UtenteHandler implements AreaHandler<Utente> {
         try {
             gestore.remove(u);
         } catch (PrestitoException e) {
-            mostraAlert("Impossibile rimuovere utente con prestito attivo");
+            mostraAlert(e.getMessage());
         }
     }
 

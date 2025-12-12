@@ -39,28 +39,26 @@ public class GestorePrestito implements Gestore<Prestito>{
         if(l.getUtente().getCountPrestiti()>=3){
             throw new PrestitoException("L'utente ha raggiunto il limite dei 3 prestiti");
         }
-        else {
-            if (l.getLibro().getCopieDisponibili() <= 0) {
-                throw new PrestitoException("Non ci sono copie disponibili per il libro: " + l.getLibro().getTitolo());
-            }
-            if(!l.getLibro().getAttivo()){
-                throw new PrestitoException("Il libro risulta non attivo");
-            }
-            if(!l.getUtente().getAttivo()){
-                throw new PrestitoException("L'utente risulta non attivo");
-            }
-            l.getUtente().setCountPrestiti(l.getUtente().getCountPrestiti()+1);
-            l.getLibro().decrementaCopie();
-            prestitoList.add(l);
+        if (l.getLibro().getCopieDisponibili() <= 0) {
+            throw new PrestitoException("Non ci sono copie disponibili per il libro: " + l.getLibro().getTitolo());
         }
+        if(!l.getLibro().isAttivo()){
+            throw new PrestitoException("Il libro risulta non attivo");
+        }
+        if(!l.getUtente().isAttivo()){
+            throw new PrestitoException("L'utente risulta non attivo");
+        }
+        l.getUtente().setCountPrestiti(l.getUtente().getCountPrestiti()+1);
+        l.getLibro().decrementaCopie();
+        prestitoList.add(l);
     }
 
     @Override
-    public void remove(Prestito l) {
+    public void remove(Prestito l) throws PrestitoException{
         if(l == null) return;
 
         if (l.getStato() == StatoPrestitoEnum.CHIUSO) {
-            return;
+            throw new PrestitoException("Lo stato del prestito è chiuso");
         }
 
         l.getUtente().setCountPrestiti(l.getUtente().getCountPrestiti() - 1);
@@ -75,9 +73,11 @@ public class GestorePrestito implements Gestore<Prestito>{
     }
 
     @Override
-    public void modifica(Prestito vecchio, Prestito nuovo) {
+    public void modifica(Prestito vecchio, Prestito nuovo) throws  PrestitoException {
         int index = prestitoList.indexOf(vecchio);
-
+        if(vecchio.getStato()==StatoPrestitoEnum.CHIUSO){
+            throw new PrestitoException("Lo stato del prestito è chiuso");
+        }
         if (index != -1) {
             prestitoList.set(index, nuovo);
         }

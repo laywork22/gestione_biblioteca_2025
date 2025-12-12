@@ -44,7 +44,7 @@ public interface Gestore<T> {
      */
     ObservableList<T> getLista();
 
-    void modifica(T vecchio, T nuovo);
+    void modifica(T vecchio, T nuovo) throws Exception;
 
     /**@brief Ordina la lista in funzione del customComparator in ingresso
      *

@@ -1,7 +1,6 @@
 package it.unisa.diem.softeng.librarymanager.model;
 
 import java.io.Serializable;
-import java.util.Comparator;
 
 /**
  * @brief Rappresenta un utente (studente o personale) della biblioteca.
@@ -169,9 +168,7 @@ public class Utente implements Comparable<Utente>, Serializable {
         return this.matricola.equals(l.matricola);
 
     }
-    public boolean getAttivo() {
-        return attivo;
-    }
+
     @Override
     public int compareTo(Utente o) {
         return this.getMatricola().compareTo(o.getMatricola());

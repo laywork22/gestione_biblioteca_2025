@@ -1,6 +1,7 @@
 package it.unisa.diem.softeng.librarymanager.controllers;
 
 import it.unisa.diem.softeng.librarymanager.controllers.forms.FormPrestitoController;
+import it.unisa.diem.softeng.librarymanager.exceptions.PrestitoException;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreLibro;
 import it.unisa.diem.softeng.librarymanager.managers.GestorePrestito;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreUtente;
@@ -8,6 +9,7 @@ import it.unisa.diem.softeng.librarymanager.model.Prestito;
 import it.unisa.diem.softeng.librarymanager.model.StatoPrestitoEnum;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableRow;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -57,7 +59,11 @@ public class PrestitoHandler implements AreaHandler<Prestito> {
     @Override
     public void onRemove(Prestito p) {
         if(p == null) throw new NullPointerException("Prestito non rilevato, per favore sceglierne uno  dalla tabella");
-        this.gestore.remove(p);;
+        try {
+            this.gestore.remove(p);
+        } catch (PrestitoException e) {
+            mostraAlert(e.getMessage());
+        }
     }
 
     @Override
@@ -256,6 +262,11 @@ public class PrestitoHandler implements AreaHandler<Prestito> {
                 } catch (Exception e) { setStyle(""); }
             }
         });
+    }
+    private void mostraAlert(String msg) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
 
 }

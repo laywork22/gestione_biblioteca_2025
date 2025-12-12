@@ -2,6 +2,7 @@ package it.unisa.diem.softeng.librarymanager.controllers;
 
 import it.unisa.diem.softeng.librarymanager.comparators.AutoreLibroComparator;
 import it.unisa.diem.softeng.librarymanager.controllers.forms.FormLibroController;
+import it.unisa.diem.softeng.librarymanager.exceptions.LibroException;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreLibro;
 import it.unisa.diem.softeng.librarymanager.model.Libro;
 import it.unisa.diem.softeng.librarymanager.model.Utente;
@@ -12,6 +13,7 @@ import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Modality;
@@ -44,8 +46,13 @@ public class LibroHandler implements AreaHandler<Libro> {
 
     @Override
     public void onRemove(Libro l) {
-        if (l != null) gestore.remove(l);
-
+        if (l != null) {
+            try {
+                gestore.remove(l);
+            } catch (LibroException e) {
+                mostraAlert(e.getMessage());
+            }
+        }
     }
 
     @Override
@@ -166,5 +173,11 @@ public class LibroHandler implements AreaHandler<Libro> {
     public void ordina(String criterio) {
 
     }
+    private void mostraAlert(String msg) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setContentText(msg);
+        alert.showAndWait();
+    }
+
 }
 

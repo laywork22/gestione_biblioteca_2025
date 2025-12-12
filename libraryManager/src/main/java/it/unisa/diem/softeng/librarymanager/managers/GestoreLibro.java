@@ -1,5 +1,6 @@
 package it.unisa.diem.softeng.librarymanager.managers;
 
+import it.unisa.diem.softeng.librarymanager.exceptions.LibroException;
 import it.unisa.diem.softeng.librarymanager.model.Libro;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -29,14 +30,16 @@ public class GestoreLibro implements Gestore<Libro> {
      * @see Gestore#add(Object)
      */
     @Override
-    public void add(Libro l) {
+    public void add(Libro l) throws LibroException {
         if (l == null) return;
 
         int index = listaLibri.indexOf(l);
 
         if (index != -1) {
             Libro libroEsistente = listaLibri.get(index);
-
+            if(!libroEsistente.isAttivo()){
+                throw new LibroException("Il libro risulta non attivo");
+            }
             libroEsistente.setCopieTotali(libroEsistente.getCopieTotali()+l.getCopieTotali());
             libroEsistente.setCopieDisponibili(libroEsistente.getCopieDisponibili()+l.getCopieTotali());
 
@@ -49,8 +52,10 @@ public class GestoreLibro implements Gestore<Libro> {
     }
 
     @Override
-    public void remove(Libro l) {
+    public void remove(Libro l) throws LibroException {
         if(l == null) return;
+        if(!l.isAttivo())
+            throw new LibroException("Il libro risulta non attivo");
         l.setAttivo(false);
 
     }
@@ -66,9 +71,13 @@ public class GestoreLibro implements Gestore<Libro> {
     }
 
     @Override
-    public void modifica(Libro vecchio, Libro nuovo) throws IllegalArgumentException {
-        int index = listaLibri.indexOf(vecchio);
+    public void modifica(Libro vecchio, Libro nuovo) throws IllegalArgumentException,LibroException {
 
+
+        int index = listaLibri.indexOf(vecchio);
+        if(vecchio.isAttivo()){
+            throw new LibroException("Il libro non è attivo");
+        }
         if (index != -1) {
             int copieNonDisponibili = vecchio.getCopieTotali() - vecchio.getCopieDisponibili();
 
