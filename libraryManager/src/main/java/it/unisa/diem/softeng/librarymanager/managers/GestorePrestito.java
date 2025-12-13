@@ -87,7 +87,7 @@ public class GestorePrestito implements Gestore<Prestito>{
             prestitoList.set(index, vecchio);
         }
     }
-    
+
 
     /** @brief Ottiene il Predicate corrispondente per la ricerca filtrata di un Prestito
      *
@@ -99,7 +99,15 @@ public class GestorePrestito implements Gestore<Prestito>{
      */
     @Override
     public Predicate<Prestito> getPredicato(String str) {
-        return r -> true;
+        return prestito -> {
+            if (str == null || str.isEmpty()) return true;
+            String filtro = str.toLowerCase();
+
+            // Cerca per Cognome Utente o Titolo Libro prestato
+            return prestito.getUtente().getCognome().toLowerCase().contains(filtro) ||
+                    prestito.getLibro().getTitolo().toLowerCase().contains(filtro)||
+                    prestito.getUtente().getNome().toLowerCase().contains(filtro);
+        };
     }
 
     @Override

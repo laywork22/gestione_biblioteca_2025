@@ -14,10 +14,7 @@ import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
@@ -79,14 +76,19 @@ public class PrincipaleController {
     private Button salvaFileBtn;
     @FXML
     private MenuButton ordineFiltro;
-
+    @FXML
+    private TextField barraRicerca;
     @FXML
     public void initialize() {
         //inizializzo i gestori UNA sola volta
         gestoreLibro = new GestoreLibro();
         gestorePrestito = new GestorePrestito();
         gestoreUtente = new GestoreUtente();
-
+        barraRicerca.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (areaCorrente != null) {
+                areaCorrente.filtraTabella(newValue);
+            }
+        });
 
 
         //inserimento libri

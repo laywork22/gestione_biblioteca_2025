@@ -115,7 +115,15 @@ public class GestoreLibro implements Gestore<Libro> {
      */
     @Override
     public Predicate<Libro> getPredicato(String str) {
-        return libro -> true;
+        return libro -> {
+            if (str == null || str.isEmpty()) return true; // Se vuoto mostra tutto
+            String filtro = str.toLowerCase();
+
+            // Cerca in Titolo, Autore o ISBN
+            return libro.getTitolo().toLowerCase().contains(filtro) ||
+                    libro.getAutore().toLowerCase().contains(filtro) ||
+                    libro.getIsbn().toLowerCase().contains(filtro);
+        };
     }
 
 

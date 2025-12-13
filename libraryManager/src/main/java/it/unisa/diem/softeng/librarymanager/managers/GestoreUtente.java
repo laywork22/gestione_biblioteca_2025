@@ -93,7 +93,19 @@ public class GestoreUtente implements Gestore<Utente> {
      */
     @Override
     public Predicate<Utente> getPredicato(String filtro) {
-        return r -> true;
+        return utente -> {
+            if (filtro == null || filtro.isEmpty()) {
+                return true;
+            }
+            if (utente == null) {
+                return false;
+            }
+            String filtroLower = filtro.toLowerCase();
+
+            return utente.getCognome().toLowerCase().contains(filtroLower) ||
+                    utente.getNome().toLowerCase().contains(filtroLower) ||
+                    utente.getEmail().toLowerCase().contains(filtroLower);
+        };
     }
 
     /** @brief Inizializza il gestore con la lista di osservabili degli utenti caricata dal file
