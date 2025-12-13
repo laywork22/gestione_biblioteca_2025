@@ -60,15 +60,22 @@ public class GestoreUtente implements Gestore<Utente> {
     }
 
     @Override
-    public void modifica(Utente vecchio, Utente nuovo) {
+    public void modifica(Utente vecchio, Utente nuovo) throws UtenteException {
+
+        if(!vecchio.isAttivo()){
+            throw new UtenteException("L'utente risulta non attivo");
+        }
+        if (this.utentiList.contains(vecchio)) {
+            vecchio.setNome(nuovo.getNome());
+            vecchio.setCognome(nuovo.getCognome());
+            vecchio.setEmail(nuovo.getEmail());
+            vecchio.setCountPrestiti(vecchio.getCountPrestiti());
+            vecchio.setMatricola(nuovo.getMatricola());
+        }
 
 
     }
 
-    @Override
-    public void ordinaLista(Comparator<Utente> comparatore) {
-
-    }
 
     @Override
     public void salvaLista(String nomeFile) {

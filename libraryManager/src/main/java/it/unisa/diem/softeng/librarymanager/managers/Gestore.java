@@ -46,14 +46,6 @@ public interface Gestore<T> {
 
     void modifica(T vecchio, T nuovo) throws Exception;
 
-    /**@brief Ordina la lista in funzione del customComparator in ingresso
-     *
-     * Ordina la lista e rende possibile rispettare i requisiti di visualizzazione in ordine (UI-1.1.2,UI-1.2.2).
-     *
-     * @param comparatore Il comparatore che descrive la logica di ordinamento
-     */
-    void ordinaLista(Comparator<T> comparatore);
-
 
     Predicate<T> getPredicato(String filtro);
 

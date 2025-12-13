@@ -79,14 +79,15 @@ public class GestorePrestito implements Gestore<Prestito>{
             throw new PrestitoException("Lo stato del prestito è chiuso");
         }
         if (index != -1) {
-            prestitoList.set(index, nuovo);
+            vecchio.setStato(nuovo.getStato());
+            vecchio.setUtente(nuovo.getUtente());
+            vecchio.setLibro(nuovo.getLibro());
+            vecchio.setDataFine(nuovo.getDataFine());
+            vecchio.setDataInizio(nuovo.getDataInizio());
+            prestitoList.set(index, vecchio);
         }
     }
-
-    @Override
-    public void ordinaLista(Comparator<Prestito> comparatore) {
-
-    }
+    
 
     /** @brief Ottiene il Predicate corrispondente per la ricerca filtrata di un Prestito
      *

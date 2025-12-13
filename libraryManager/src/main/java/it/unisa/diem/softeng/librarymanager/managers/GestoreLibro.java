@@ -52,16 +52,16 @@ public class GestoreLibro implements Gestore<Libro> {
         listaLibri.add(l);
     }
 
-    @Override
-    public void remove(Libro l) throws LibroException {
-        if(l == null) return;
-        if(!l.isAttivo())
-            throw new LibroException("Il libro risulta non attivo");
-        if(l.getCopieDisponibili()!=l.getCopieTotali())
-            throw new LibroException("Il libro ha copie ancora in prestito");
-        l.setAttivo(false);
+            @Override
+            public void remove(Libro l) throws LibroException {
+                if(l == null) return;
+                if(!l.isAttivo())
+                    throw new LibroException("Il libro risulta non attivo");
+                if(l.getCopieDisponibili()!=l.getCopieTotali())
+                    throw new LibroException("Il libro ha copie ancora in prestito");
+                l.setAttivo(false);
 
-    }
+            }
 
     @Override
     public void salvaLista(String nomeFile) {
@@ -104,10 +104,6 @@ public class GestoreLibro implements Gestore<Libro> {
         }
     }
 
-    @Override
-    public void ordinaLista(Comparator<Libro> comparatore) {
-
-    }
 
     /** @brief Ottiene il Predicate corrispondente per la ricerca filtrata di un libro
      *
