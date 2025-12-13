@@ -18,7 +18,7 @@ public class LibroHandlerTest {
     private GestoreLibro gestoreLibro;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         gestoreLibro = new GestoreLibro();
         handler = new LibroHandler(gestoreLibro);
     }
