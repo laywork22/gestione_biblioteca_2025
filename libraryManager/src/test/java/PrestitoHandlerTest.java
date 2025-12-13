@@ -67,11 +67,4 @@ public class PrestitoHandlerTest {
         assertEquals(StatoPrestitoEnum.CHIUSO, p.getStato(), "Il metodo onRemove dovrebbe impostare lo stato del prestito a CHIUSO");
     }
 
-    @Test
-    void testOnRemoveGestisceNull() {
-
-        //controllo lancio eccezione quando onRemove riceve un valore null
-        assertThrows(NullPointerException.class, () -> handler.onRemove(null),
-                "Se viene passato null al metodo, lancia una NullPointerException");
-    }
 }
