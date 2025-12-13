@@ -1,11 +1,10 @@
-package it.unisa.diem.softeng.librarymanager.controllers;
+package it.unisa.diem.softeng.librarymanager.handlers;
 
 import it.unisa.diem.softeng.librarymanager.comparators.AutoreLibroComparator;
 import it.unisa.diem.softeng.librarymanager.controllers.forms.FormLibroController;
 import it.unisa.diem.softeng.librarymanager.exceptions.LibroException;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreLibro;
 import it.unisa.diem.softeng.librarymanager.model.Libro;
-import it.unisa.diem.softeng.librarymanager.model.Utente;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;

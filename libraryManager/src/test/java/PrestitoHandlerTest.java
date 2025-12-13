@@ -1,4 +1,4 @@
-import it.unisa.diem.softeng.librarymanager.controllers.PrestitoHandler;
+import it.unisa.diem.softeng.librarymanager.handlers.PrestitoHandler;
 import it.unisa.diem.softeng.librarymanager.managers.*;
 import it.unisa.diem.softeng.librarymanager.model.Libro;
 import it.unisa.diem.softeng.librarymanager.model.Prestito;

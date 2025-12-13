@@ -1,7 +1,6 @@
 import it.unisa.diem.softeng.librarymanager.comparators.CognomeUtenteComparator;
-import it.unisa.diem.softeng.librarymanager.controllers.UtenteHandler;
+import it.unisa.diem.softeng.librarymanager.handlers.UtenteHandler;
 import it.unisa.diem.softeng.librarymanager.exceptions.UtenteException;
-import it.unisa.diem.softeng.librarymanager.managers.Gestore;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreUtente;
 import it.unisa.diem.softeng.librarymanager.model.Utente;
 import org.junit.jupiter.api.BeforeEach;

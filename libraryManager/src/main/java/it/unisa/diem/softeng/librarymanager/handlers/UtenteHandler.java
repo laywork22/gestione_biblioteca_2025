@@ -1,4 +1,4 @@
-package it.unisa.diem.softeng.librarymanager.controllers;
+package it.unisa.diem.softeng.librarymanager.handlers;
 
 import it.unisa.diem.softeng.librarymanager.comparators.CognomeUtenteComparator;
 import it.unisa.diem.softeng.librarymanager.controllers.forms.FormUtenteController;

@@ -1,4 +1,4 @@
-package it.unisa.diem.softeng.librarymanager.controllers;
+package it.unisa.diem.softeng.librarymanager.handlers;
 
 import javafx.scene.control.TableView;
 import java.util.List;
