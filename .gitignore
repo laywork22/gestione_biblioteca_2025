@@ -2,3 +2,4 @@
 /libraryManager/target/
 .vscode/
 libraryManager/.idea/*
+/libraryManager/nbproject/

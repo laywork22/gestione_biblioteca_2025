@@ -24,7 +24,7 @@ public class PrestitoHandlerTest {
     private GestoreUtente gestoreUtente;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         gestorePrestito = new GestorePrestito();
         gestoreLibro = new GestoreLibro();
         gestoreUtente = new GestoreUtente();
