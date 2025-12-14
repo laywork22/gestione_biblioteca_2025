@@ -1,6 +1,6 @@
 package it.unisa.diem.softeng.librarymanager.handlers;
 
-import it.unisa.diem.softeng.librarymanager.comparators.CognomeUtenteComparator;
+
 import it.unisa.diem.softeng.librarymanager.controllers.forms.FormUtenteController;
 import it.unisa.diem.softeng.librarymanager.exceptions.PrestitoException;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreUtente;
@@ -50,7 +50,7 @@ public class UtenteHandler implements AreaHandler<Utente> {
         this.gestore = gestore;
 
         mappaOrdinamento = new HashMap<>();
-        mappaOrdinamento.put("Cognome (A-Z)", new CognomeUtenteComparator());
+        mappaOrdinamento.put("Cognome (A-Z)", Comparator.comparing(Utente::getCognome, String.CASE_INSENSITIVE_ORDER));
     }
 
     /**

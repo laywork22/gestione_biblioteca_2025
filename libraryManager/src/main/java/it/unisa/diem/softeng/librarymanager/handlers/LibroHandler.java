@@ -1,6 +1,5 @@
 package it.unisa.diem.softeng.librarymanager.handlers;
 
-import it.unisa.diem.softeng.librarymanager.comparators.AutoreLibroComparator;
 import it.unisa.diem.softeng.librarymanager.controllers.forms.FormLibroController;
 import it.unisa.diem.softeng.librarymanager.exceptions.LibroException;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreLibro;
@@ -51,8 +50,8 @@ public class LibroHandler implements AreaHandler<Libro> {
 
         mappaComparatori = new HashMap<>();
 
-        mappaComparatori.put("Titolo (A-Z)", new AutoreLibroComparator());
-        mappaComparatori.put("Autore (A-Z)", new AutoreLibroComparator());
+        mappaComparatori.put("Titolo (A-Z)",  Comparator.comparing(p -> p.getTitolo(), String.CASE_INSENSITIVE_ORDER));;
+        mappaComparatori.put("Autore (A-Z)", Comparator.comparing(p->p.getAutore(), String.CASE_INSENSITIVE_ORDER));;
     }
 
     /**

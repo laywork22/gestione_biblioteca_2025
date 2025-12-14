@@ -13,15 +13,16 @@ import java.time.LocalDate;
 
 import java.util.List;
 import java.util.function.Predicate;
+
 /**
- * @brief Classe specifica per la gestione delle entità Prestito.
- *
- *Questa classe implementa i metodi relativi a la logica di formazione
- *della ObservableList di Prestito.
  * @author Gruppo 12
+ * @brief Classe specifica per la gestione delle entità Prestito.
+ * <p>
+ * Questa classe implementa i metodi relativi a la logica di formazione
+ * della ObservableList di Prestito.
  */
-public class GestorePrestito implements Gestore<Prestito>, Serializable{
-    private  ObservableList<Prestito> prestitoList;
+public class GestorePrestito implements Gestore<Prestito>, Serializable {
+    private ObservableList<Prestito> prestitoList;
 
     public GestorePrestito() {
         this.prestitoList = FXCollections.observableArrayList();
@@ -33,39 +34,38 @@ public class GestorePrestito implements Gestore<Prestito>, Serializable{
     }
 
     /**
+     * @param l il prestito da aggiungere o aggiornare
      * @brief Aggiunge un libro alla lista.
      * Implementazione specifica per i Prestiti: controlla che un Utente non abbia più di tre prestiti attivi, in caso
      * contrario, il prestito viene rifiutato e l'operazione di inserimento annullata.
      * Sono ammessi più prestiti di uno stesso libro (copie disponibili permettendo) a nome di un unico utente..
-     *
-     * @param l il prestito da aggiungere o aggiornare
      * @see Gestore#add(Object)
      */
     @Override
     public void add(Prestito l) throws PrestitoException {
-        if(l==null){
+        if (l == null) {
             return;
         }
-        if(l.getUtente().getCountPrestiti()>=3){
+        if (l.getUtente().getCountPrestiti() >= 3) {
             throw new PrestitoException("L'utente ha raggiunto il limite dei 3 prestiti");
         }
         if (l.getLibro().getCopieDisponibili() <= 0) {
             throw new PrestitoException("Non ci sono copie disponibili per il libro: " + l.getLibro().getTitolo());
         }
-        if(!l.getLibro().isAttivo()){
+        if (!l.getLibro().isAttivo()) {
             throw new PrestitoException("Il libro risulta non attivo");
         }
-        if(!l.getUtente().isAttivo()){
+        if (!l.getUtente().isAttivo()) {
             throw new PrestitoException("L'utente risulta non attivo");
         }
-        l.getUtente().setCountPrestiti(l.getUtente().getCountPrestiti()+1);
+        l.getUtente().setCountPrestiti(l.getUtente().getCountPrestiti() + 1);
         l.getLibro().decrementaCopie();
         prestitoList.add(l);
     }
 
     @Override
-    public void remove(Prestito l) throws PrestitoException{
-        if(l == null) return;
+    public void remove(Prestito l) throws PrestitoException {
+        if (l == null) return;
 
         if (l.getStato() == StatoPrestitoEnum.CHIUSO) {
             throw new PrestitoException("Lo stato del prestito è chiuso");
@@ -78,14 +78,14 @@ public class GestorePrestito implements Gestore<Prestito>, Serializable{
     }
 
     @Override
-    public ObservableList<Prestito> getLista(){
+    public ObservableList<Prestito> getLista() {
         return this.prestitoList;
     }
 
     @Override
-    public void modifica(Prestito vecchio, Prestito nuovo) throws  PrestitoException {
+    public void modifica(Prestito vecchio, Prestito nuovo) throws PrestitoException {
         int index = prestitoList.indexOf(vecchio);
-        if(vecchio.getStato()==StatoPrestitoEnum.CHIUSO){
+        if (vecchio.getStato() == StatoPrestitoEnum.CHIUSO) {
             throw new PrestitoException("Lo stato del prestito è chiuso");
         }
         if (index != -1) {
@@ -99,12 +99,10 @@ public class GestorePrestito implements Gestore<Prestito>, Serializable{
     }
 
 
-    /** @brief Ottiene il Predicate corrispondente per la ricerca filtrata di un Prestito
-     *
+    /**
      * @param str La stringa da filtrare nella tabella per la ricerca
-     *
      * @return Predicate associato alla ricerca attuale
-     *
+     * @brief Ottiene il Predicate corrispondente per la ricerca filtrata di un Prestito
      * @see Gestore#getPredicato(String)
      */
     @Override
@@ -115,20 +113,17 @@ public class GestorePrestito implements Gestore<Prestito>, Serializable{
 
             // Cerca per Cognome Utente o Titolo Libro prestato
             return prestito.getUtente().getCognome().toLowerCase().contains(filtro) ||
-                    prestito.getLibro().getTitolo().toLowerCase().contains(filtro)||
+                    prestito.getLibro().getTitolo().toLowerCase().contains(filtro) ||
                     prestito.getUtente().getNome().toLowerCase().contains(filtro);
         };
     }
 
-    /** @brief Inizializza il gestore con la lista di osservabili dei prestiti caricata dal file
-     *
-     * @pre Il file deve esistere
-     *
-     * @post La lista è caricata in memoria nel GestorePrestito
-     *
-     * @return GestoreUtente con listaUtente non vuota
-     *
+    /**
      * @param nomeFile Il nome del file da cui caricare la lista
+     * @return GestoreUtente con listaUtente non vuota
+     * @brief Inizializza il gestore con la lista di osservabili dei prestiti caricata dal file
+     * @pre Il file deve esistere
+     * @post La lista è caricata in memoria nel GestorePrestito
      */
     public static GestorePrestito caricaListaPrestiti(String nomeFile) {
         GestorePrestito gp = new GestorePrestito();
@@ -163,8 +158,7 @@ public class GestorePrestito implements Gestore<Prestito>, Serializable{
 
             if (p.getDataFine().isBefore(oggi)) {
                 p.setStato(StatoPrestitoEnum.SCADUTO);
-            }
-            else {
+            } else {
                 p.setStato(StatoPrestitoEnum.ATTIVO);
             }
         }
