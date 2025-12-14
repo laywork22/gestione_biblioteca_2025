@@ -1,6 +1,5 @@
-import it.unisa.diem.softeng.librarymanager.model.Libro;
-import it.unisa.diem.softeng.librarymanager.model.Prestito;
-import it.unisa.diem.softeng.librarymanager.model.Utente;
+package it.unisa.diem.softeng.librarymanager.model;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.*;
 
