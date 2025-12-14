@@ -102,7 +102,6 @@ class GestorePrestitoTest {
 
 
     @Test
-    @DisplayName("PREDICATO: Filtro ricerca")
     void testGetPredicato() throws PrestitoException {
         gestore.add(prestitoStandard);
 
