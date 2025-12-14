@@ -8,6 +8,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <release>17</release>
         <javafx.version>21.0.6</javafx.version>
+        <maven.compiler.release>17</maven.compiler.release>
     </properties>
     <build>
         <plugins>

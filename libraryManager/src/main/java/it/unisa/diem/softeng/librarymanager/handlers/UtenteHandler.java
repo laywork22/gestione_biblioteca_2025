@@ -256,7 +256,7 @@ public class UtenteHandler implements AreaHandler<Utente> {
      * @param[inout] t La tabella di cui impostare il RowFactory.
      */
     private void setRigheTabella(TableView<Utente> t) {
-        t.setRowFactory(tv -> new TableRow() { // RAW TYPE
+        t.setRowFactory(tv -> new TableRow() { 
             @Override
             protected void updateItem(Object item, boolean empty) {
                 super.updateItem(item, empty);
@@ -266,11 +266,16 @@ public class UtenteHandler implements AreaHandler<Utente> {
                     return;
                 }
 
-                Utente utente = (Utente) item;
-                if (!utente.isAttivo()) {
-                    setStyle("-fx-background-color: orange; -fx-text-fill: darkgray;");
-                } else {
+                if(isSelected()) {
                     setStyle("");
+                }
+                else {
+                    Utente utente = (Utente) item;
+                    if (!utente.isAttivo()) {
+                        setStyle("-fx-background-color: orange; -fx-text-fill: darkgray;");
+                    } else {
+                        setStyle("");
+                    }
                 }
             }
         });

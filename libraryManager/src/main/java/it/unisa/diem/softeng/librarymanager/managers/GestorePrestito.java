@@ -6,8 +6,12 @@ import it.unisa.diem.softeng.librarymanager.model.StatoPrestitoEnum;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDate;
-import java.util.Comparator;
+
+import java.util.List;
 import java.util.function.Predicate;
 /**
  * @brief Classe specifica per la gestione delle entità Prestito.
@@ -16,12 +20,18 @@ import java.util.function.Predicate;
  *della ObservableList di Prestito.
  * @author Gruppo 12
  */
-public class GestorePrestito implements Gestore<Prestito>{
-    private final ObservableList<Prestito> prestitoList;
+public class GestorePrestito implements Gestore<Prestito>, Serializable{
+    private  ObservableList<Prestito> prestitoList;
 
     public GestorePrestito() {
         this.prestitoList = FXCollections.observableArrayList();
     }
+
+    @Override
+    public void setLista(List<Prestito> list) {
+        prestitoList = FXCollections.observableArrayList(list);
+    }
+
     /**
      * @brief Aggiunge un libro alla lista.
      * Implementazione specifica per i Prestiti: controlla che un Utente non abbia più di tre prestiti attivi, in caso
@@ -110,12 +120,6 @@ public class GestorePrestito implements Gestore<Prestito>{
         };
     }
 
-    @Override
-    public void salvaLista(String nomeFile) {
-
-    }
-
-
     /** @brief Inizializza il gestore con la lista di osservabili dei prestiti caricata dal file
      *
      * @pre Il file deve esistere
@@ -127,11 +131,25 @@ public class GestorePrestito implements Gestore<Prestito>{
      * @param nomeFile Il nome del file da cui caricare la lista
      */
     public static GestorePrestito caricaListaPrestiti(String nomeFile) {
-        return null;
+        GestorePrestito gp = new GestorePrestito();
+
+
+        try (ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(Files.newInputStream(Paths.get(nomeFile))))) {
+            List<Prestito> listaCaricata = (List<Prestito>) ois.readObject();
+
+            gp.setLista(listaCaricata);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        return gp;
     }
+
     /**
      * @brief Aggiorna lo stato dei prestiti in base alla data corrente.
-     * * Scorre la lista dei prestiti. Se un prestito è ancora ATTIVO ma la data di scadenza
+     * Scorre la lista dei prestiti. Se un prestito è ancora ATTIVO ma la data di scadenza
      * è precedente a oggi, lo stato viene cambiato in SCADUTO.
      * I prestiti già CHIUSI vengono ignorati.
      */

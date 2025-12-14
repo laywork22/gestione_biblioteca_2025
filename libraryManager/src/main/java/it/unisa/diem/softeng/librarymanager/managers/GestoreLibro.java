@@ -5,8 +5,11 @@ import it.unisa.diem.softeng.librarymanager.model.Libro;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.Comparator;
-import java.util.Locale;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+import java.util.List;
 import java.util.function.Predicate;
 /**
  * @brief Classe specifica per la gestione delle entità Libro.
@@ -16,10 +19,16 @@ import java.util.function.Predicate;
  * @author Gruppo 12
  */
 public class GestoreLibro implements Gestore<Libro> {
-    private final ObservableList<Libro> listaLibri;
+    private ObservableList<Libro> listaLibri;
 
     public GestoreLibro() {
         this.listaLibri = FXCollections.observableArrayList();
+    }
+
+
+    @Override
+    public void setLista(List<Libro> l) {
+        listaLibri = FXCollections.observableArrayList(l);
     }
 
     /**
@@ -52,20 +61,17 @@ public class GestoreLibro implements Gestore<Libro> {
         listaLibri.add(l);
     }
 
-            @Override
-            public void remove(Libro l) throws LibroException {
-                if(l == null) return;
-                if(!l.isAttivo())
-                    throw new LibroException("Il libro risulta non attivo");
-                if(l.getCopieDisponibili()!=l.getCopieTotali())
-                    throw new LibroException("Il libro ha copie ancora in prestito");
-                l.setAttivo(false);
-
-            }
-
     @Override
-    public void salvaLista(String nomeFile) {
+    public void remove(Libro l) throws LibroException {
+        if(l == null) return;
 
+        if(!l.isAttivo())
+            throw new LibroException("Il libro risulta non attivo");
+
+        if(l.getCopieDisponibili()!=l.getCopieTotali())
+            throw new LibroException("Il libro ha copie ancora in prestito");
+
+       l.setAttivo(false);
     }
 
     @Override
@@ -75,8 +81,6 @@ public class GestoreLibro implements Gestore<Libro> {
 
     @Override
     public void modifica(Libro vecchio, Libro nuovo) throws IllegalArgumentException,LibroException {
-
-
         int index = listaLibri.indexOf(vecchio);
         if(!vecchio.isAttivo()){
             throw new LibroException("Il libro non è attivo");
@@ -138,7 +142,19 @@ public class GestoreLibro implements Gestore<Libro> {
      * @param nomeFile Il nome del file da cui caricare la lista
       */
     public static GestoreLibro caricaListaLibri(String nomeFile) {
-        return null;
+        GestoreLibro gl = new GestoreLibro();
+
+        try (ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(Files.newInputStream(Paths.get(nomeFile))))) {
+            List<Libro> listaCaricata = (List<Libro>) ois.readObject();
+
+            gl.setLista(listaCaricata);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        return gl;
     }
 
 }

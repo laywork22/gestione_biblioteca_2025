@@ -3,6 +3,7 @@ package it.unisa.diem.softeng.librarymanager.managers;
 import javafx.collections.ObservableList;
 
 import java.util.Comparator;
+import java.util.List;
 import java.util.function.Predicate;
 
 /**
@@ -36,6 +37,14 @@ public interface Gestore<T> {
      */
     void remove(T elem) throws Exception;
 
+    /**
+     * @brief Imposta la lista del gestore con una passata come parametro incapsulandola in una nuova lista osservabile.
+     * Utilizzata per le operazioni di I/O.
+     * @param l La nuova lista che sostituirà quella precedente.
+     */
+    void setLista(List<T> l);
+
+
     /**@brief Restituisce la lista osservabile di entita'
      *
      * Restituisce una Lista adatta all'inserimento in una Tableview
@@ -49,12 +58,5 @@ public interface Gestore<T> {
 
     Predicate<T> getPredicato(String filtro);
 
-    /**@brief Salva lo stato corrente su un file.
-     *
-     * Implementa il requisito di salvataggio (DF-1.4)
-     *
-     * @param nomeFile Il nome del file su cui si salverà lo stato di una determinata area
-     */
-    void salvaLista(String nomeFile);
 
 }

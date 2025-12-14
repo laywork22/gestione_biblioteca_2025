@@ -250,13 +250,19 @@ public class LibroHandler implements AreaHandler<Libro> {
                     return;
                 }
 
-                Libro libro = (Libro) item;
-                if(!libro.isAttivo()) {
-                    setStyle("-fx-background-color: lightgray; -fx-text-fill: darkgray;");
-                }
-                else {
+                if (isSelected()) {
                     setStyle("");
                 }
+                else {
+                    Libro libro = (Libro) item;
+                    if(!libro.isAttivo()) {
+                        setStyle("-fx-background-color: orange; -fx-text-fill: darkgray;");
+                    }
+                    else {
+                        setStyle("");
+                    }
+                }
+                
             }
         });
     }

@@ -310,21 +310,26 @@ public class PrestitoHandler implements AreaHandler<Prestito> {
                     return;
                 }
 
-                Prestito prestito = (Prestito) item;
-                try {
-                    LocalDate now = LocalDate.now();
-                    LocalDate scadenza = prestito.getDataFine();
+                if (isSelected()) {
+                    setStyle("");
+                }
+                else {
+                    Prestito prestito = (Prestito) item;
+                    try {
+                        LocalDate now = LocalDate.now();
+                        LocalDate scadenza = prestito.getDataFine();
 
-                    if (prestito.getStato() == StatoPrestitoEnum.CHIUSO) {
-                        setStyle("-fx-background-color: lightgreen;");
-                    } else if (scadenza.isBefore(now)) {
-                        setStyle("-fx-background-color: orange;");
-                    } else if (!scadenza.isAfter(now.plusDays(5))) {
-                        setStyle("-fx-background-color: yellow;");
-                    } else {
-                        setStyle("");
-                    }
-                } catch (Exception e) { setStyle(""); }
+                        if (prestito.getStato() == StatoPrestitoEnum.CHIUSO) {
+                            setStyle("-fx-background-color: lightgreen;");
+                        } else if (scadenza.isBefore(now)) {
+                            setStyle("-fx-background-color: orange;");
+                        } else if (!scadenza.isAfter(now.plusDays(5))) {
+                            setStyle("-fx-background-color: yellow;");
+                        } else {
+                            setStyle("");
+                        }
+                    } catch (Exception e) { setStyle(""); }
+                }
             }
         });
     }

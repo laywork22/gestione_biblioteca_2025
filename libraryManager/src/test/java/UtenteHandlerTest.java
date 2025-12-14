@@ -34,17 +34,20 @@ public class UtenteHandlerTest {
     }
 
     @Test
-    void testCompare() {
+    void testComparator() {
         CognomeUtenteComparator comparator = new CognomeUtenteComparator();
 
         Utente u1 = new Utente("Mario", "Rossi", "M1", "m@test.it");
         Utente u2 = new Utente("Luigi", "Bianchi", "M2", "l@test.it");
-        Utente u3 = new Utente("Anna", "Rossi", "M3", "a@test.it"); // Stesso cognome
+        Utente u3 = new Utente("Mario", "Rossi", "M4", "m1@test.it"); 
 
+        //Bianchi viene prima di Rossi
         assertTrue(comparator.compare(u2, u1) < 0);
 
+        //Rossi viene dopo Bianchi
         assertTrue(comparator.compare(u1, u2) > 0);
 
+        //Rossi è uguale a Rossi a patto che abbiano nome e cognome uguali
         assertEquals(0, comparator.compare(u1, u3));
     }
 
