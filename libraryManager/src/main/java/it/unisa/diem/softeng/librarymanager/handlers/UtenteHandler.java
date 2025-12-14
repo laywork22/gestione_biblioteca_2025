@@ -50,6 +50,7 @@ public class UtenteHandler implements AreaHandler<Utente> {
         this.gestore = gestore;
 
         mappaOrdinamento = new HashMap<>();
+        mappaOrdinamento.put("Nome (A-Z)", Comparator.comparing(Utente::getNome, String.CASE_INSENSITIVE_ORDER));
         mappaOrdinamento.put("Cognome (A-Z)", Comparator.comparing(Utente::getCognome, String.CASE_INSENSITIVE_ORDER));
     }
 

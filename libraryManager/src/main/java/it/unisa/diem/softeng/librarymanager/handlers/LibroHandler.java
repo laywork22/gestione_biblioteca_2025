@@ -52,6 +52,7 @@ public class LibroHandler implements AreaHandler<Libro> {
 
         mappaComparatori.put("Titolo (A-Z)",  Comparator.comparing(p -> p.getTitolo(), String.CASE_INSENSITIVE_ORDER));;
         mappaComparatori.put("Autore (A-Z)", Comparator.comparing(p->p.getAutore(), String.CASE_INSENSITIVE_ORDER));;
+        mappaComparatori.put("Anno (Recenti)", Comparator.comparing(Libro::getAnno).reversed());;
     }
 
     /**
