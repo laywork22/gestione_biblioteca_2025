@@ -34,7 +34,6 @@ class UtenteTest {
 
 
     @Test
-    @DisplayName("EQUALS: Uguali se stessa matricola, ignorando altri campi")
     void testEqualsSameMatricola() {
 
         Utente utenteC = new Utente("Marco", "Bianchi", "MRARSS00A01H501U", "marco.b@test.it");
