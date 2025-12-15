@@ -1,18 +1,19 @@
 package it.unisa.diem.softeng.librarymanager.model;
 
-import java.util.Comparator;
+import java.io.Serializable;
 
 /**
  * @brief Rappresenta un utente (studente o personale) della biblioteca.
  *
  * Questa classe definisce il modello dati per gli utenti registrati al sistema Library Manager.
- * Implementa le specifiche definite nel requisito **DF-1.2**, che richiede la memorizzazione
+ * Implementa le specifiche definite nel requisito *DF-1.2*, che richiede la memorizzazione
  * di Nome, Cognome, Matricola ed Email.
  *
  * @author Gruppo 12
  * @version 1.0
  */
-public class Utente implements Comparable<Utente> {
+public class Utente implements Comparable<Utente>, Serializable {
+    public static final int MAX_PRESTITI = 3;
 
     /**
      * @brief Il nome di battesimo dell'utente.
@@ -35,20 +36,13 @@ public class Utente implements Comparable<Utente> {
 
     /**
      * @brief L'indirizzo email istituzionale dell'utente.
-     * [cite_start]Secondo il requisito **DF-1.2**, deve rispettare il formato "*@studenti.unisa.it"[cite: 128].
+     * [cite_start]Secondo il requisito *DF-1.2, deve rispettare il formato "@studenti.unisa.it"[cite: 128].
      */
     private String email;
 
-    /**
-     * @brief Numero di libri presi in prestito.
-     */
-    private int count;
+    private int countPrestiti;
 
-    /**
-     * @brief f
-     */
     private boolean attivo;
-
     /**
      * @brief Costruttore della classe Utente.
      *
@@ -60,7 +54,13 @@ public class Utente implements Comparable<Utente> {
      * @param email L'email istituzionale.
      */
     public Utente(String nome, String cognome, String matricola, String email) {
+        this.nome = nome;
+        this.cognome = cognome;
+        this.matricola = matricola;
+        this.email = email;
 
+        this.countPrestiti = 0;
+        this.attivo = true;
     }
 
     /**
@@ -96,34 +96,6 @@ public class Utente implements Comparable<Utente> {
     }
 
     /**
-     * @brief Restituisce il flag di esistenza di un Utente
-     *
-     * @return vero se l'utente esiste, falso altrimenti.
-     */
-    public boolean isAttivo() {
-        return attivo;
-    }
-
-    /**
-     * @brief Restituisce il numero di libri in prestito.
-     * Non può essere maggiore di tre.
-     *
-     * @return
-     */
-    public int getCount() {
-        return count;
-    }
-
-    /**
-     * @brief Modifica il conteggio dei libri in prestito.
-     *
-     * @param count
-     */
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    /**
      * @brief Imposta o aggiorna il nome dell'utente.
      * @param nome Il nuovo nome da impostare.
      */
@@ -156,14 +128,23 @@ public class Utente implements Comparable<Utente> {
         this.email = email;
     }
 
-    /**
-     * @brief Imposta manualmente la flag di esistenza.
-     *
-     * @param attivo
-     */
+    public int getCountPrestiti() {
+        return countPrestiti;
+    }
+
+    public void setCountPrestiti(int countPrestiti) {
+        this.countPrestiti = countPrestiti;
+    }
+
+    public boolean isAttivo() {
+        return attivo;
+    }
+
     public void setAttivo(boolean attivo) {
         this.attivo = attivo;
     }
+
+
 
     /**
      * @brief Restituisce una rappresentazione in formato stringa dell'utente.
@@ -171,7 +152,7 @@ public class Utente implements Comparable<Utente> {
      */
     @Override
     public String toString() {
-        return null;
+        return "Nome: " + nome + " Cognome: " + cognome + " Matricola: " + matricola + " Email: " + email + "\n";
     }
 
     @Override
@@ -190,6 +171,6 @@ public class Utente implements Comparable<Utente> {
 
     @Override
     public int compareTo(Utente o) {
-        return 0;
+        return this.getMatricola().compareTo(o.getMatricola());
     }
 }

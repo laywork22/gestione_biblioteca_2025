@@ -3,6 +3,7 @@ package it.unisa.diem.softeng.librarymanager.managers;
 import javafx.collections.ObservableList;
 
 import java.util.Comparator;
+import java.util.List;
 import java.util.function.Predicate;
 
 /**
@@ -23,7 +24,7 @@ public interface Gestore<T> {
      *
      * @param elem L'elemento da aggiungere.
      */
-    void add(T elem);
+    void add(T elem) throws Exception;
 
     /**@brief Rimuove un elemento dalla collezione gestita.
      * <p>
@@ -34,7 +35,15 @@ public interface Gestore<T> {
      *
      * @param elem L'elemento da rimuovere
      */
-    void remove(T elem);
+    void remove(T elem) throws Exception;
+
+    /**
+     * @brief Imposta la lista del gestore con una passata come parametro incapsulandola in una nuova lista osservabile.
+     * Utilizzata per le operazioni di I/O.
+     * @param l La nuova lista che sostituirà quella precedente.
+     */
+    void setLista(List<T> l);
+
 
     /**@brief Restituisce la lista osservabile di entita'
      *
@@ -44,25 +53,10 @@ public interface Gestore<T> {
      */
     ObservableList<T> getLista();
 
-    void modifica(T vecchio, T nuovo);
-
-    /**@brief Ordina la lista in funzione del customComparator in ingresso
-     *
-     * Ordina la lista e rende possibile rispettare i requisiti di visualizzazione in ordine (UI-1.1.2,UI-1.2.2).
-     *
-     * @param comparatore Il comparatore che descrive la logica di ordinamento
-     */
-    void ordinaLista(Comparator<T> comparatore);
+    void modifica(T vecchio, T nuovo) throws Exception;
 
 
     Predicate<T> getPredicato(String filtro);
 
-    /**@brief Salva lo stato corrente su un file.
-     *
-     * Implementa il requisito di salvataggio (DF-1.4)
-     *
-     * @param nomeFile Il nome del file su cui si salverà lo stato di una determinata area
-     */
-    void salvaLista(String nomeFile);
 
 }

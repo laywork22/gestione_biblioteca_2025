@@ -6,9 +6,9 @@
     <version>1.0-SNAPSHOT</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <release>17</release>
         <javafx.version>21.0.6</javafx.version>
+        <maven.compiler.release>17</maven.compiler.release>
     </properties>
     <build>
         <plugins>
@@ -27,7 +27,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>it.unisa.diem.softeng.librarymanager.libraryManagerApp</mainClass>
+                    <mainClass>it.unisa.diem.softeng.librarymanager.LibraryManagerApp</mainClass>
                 </configuration>
                 <executions>
                     <execution>

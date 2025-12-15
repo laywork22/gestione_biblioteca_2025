@@ -1,17 +1,16 @@
 package it.unisa.diem.softeng.librarymanager.controllers.forms;
 
+import it.unisa.diem.softeng.librarymanager.exceptions.PrestitoException;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreLibro;
 import it.unisa.diem.softeng.librarymanager.managers.GestorePrestito;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreUtente;
 import it.unisa.diem.softeng.librarymanager.model.Libro;
 import it.unisa.diem.softeng.librarymanager.model.Prestito;
 import it.unisa.diem.softeng.librarymanager.model.Utente;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
@@ -28,7 +27,7 @@ public class FormPrestitoController {
     private GestorePrestito gp;
     private GestoreLibro gl;
     private GestoreUtente gu;
-    private final Prestito prestitoInModifica = null;
+    private Prestito prestitoInModifica = null;
 
     @FXML
     private ComboBox<Utente> utentiCb;
@@ -46,29 +45,39 @@ public class FormPrestitoController {
     private Label insModFld;
 
     //salva il libro modificato nella lista
-    /**
-     * @brief Salva il Prestito nella lista corrispondente, rendendolo
-     *  visibile in tabella
-     *
-     * @param event L'evento generato dal click sul pulsante salva.
-     */
     @FXML
     public void salvaNuovoPrestito(ActionEvent event) {
-        Prestito p = new Prestito(utentiCb.getValue(), libroCb.getValue(), dataInizioDp.getValue(), dataScadenzaDp.getValue());
+        if (isFormNotValid()) {
+            mostraAlert("Alcuni campi sono vuoti");
+            return;
+        }
+            try{
+                Prestito p = new Prestito(utentiCb.getValue(), libroCb.getValue(), dataInizioDp.getValue(), dataScadenzaDp.getValue());
+                if (prestitoInModifica == null) {
+                    gp.add(p);
+            }
+                else {
 
-        gp.add(p);
+                    p.setStato(prestitoInModifica.getStato());
+                    gp.modifica(prestitoInModifica, p);
+                }
+                chiudiFinestra();
+            }
+            catch(IllegalArgumentException | PrestitoException e){
+                mostraAlert(e.getMessage());
+            }
+
     }
 
-    /**
-     * @brief Annulla qualsiasi operazione (modifica o inserimento) nel form, chiudendo
-     * la finestra.
-     *
-     * @param event L'evento generato dal click sul pulsante annulla.
-     */
+
+
+
     @FXML
     public void annullaNuovoPrestito(ActionEvent event) {
         chiudiFinestra();
     }
+
+
 
     /**
      * @brief Consente di impostare il GestorePrestito  e di popolare le ComboBox.
@@ -93,13 +102,50 @@ public class FormPrestitoController {
      * @brief Popola le ComboBox con le rispettive liste.
      */
     private void setComboBox() {
+        FilteredList<Utente> utentiFiltrati = new FilteredList<>(gu.getLista(), utente -> utente != null && utente.isAttivo());
 
+        FilteredList<Libro> libriFiltrati = new FilteredList<>(gl.getLista(), libro -> libro != null && libro.isAttivo());
+
+        utentiCb.setItems(utentiFiltrati);
+        libroCb.setItems(libriFiltrati);
+
+        utentiCb.setPromptText("Selezionare  Utente");
+        libroCb.setPromptText("Selezionare  Libro");
+
+        //definire il modo in cui libri e utenti sono visualizzati nei combobox
+        utentiCb.setConverter(new StringConverter<Utente>() {
+            @Override
+            public String toString(Utente u) {
+                if (u == null) return null;
+                return u.getCognome() + " " + u.getNome() + " (" + u.getMatricola() + ")";
+            }
+
+            @Override
+            public Utente fromString(String s) {
+                return null;
+            }
+
+        });
+        libroCb.setConverter(new StringConverter<Libro>() {
+            @Override
+            public String toString(Libro l) {
+                if (l == null) return null;
+                return l.getTitolo() + " - " + l.getAutore();
+            }
+
+            @Override
+            public Libro fromString(String string) {
+                return null;
+            }
+        });
     }
 
     /**
      * @brief Consente la chiusura dello Stage attivo.
      */
     private void chiudiFinestra() {
+        Stage stage = (Stage) salvaBtn.getScene().getWindow();
+        stage.close();
     }
 
     /**
@@ -108,7 +154,19 @@ public class FormPrestitoController {
      * @param p il Prestito da cui estrarre gli attributi da impostare sui vari campi del form
      */
     public void setFormOnEdit(Prestito p) {
+        if (p == null) return;
 
+        this.prestitoInModifica = p;
+
+        utentiCb.setValue(p.getUtente());
+        libroCb.setValue(p.getLibro());
+        dataInizioDp.setValue(p.getDataInizio());
+        dataScadenzaDp.setValue(p.getDataFine());
+
+        utentiCb.setDisable(true);
+        libroCb.setDisable(true);
+
+        setInsModLblText();
     }
 
     /**
@@ -117,7 +175,10 @@ public class FormPrestitoController {
      * @return true se almeno un campo è vuoto, false se tutti sono pieni.
      */
     private boolean isFormNotValid() {
-        return false;
+        return utentiCb.getValue() == null ||
+                libroCb.getValue() == null ||
+                dataInizioDp.getValue() == null ||
+                dataScadenzaDp.getValue() == null;
     }
 
     /**
@@ -125,7 +186,18 @@ public class FormPrestitoController {
      *
      */
     private void setInsModLblText() {
+        if (insModFld == null) return;
 
+        if (prestitoInModifica == null) {
+            insModFld.setText("Nuovo Prestito");
+        } else {
+            insModFld.setText("Modifica Prestito");
+        }
+    }
+    private void mostraAlert(String msg) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
 
 }

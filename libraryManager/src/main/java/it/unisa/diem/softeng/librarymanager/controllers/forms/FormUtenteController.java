@@ -1,10 +1,11 @@
 package it.unisa.diem.softeng.librarymanager.controllers.forms;
 
+import it.unisa.diem.softeng.librarymanager.exceptions.UtenteException;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreUtente;
-import it.unisa.diem.softeng.librarymanager.model.Prestito;
 import it.unisa.diem.softeng.librarymanager.model.Utente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -38,22 +39,39 @@ public class FormUtenteController {
     @FXML
     private Label insModLbl;
 
-    /**
-     * @brief Salva l'Utente nella lista corrispondente, rendendolo
-     *  visibile in tabella
-     *
-     * @param event L'evento generato dal click sul pulsante salva.
-     */
+
     @FXML
     private void handleSalva(ActionEvent event) {
+        if (isFormNotValid()) {
+            mostraAlert("Alcuni campi del form sono vuoti!");
+            return; // Blocca l'esecuzione
+        }
+        String nome = nomeFld.getText();
+        String cognome = cognomeFld.getText();
+        String matricola = matricolaFld.getText();
+        String email = emailFld.getText();
+
+        Utente nuovoUtente = new Utente(nome, cognome, matricola, email);
+
+        if (utenteInModifica != null) {
+            nuovoUtente.setCountPrestiti(utenteInModifica.getCountPrestiti());
+        }
+
+        try {
+            if (utenteInModifica == null) {
+                gestore.add(nuovoUtente);
+            } else {
+                gestore.modifica(utenteInModifica, nuovoUtente);
+            }
+
+            chiudiFinestra();
+
+        } catch (UtenteException e) {
+            mostraAlert(e.getMessage());
+
+        }
     }
 
-    /**
-     * @brief Annulla qualsiasi operazione (modifica o inserimento) nel form, chiudendo
-     * la finestra.
-     *
-     * @param event L'evento generato dal click sul pulsante annulla.
-     */
     @FXML
     private void handleAnnulla(ActionEvent event) {
         chiudiFinestra();
@@ -83,8 +101,16 @@ public class FormUtenteController {
      * @param u l'utente da cui estrarre gli attributi da impostare sui vari campi del form
      */
     public void setFormOnEdit(Utente u) {
-        //imposta tutti i campi del form
+        if (u == null) return;
 
+        this.utenteInModifica = u;
+
+        nomeFld.setText(u.getNome());
+        cognomeFld.setText(u.getCognome());
+        matricolaFld.setText(u.getMatricola());
+        emailFld.setText(u.getEmail());
+
+        setInsModLblText();
     }
 
     /**
@@ -93,7 +119,10 @@ public class FormUtenteController {
      * @return true se almeno un campo è vuoto, false se tutti sono pieni.
      */
     private boolean isFormNotValid() {
-        return false;
+        return nomeFld.getText().isEmpty() ||
+                cognomeFld.getText().isEmpty() ||
+                matricolaFld.getText().isEmpty() ||
+                emailFld.getText().isEmpty();
     }
 
     /**
@@ -101,6 +130,23 @@ public class FormUtenteController {
      *
      */
     private void setInsModLblText() {
+        if (insModLbl == null) return;
 
+        if (utenteInModifica == null) {
+            insModLbl.setText("Nuovo utente");
+        }
+        else {
+            insModLbl.setText("Modifica utente");
+        }
+    }
+
+    /**
+     * @brief Comodo metodo per impostare un Alert di tipo Warning.
+     * @param msg Il messaggio da stampare a schermo nell'Alert quando il metodo è invocato
+     */
+    private void mostraAlert(String msg) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
 }

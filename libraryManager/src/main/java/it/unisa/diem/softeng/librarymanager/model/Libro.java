@@ -1,55 +1,54 @@
 package it.unisa.diem.softeng.librarymanager.model;
 
+import java.io.Serializable;
+
 /**
  * @brief Rappresenta un libro all'interno del catalogo della biblioteca.
  *
  * Questa classe definisce il modello dati per un libro, includendo le informazioni
  * descrittive e lo stato delle copie.
- * Implementa le specifiche definite nel requisito **DF-1.1** (Dati Libro).
+ * Implementa le specifiche definite nel requisito *DF-1.1* (Dati Libro).
  *
  * @author Gruppo 12
  * @version 1.0
  */
-public class Libro implements Comparable<Libro> {
+public class Libro implements Comparable<Libro>, Serializable {
 
     /**
      * @brief Il titolo del libro.
      * Utile per l'ordinamento (IF-1.4) e la ricerca (IF-1.5).
      */
-    String titolo;
+    private String titolo;
 
     /**
      * @brief L'autore o gli autori del libro.
      */
-    String autore;
+    private String autore;
 
     /**
      * @brief L'anno di pubblicazione del libro.
      */
-    int anno;
+    private int anno;
 
     /**
      * @brief Codice ISBN univoco del libro.
      * Identifica univocamente il libro nel sistema ed è usato per il controllo duplicati (IF-1.1).
      */
-    String isbn;
+    private String isbn;
 
     /**
      * @brief Numero totale di copie possedute dalla biblioteca.
      */
-    int copieTotali;
+    private int copieTotali;
 
     /**
      * @brief Numero di copie attualmente disponibili per il prestito.
      * Viene decrementato alla creazione di un prestito e incrementato alla restituzione.
      */
-    int copieDisponibili;
+    private int copieDisponibili;
 
-    /**
-     * @brief verifica se un determinato libro è presente o meno nella lista. Necessario
-     */
-    boolean attivo;
 
+    private boolean attivo;
     /**
      * @brief Costruttore della classe Libro.
      *
@@ -61,16 +60,17 @@ public class Libro implements Comparable<Libro> {
      * @param anno L'anno di pubblicazione.
      * @param isbn Il codice ISBN univoco.
      * @param copieTotali Il numero totale di copie fisiche da inserire a catalogo.
-     * @param copieDisponibili Il numero di copie fisiche prestabili
      */
-    public Libro(String titolo, String autore, int anno, String isbn, int copieTotali, int copieDisponibili) {
+    public Libro(String titolo, String autore, int anno, String isbn, int copieTotali) {
         this.titolo = titolo;
         this.autore = autore;
         this.anno = anno;
         this.isbn = isbn;
         this.copieTotali = copieTotali;
         // All'inizio tutte le copie sono disponibili
-        this.copieDisponibili = copieDisponibili;
+        this.copieDisponibili = copieTotali;
+
+        this.attivo = true;
     }
 
     /**
@@ -122,15 +122,6 @@ public class Libro implements Comparable<Libro> {
     }
 
     /**
-     * @brief Restituisce il flag di esistenza di un libro
-     *
-     * @return vero se il libro esiste, falso altrimenti.
-     */
-    public boolean isAttivo() {
-        return attivo;
-    }
-
-    /**
      * @brief Imposta o aggiorna il titolo del libro.
      * @param titolo Il nuovo titolo da impostare.
      */
@@ -173,21 +164,11 @@ public class Libro implements Comparable<Libro> {
     }
 
     /**
-     * @brief Imposta manualmente la flag di esistenza.
-     *
-     * @param attivo
-     */
-    public void setAttivo(boolean attivo) {
-        this.attivo = attivo;
-    }
-
-
-    /**
      * @brief Incrementa le copie totali di un libro
      * @return Incrementa le copie totali di un libro di uno.
      */
-    public void incrementaCopie() {
-        this.copieTotali ++;
+    public void incrementaCopie(int x) {
+        this.copieTotali +=x;
     }
 
     /**
@@ -199,6 +180,20 @@ public class Libro implements Comparable<Libro> {
             this.copieDisponibili--;
         }
     }
+
+    public void setAnno(int anno) {
+        this.anno = anno;
+    }
+
+    public boolean isAttivo() {
+        return attivo;
+    }
+
+    public void setAttivo(boolean attivo) {
+        this.attivo = attivo;
+    }
+
+
     /**
      * @brief Restituisce una rappresentazione in formato stringa dell'oggetto Libro.
      * @return Stringa formattata con i dettagli del libro.

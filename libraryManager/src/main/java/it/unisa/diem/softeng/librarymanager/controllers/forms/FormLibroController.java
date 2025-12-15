@@ -1,5 +1,6 @@
 package it.unisa.diem.softeng.librarymanager.controllers.forms;
 
+import it.unisa.diem.softeng.librarymanager.exceptions.LibroException;
 import it.unisa.diem.softeng.librarymanager.managers.GestoreLibro;
 import it.unisa.diem.softeng.librarymanager.model.Libro;
 import javafx.event.ActionEvent;
@@ -31,8 +32,6 @@ public class FormLibroController {
     @FXML
     private Button salvaLibroBtn;
     @FXML
-    private TextField copieDisponibiliFld;
-    @FXML
     private TextField isbnFld;
     @FXML
     private TextField copieTotaliFld;
@@ -46,23 +45,39 @@ public class FormLibroController {
         setInsModLblText();
     }
 
-    /**
-     * @brief Salva il Libro nella lista corrispondente, rendendolo
-     *  visibile in tabella
-     *
-     * @param event L'evento generato dal click sul pulsante salva.
-     */
     @FXML
     private void handleSalva(ActionEvent event) {
+        if (isFormNotValid()) {
+            mostraAlert("Alcuni campi sono vuoti");
+            return;
+        }
+        try {
+            String titolo = titoloFld.getText();
+            String autore = autoreFld.getText();
+            int anno = Integer.parseInt(annoFld.getText());
+            String isbn = isbnFld.getText();
+            int copieTotali = Integer.parseInt(copieTotaliFld.getText());
+            Libro nuovoLibro = new Libro(titolo, autore, anno, isbn, copieTotali);
+
+
+            if (libroInModifica != null) {
+                    gestore.modifica(libroInModifica, nuovoLibro);
+            } else {
+                gestore.add(nuovoLibro);
+            }
+
+            chiudiFinestra();
+        }catch(NumberFormatException e){
+            mostraAlert("Formato errato nei campi anno oppure copie totali");
+        }
+        catch(IllegalArgumentException e){
+            mostraAlert(e.getMessage());
+        } catch (LibroException e) {
+            mostraAlert(e.getMessage());
+        }
 
     }
 
-    /**
-     * @brief Annulla qualsiasi operazione (modifica o inserimento) nel form, chiudendo
-     * la finestra.
-     *
-     * @param event L'evento generato dal click sul pulsante annulla.
-     */
     @FXML
     private void handleAnnulla(ActionEvent event) {
         chiudiFinestra();
@@ -72,6 +87,8 @@ public class FormLibroController {
      * @brief Consente la chiusura dello Stage attivo.
      */
     private void chiudiFinestra() {
+        Stage stage = (Stage) salvaLibroBtn.getScene().getWindow();
+        stage.close();
     }
 
     /**
@@ -90,6 +107,19 @@ public class FormLibroController {
      * @param l il Libro da cui estrarre gli attributi da impostare sui vari campi del form
      */
     public void setFormOnEdit(Libro l) {
+        try {
+            this.libroInModifica = l;
+        } catch (NullPointerException e) {
+            return;
+        }
+
+        titoloFld.setText(l.getTitolo());
+        autoreFld.setText(l.getAutore());
+        annoFld.setText(String.valueOf(l.getAnno()));
+        isbnFld.setText(l.getIsbn());
+        copieTotaliFld.setText(String.valueOf(l.getCopieTotali()));
+
+        setInsModLblText();
 
     }
 
@@ -100,7 +130,11 @@ public class FormLibroController {
      * @return true se almeno un campo è vuoto, false se tutti sono pieni.
      */
     private boolean isFormNotValid() {
-        return false;
+        return titoloFld.getText().isEmpty() ||
+                autoreFld.getText().isEmpty() ||
+                annoFld.getText().isEmpty() ||
+                isbnFld.getText().isEmpty() ||
+                copieTotaliFld.getText().isEmpty();
     }
 
     /**
@@ -108,7 +142,16 @@ public class FormLibroController {
      *
      */
     private void setInsModLblText() {
-
+        if (libroInModifica != null) {
+            insModLbl.setText("Modifica libro");
+        } else {
+            insModLbl.setText("Inserimento nuovo libro");
+        }
+    }
+    private void mostraAlert(String msg) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
 
 }
