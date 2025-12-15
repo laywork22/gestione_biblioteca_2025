@@ -6,114 +6,133 @@ import it.unisa.diem.softeng.librarymanager.model.Prestito;
 import it.unisa.diem.softeng.librarymanager.model.StatoPrestitoEnum;
 import it.unisa.diem.softeng.librarymanager.model.Utente;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import java.time.LocalDate;
 import java.util.function.Predicate;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-class GestorePrestitoTest {
+public class GestorePrestitoTest {
 
     private GestorePrestito gestore;
-    private Utente utenteStandard;
-    private Libro libroStandard;
-    private Prestito prestitoStandard;
+    private Utente utente;
+    private Libro libro;
+    private Prestito prestito;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         gestore = new GestorePrestito();
+        utente = new Utente("Mario", "Rossi", "MRARSS", "mario@test.it");
+        libro = new Libro("Java Programming", "Autore X", 2024, "9788800000000", 5);
 
-        utenteStandard = new Utente("Mario", "Rossi", "MRARSS", "mario@test.it");
-        utenteStandard.setAttivo(true);
-        utenteStandard.setCountPrestiti(0);
+        // Assicuriamo stato valido per il prestito
+        utente.setAttivo(true);
+        utente.setCountPrestiti(0);
+        libro.setAttivo(true);
+        libro.setCopieDisponibili(5);
 
-
-        libroStandard = new Libro("Java Programming", "Autore X", 2024, "123456", 5);
-        libroStandard.setAttivo(true);
-
-        libroStandard.setCopieDisponibili(5);
-
-
-        prestitoStandard = new Prestito(utenteStandard, libroStandard, LocalDate.now(), LocalDate.now().plusDays(30));
-    }
-
-
-
-    @Test
-    void testAddSuccess() throws PrestitoException {
-        gestore.add(prestitoStandard);
-
-        assertEquals(1, gestore.getLista().size(), "La lista dovrebbe contenere 1 prestito");
-        assertEquals(1, utenteStandard.getCountPrestiti(), "I prestiti dell'utente dovrebbero salire a 1");
-        assertEquals(4, libroStandard.getCopieDisponibili(), "Le copie disponibili dovrebbero scendere a 4");
+        prestito = new Prestito(utente, libro, LocalDate.now(), LocalDate.now().plusDays(30));
     }
 
     @Test
-    void testAddFailLimiteUtente() {
-        utenteStandard.setCountPrestiti(3);
-
-        PrestitoException e = assertThrows(PrestitoException.class, () -> gestore.add(prestitoStandard));
-        assertEquals("L'utente ha raggiunto il limite dei 3 prestiti", e.getMessage());
+    public void testAdd() throws PrestitoException {
+        gestore.add(prestito);
+        assertEquals(1, gestore.getLista().size());
+        assertEquals(1, utente.getCountPrestiti());
+        assertEquals(4, libro.getCopieDisponibili());
     }
 
     @Test
-    void testRemoveSuccess() throws PrestitoException {
-        gestore.add(prestitoStandard);
-
-        assertEquals(1, utenteStandard.getCountPrestiti());
-        assertEquals(4, libroStandard.getCopieDisponibili());
-
-
-        gestore.remove(prestitoStandard);
-
-        assertEquals(StatoPrestitoEnum.CHIUSO, prestitoStandard.getStato(), "Lo stato deve diventare CHIUSO");
-        assertEquals(0, utenteStandard.getCountPrestiti(), "Il contatore utente deve scendere");
-        assertEquals(5, libroStandard.getCopieDisponibili(), "Le copie libro devono aumentare");
-    }
-
-
-
-    @Test
-    void testModificaSuccess() throws PrestitoException {
-        gestore.add(prestitoStandard);
-
-        Prestito nuovoDati = new Prestito(utenteStandard, libroStandard, LocalDate.now().minusDays(1), LocalDate.now().plusDays(10));
-        nuovoDati.setStato(StatoPrestitoEnum.SCADUTO);
-
-        gestore.modifica(prestitoStandard, nuovoDati);
-
-        Prestito pModificato = gestore.getLista().get(0);
-        assertEquals(StatoPrestitoEnum.SCADUTO, pModificato.getStato());
-        assertEquals(nuovoDati.getDataFine(), pModificato.getDataFine());
+    public void testAddIgnoraNull() throws PrestitoException {
+        gestore.add(null);
+        assertTrue(gestore.getLista().isEmpty());
     }
 
     @Test
-    void testModificaFailSeChiuso() throws PrestitoException {
-        gestore.add(prestitoStandard);
-        gestore.remove(prestitoStandard);
-
-        Prestito nuovoDati = new Prestito(utenteStandard, libroStandard, LocalDate.now(), LocalDate.now());
-
-        PrestitoException e = assertThrows(PrestitoException.class, () -> gestore.modifica(prestitoStandard, nuovoDati));
-        assertEquals("Lo stato del prestito è chiuso", e.getMessage());
+    public void testAddLimitePrestitiRaggiunto() {
+        utente.setCountPrestiti(3);
+        assertThrows(PrestitoException.class, () -> gestore.add(prestito));
     }
 
+    @Test
+    public void testAddCopieNonDisponibili() {
+        libro.setCopieDisponibili(0);
+        assertThrows(PrestitoException.class, () -> gestore.add(prestito));
+    }
 
     @Test
-    void testGetPredicato() throws PrestitoException {
-        gestore.add(prestitoStandard);
+    public void testAddLibroNonAttivo() {
+        libro.setAttivo(false);
+        assertThrows(PrestitoException.class, () -> gestore.add(prestito));
+    }
 
-        Predicate<Prestito> filtroNome = gestore.getPredicato("Mario");
-        Predicate<Prestito> filtroCognome = gestore.getPredicato("Rossi");
-        Predicate<Prestito> filtroTitolo = gestore.getPredicato("Java");
+    @Test
+    public void testAddUtenteNonAttivo() {
+        utente.setAttivo(false);
+        assertThrows(PrestitoException.class, () -> gestore.add(prestito));
+    }
+
+    @Test
+    public void testRemove() throws PrestitoException {
+        gestore.add(prestito);
+        gestore.remove(prestito);
+
+        assertEquals(StatoPrestitoEnum.CHIUSO, prestito.getStato());
+        assertEquals(0, utente.getCountPrestiti());
+        assertEquals(5, libro.getCopieDisponibili());
+    }
+
+    @Test
+    public void testRemoveIgnoraNull() throws PrestitoException {
+        assertDoesNotThrow(() -> gestore.remove(null));
+    }
+
+    @Test
+    public void testRemoveGiaChiuso() throws PrestitoException {
+        gestore.add(prestito);
+        gestore.remove(prestito);
+        assertThrows(PrestitoException.class, () -> gestore.remove(prestito));
+    }
+
+    @Test
+    public void testModifica() throws PrestitoException {
+        gestore.add(prestito);
+        Prestito nuovo = new Prestito(utente, libro, LocalDate.now().minusDays(5), LocalDate.now().plusDays(5));
+        nuovo.setStato(StatoPrestitoEnum.SCADUTO);
+
+        gestore.modifica(prestito, nuovo);
+        assertEquals(StatoPrestitoEnum.SCADUTO, prestito.getStato());
+        assertEquals(nuovo.getDataInizio(), prestito.getDataInizio());
+    }
+
+    @Test
+    public void testModificaPrestitoChiuso() throws PrestitoException {
+        gestore.add(prestito);
+        gestore.remove(prestito);
+        Prestito nuovo = new Prestito(utente, libro, LocalDate.now(), LocalDate.now());
+
+        assertThrows(PrestitoException.class, () -> gestore.modifica(prestito, nuovo));
+    }
+
+    @Test
+    public void testGetPredicato() throws PrestitoException {
+        gestore.add(prestito);
+
+        Predicate<Prestito> filtroUtente = gestore.getPredicato("Rossi");
+        assertTrue(filtroUtente.test(prestito));
+
+        Predicate<Prestito> filtroLibro = gestore.getPredicato("Java");
+        assertTrue(filtroLibro.test(prestito));
+
         Predicate<Prestito> filtroErrato = gestore.getPredicato("Python");
-
-        assertTrue(filtroNome.test(prestitoStandard), "Dovrebbe trovare per Nome");
-        assertTrue(filtroCognome.test(prestitoStandard), "Dovrebbe trovare per Cognome");
-        assertTrue(filtroTitolo.test(prestitoStandard), "Dovrebbe trovare per Titolo");
-        assertFalse(filtroErrato.test(prestitoStandard), "Non dovrebbe trovare stringhe diverse");
+        assertFalse(filtroErrato.test(prestito));
     }
 
+    @Test
+    public void testAggiornaStati() throws PrestitoException {
+        Prestito prestitoScaduto = new Prestito(utente, libro, LocalDate.now().minusDays(40), LocalDate.now().minusDays(10));
+        gestore.add(prestitoScaduto);
+
+        gestore.aggiornaStati();
+        assertEquals(StatoPrestitoEnum.SCADUTO, prestitoScaduto.getStato());
+    }
 }
