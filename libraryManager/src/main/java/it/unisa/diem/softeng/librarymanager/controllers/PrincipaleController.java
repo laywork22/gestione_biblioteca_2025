@@ -182,7 +182,6 @@ public class PrincipaleController {
         }
     }
 
-
     @FXML
     public void salvaFileConNome(ActionEvent actionEvent) {
         System.out.println("Premuto salva con nome...");
@@ -249,6 +248,8 @@ public class PrincipaleController {
         tabella.refresh();
     }
 
+
+
     //metodo helper per rinfrescare la tabella visualizzata
     private void aggiornaVistaCorrente() {
         gestorePrestito.aggiornaStati();
@@ -261,8 +262,6 @@ public class PrincipaleController {
             setArea(new UtenteHandler(gestoreUtente));
         }
     }
-
-
 
     private void setArea(AreaHandler area) {
         areaCorrente = area;
