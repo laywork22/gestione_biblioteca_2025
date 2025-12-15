@@ -102,6 +102,7 @@ public class PrincipaleController {
 
         sideMenu.setTranslateX(-200);
 
+        caricaDatiDummy();
 
         gestorePrestito.aggiornaStati();
         setArea(new PrestitoHandler(gestorePrestito, gestoreLibro, gestoreUtente));

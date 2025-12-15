@@ -17,7 +17,7 @@ public class LibraryManagerApp extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 1280, 720);
+        scene = new Scene(loadFXML("primary"), 1800, 920);
 
         stage.setTitle("libraryManager");
         stage.setScene(scene);
