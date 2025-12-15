@@ -34,13 +34,28 @@ public class GestoreUtente implements Gestore<Utente> {
      * @see Gestore#add(Object)
      */
     @Override
-    public void add(Utente l) throws UtenteException {
-        if (l == null) return;
-        if (this.utentiList.contains(l)) {
-            throw new UtenteException("Utente già presente nel sistema!");
-        }
+    public void add(Utente u) throws UtenteException {
+        if (u == null) return;
 
-        this.utentiList.add(l);
+        int index = utentiList.indexOf(u);
+
+        if (index == -1) {
+            utentiList.add(u);
+        } else {
+            Utente utenteEsistente = utentiList.get(index);
+
+            if (!utenteEsistente.isAttivo()) {
+                utenteEsistente.setAttivo(true);
+                utenteEsistente.setNome(u.getNome());
+                utenteEsistente.setCognome(u.getCognome());
+                utenteEsistente.setEmail(u.getEmail());
+
+
+                utentiList.set(index, utenteEsistente);
+            } else {
+                throw new UtenteException("Esiste già un utente attivo con questa matricola.");
+            }
+        }
     }
 
     @Override

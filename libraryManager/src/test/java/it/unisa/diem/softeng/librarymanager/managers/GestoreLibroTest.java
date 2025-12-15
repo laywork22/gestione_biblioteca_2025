@@ -67,20 +67,23 @@ public class GestoreLibroTest {
     }
 
     @Test
-    //Lancia eccezione se Libro esiste ma non Attivo
-    public void addEccezioneLibroNonAttivo() throws LibroException {
-       
-        libro1.setAttivo(false); 
-        gestore.add(libro1); 
-        
+    public void addRiattivaLibroNonAttivo() throws LibroException {
+        libro1.setAttivo(false);
+        gestore.getLista().add(libro1);
+
+        // Creiamo un duplicato con nuovi dati (es. 2 copie invece di 5)
         Libro libro1Duplicato = new Libro("Il Signore degli Anelli", "J.R.R. Tolkien", 1954, "9788845242796", 2);
 
-        assertThrows(LibroException.class, () -> gestore.add(libro1Duplicato),  "Deve lanciare LibroException se si tenta di aggiungere un libro esistente e non attivo");
-        
-        assertEquals(5, libro1.getCopieTotali());
+        //Proviamo ad aggiungere il libro duplicato.
+        //NON deve lanciare eccezione, ma riattivare quello esistente.
+        assertDoesNotThrow(() -> gestore.add(libro1Duplicato));
+
+        //Verifiche
+        assertTrue(libro1.isAttivo(), "Il libro doveva essere riattivato");
+        assertEquals(2, libro1.getCopieTotali(), "Le copie dovevano essere resettate al valore del nuovo inserimento");
+        assertEquals(2, libro1.getCopieDisponibili(), "Le copie disponibili dovevano essere aggiornate");
     }
 
-//Test per il metodo remove(Libro l)
 
     @Test
     //Rende Libro non attivo se non ci sono prestiti attivi inerenti a esso
@@ -94,7 +97,7 @@ public class GestoreLibroTest {
     }
 
     @Test
-    //null
+    //Verifica che la rimozione di un riferimento nullo a un libro sia ignorata
     public void removeIgnoraLibroNull() throws LibroException {
         
         assertDoesNotThrow(() -> gestore.remove(null));

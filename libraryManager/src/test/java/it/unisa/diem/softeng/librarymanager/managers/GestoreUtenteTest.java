@@ -33,7 +33,7 @@ public class GestoreUtenteTest {
         // Controlla se ci sono duplicati dell'utente
         Utente duplicato = new Utente("Federica", "Rossi", "75018", "federica.rossi@email.it");
         UtenteException exception = assertThrows(UtenteException.class, () -> gestore.add(duplicato));
-        assertEquals("Utente già presente nel sistema!", exception.getMessage());
+        assertEquals("Esiste già un utente attivo con questa matricola.", exception.getMessage());
     }
 
 

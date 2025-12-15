@@ -34,31 +34,45 @@ public class GestoreLibro implements Gestore<Libro> {
     /**
      * @brief Aggiunge un libro alla lista.
      * Implementazione specifica per i Libri: controlla se il Libro è già presente
-     * (tramite ISBN). Se esiste, non aggiunge una nuova istanza, ma incrementa il contatore delle copie disponibili.
+     * (tramite ISBN).
+     * Se è attivo, allora saranno aggiunte le copie totali a quelle dell'istanza preesistente.
+     * Se non è attivo sarà riattivata con i dati inseriti nel form.
+     * Se non è già presente allora viene aggiunto all'archivio.
+     *
+     * @pre l != null
      *
      * @param l il Libro da aggiungere o aggiornare
+     *
+     * @throws LibroException
      * @see Gestore#add(Object)
      */
     @Override
     public void add(Libro l) throws LibroException {
         if (l == null) return;
 
-        int index = listaLibri.indexOf(l);
-
-        if (index != -1) {
-            Libro libroEsistente = listaLibri.get(index);
-            if(!libroEsistente.isAttivo()){
-                throw new LibroException("Il libro risulta non attivo");
-            }
-            libroEsistente.setCopieTotali(libroEsistente.getCopieTotali()+l.getCopieTotali());
-            libroEsistente.setCopieDisponibili(libroEsistente.getCopieDisponibili()+l.getCopieTotali());
-
-            listaLibri.set(index, libroEsistente);
-
-            return;
+        if (l.getCopieTotali() < 0) {
+            throw new LibroException("Impossibile aggiungere un libro con copie negative.");
         }
 
-        listaLibri.add(l);
+        int index = listaLibri.indexOf(l);
+
+        if (index == -1) {
+            listaLibri.add(l);
+        } else {
+            Libro libroEsistente = listaLibri.get(index);
+            if (!libroEsistente.isAttivo()) {
+
+                libroEsistente.setAttivo(true);
+                libroEsistente.setCopieTotali(l.getCopieTotali());
+                libroEsistente.setCopieDisponibili(l.getCopieDisponibili());
+            } else {
+                int nuoveCopie = l.getCopieTotali();
+                libroEsistente.setCopieTotali(libroEsistente.getCopieTotali() + nuoveCopie);
+                libroEsistente.setCopieDisponibili(libroEsistente.getCopieDisponibili() + nuoveCopie);
+            }
+
+            listaLibri.set(index, libroEsistente);
+        }
     }
 
     @Override

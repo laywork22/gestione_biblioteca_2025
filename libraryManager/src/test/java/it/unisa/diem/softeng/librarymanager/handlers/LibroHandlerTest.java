@@ -33,8 +33,9 @@ public class LibroHandlerTest {
 
         assertTrue(criteri.contains("Titolo (A-Z)"), "Deve contenere il criterio di ordinamento per Titolo");
         assertTrue(criteri.contains("Autore (A-Z)"), "Deve contenere il criterio di ordinamento per Autore");
+        assertTrue(criteri.contains("Anno (Recenti)"), "Deve contenere il criterio di ordinamento per Anno");
 
-        assertEquals(2, criteri.size(), "Dovrebbero esserci esattamente 2 criteri di ordinamento");
+        assertEquals(3, criteri.size(), "Dovrebbero esserci esattamente 3 criteri di ordinamento");
     }
 
     @Test
