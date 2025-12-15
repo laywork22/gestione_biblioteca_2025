@@ -26,10 +26,20 @@ public class GestoreUtente implements Gestore<Utente> {
 
     /**
      * @brief Aggiunge un utente alla lista.
-     * Implementazione specifica per gli utent: controlla se la matricola è già presente nella lista,
-     * se esiste, non aggiunge una nuova istanza e non inserisce l'Utente, altrimenti lo aggiunge..
+     * Implementazione specifica per gli utentI: controlla se la matricola è già presente nella lista,
+     * Se è presente nell'archivio e ha stato attivo: lancia un'eccezzione.
+     * Se è presente nell'archivio ma è stato eliminato logicamente in precedenza, lo riattiva e
+     * imposta i dati forniti nel form.
+     * Se non è presente nell'archivio lo aggiunge.
+     *
+     * @pre u != null
+     *
+     * @post Se nuovo: utentiList.size() = utentiList.size() + 1
+     * @post Se riattivato: u.isAttivo() = true e campi aggiornati
      *
      * @param l il Libro da aggiungere o aggiornare
+     *
+     * @throws UtenteException
      *
      * @see Gestore#add(Object)
      */
@@ -58,6 +68,20 @@ public class GestoreUtente implements Gestore<Utente> {
         }
     }
 
+
+    /**
+     * @param u l'utente da rimuovere
+     * @brief Rimuove logicamente un utente (lo marca come non attivo).
+     *
+     * @pre u != null
+     * @pre u.isAttivo() == true
+     * @pre u.getCountPrestiti() == 0 (Nessun prestito attivo)
+     *
+     * @post u.isAttivo() = false
+     * @post utentiList.size() invariata
+     *
+     * @throws PrestitoException
+     */
     @Override
     public void remove(Utente l) throws PrestitoException {
         if(!l.isAttivo()){
@@ -75,6 +99,21 @@ public class GestoreUtente implements Gestore<Utente> {
         return this.utentiList;
     }
 
+
+    /**
+     * @param vecchio l'utente da modificare
+     * @param nuovo   l'utente con i nuovi dati
+     * @brief Permette di modificare i dati anagrafici di un utente esistente.
+     *
+     * @pre utentiList.contains(vecchio) == true
+     * @pre vecchio.isAttivo() == true
+     * @pre nuovo != null
+     *
+     * @post vecchio aggiornato con i valori di nuovo (Nome, Cognome, Email)
+     * @post utentiList.size() invariata
+     *
+     * @throws UtenteException
+     */
     @Override
     public void modifica(Utente vecchio, Utente nuovo) throws UtenteException {
 

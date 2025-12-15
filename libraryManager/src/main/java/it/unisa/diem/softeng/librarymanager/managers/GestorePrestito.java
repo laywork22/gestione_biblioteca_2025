@@ -38,7 +38,19 @@ public class GestorePrestito implements Gestore<Prestito>, Serializable {
      * @brief Aggiunge un libro alla lista.
      * Implementazione specifica per i Prestiti: controlla che un Utente non abbia più di tre prestiti attivi, in caso
      * contrario, il prestito viene rifiutato e l'operazione di inserimento annullata.
-     * Sono ammessi più prestiti di uno stesso libro (copie disponibili permettendo) a nome di un unico utente..
+     * Sono ammessi più prestiti di uno stesso libro (copie disponibili permettendo) a nome di un unico utente.
+     *
+     * @pre l != null
+     * @pre utente.getCountPrestiti < 3
+     * @pre utente.getCountPrestiti > 0
+     * @pre libro.isAttivo() && libro.getCopieDisponibili > 0
+     *
+     * @post prestitoList.size = prestitoList.size + 1
+     * @post  utente.getCountPrestiti =  utente.getCountPrestiti + 1
+     * @post libro.getCopieDisponibili = libro.getCopieDiponibili - 1
+     *
+     * @throws PrestitoException
+     *
      * @see Gestore#add(Object)
      */
     @Override
@@ -63,6 +75,21 @@ public class GestorePrestito implements Gestore<Prestito>, Serializable {
         prestitoList.add(l);
     }
 
+    /**
+     *
+     * @brief Rimuove logicamente un prestito (lo marca come chiuso)
+     *
+     * @pre l != null
+     * @pre l.getStato != CHIUSO
+     *
+     * @post l.getStato = CHIUSO
+     * @post l.getUtente().getCountPrestiti = l.getUtente().getCountPrestiti
+     * @post l.getLibro().incrementaCopie(l.getLibro().getCopieDisponibli() + 1)
+     * @post listaPrestiti.size() invariata
+     *
+     * @param l
+     * @throws PrestitoException
+     */
     @Override
     public void remove(Prestito l) throws PrestitoException {
         if (l == null) return;
@@ -82,6 +109,21 @@ public class GestorePrestito implements Gestore<Prestito>, Serializable {
         return this.prestitoList;
     }
 
+    /**
+     *
+     * @brief Permette di modificare un prestito esistente
+     *
+     * @pre listaPrestiti.contains(vecchio) = true
+     * @pre vecchio.getStato() != CHIUSO
+     * @pre nuovo != null
+     *
+     * @post vecchio aggiornato con i valori di nuovo
+     * @post listaPrestiti.size() invariata
+     *
+     * @param vecchio
+     * @param nuovo
+     * @throws PrestitoException
+     */
     @Override
     public void modifica(Prestito vecchio, Prestito nuovo) throws PrestitoException {
         int index = prestitoList.indexOf(vecchio);
@@ -89,12 +131,15 @@ public class GestorePrestito implements Gestore<Prestito>, Serializable {
             throw new PrestitoException("Lo stato del prestito è chiuso");
         }
         if (index != -1) {
-            vecchio.setStato(nuovo.getStato());
-            vecchio.setUtente(nuovo.getUtente());
-            vecchio.setLibro(nuovo.getLibro());
-            vecchio.setDataFine(nuovo.getDataFine());
-            vecchio.setDataInizio(nuovo.getDataInizio());
-            prestitoList.set(index, vecchio);
+            if (nuovo != null) {
+                vecchio.setStato(nuovo.getStato());
+                vecchio.setUtente(nuovo.getUtente());
+                vecchio.setLibro(nuovo.getLibro());
+                vecchio.setDataFine(nuovo.getDataFine());
+                vecchio.setDataInizio(nuovo.getDataInizio());
+                prestitoList.set(index, vecchio);
+            }
+
         }
     }
 
@@ -119,34 +164,13 @@ public class GestorePrestito implements Gestore<Prestito>, Serializable {
     }
 
     /**
-     * @param nomeFile Il nome del file da cui caricare la lista
-     * @return GestoreUtente con listaUtente non vuota
-     * @brief Inizializza il gestore con la lista di osservabili dei prestiti caricata dal file
-     * @pre Il file deve esistere
-     * @post La lista è caricata in memoria nel GestorePrestito
-     */
-    public static GestorePrestito caricaListaPrestiti(String nomeFile) {
-        GestorePrestito gp = new GestorePrestito();
-
-
-        try (ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(Files.newInputStream(Paths.get(nomeFile))))) {
-            List<Prestito> listaCaricata = (List<Prestito>) ois.readObject();
-
-            gp.setLista(listaCaricata);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        return gp;
-    }
-
-    /**
      * @brief Aggiorna lo stato dei prestiti in base alla data corrente.
      * Scorre la lista dei prestiti. Se un prestito è ancora ATTIVO ma la data di scadenza
      * è precedente a oggi, lo stato viene cambiato in SCADUTO.
      * I prestiti già CHIUSI vengono ignorati.
+     *
+     * @post Se stato != CHIUSO aggiorna lo stato a SCADUTO se dataFine è precedente
+     * alla data odierna, altrimenti ATTIVO.
      */
     public void aggiornaStati() {
         LocalDate oggi = LocalDate.now();

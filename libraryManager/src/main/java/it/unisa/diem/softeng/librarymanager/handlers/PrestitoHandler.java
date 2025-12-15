@@ -171,7 +171,7 @@ public class PrestitoHandler implements AreaHandler<Prestito> {
      * * Crea colonne composte (Nested Columns) per raggruppare visivamente i dati
      * dell'Utente, del Libro e le Date, migliorando la leggibilità.
      *
-     * @param[inout] table La TableView da configurare.
+     * @param table La TableView da configurare.
      */
     @Override
     public void setTableView(TableView<Prestito> table) {
@@ -279,7 +279,7 @@ public class PrestitoHandler implements AreaHandler<Prestito> {
      * - Per Data Inizio (cronologico).
      * - Per Stato.
      *
-     * @param[in] criterio La stringa che identifica il comparatore da usare.
+     * @param criterio La stringa che identifica il comparatore da usare.
      */
     @Override
     public void ordina(String criterio) {
@@ -296,8 +296,12 @@ public class PrestitoHandler implements AreaHandler<Prestito> {
      * @brief Imposta il RowFactory della
      * tabella per evidenziare prestiti in scandenza o scaduti
      * e chiusi.
+     * - Arancione: SCADUTO
+     * - Verde: CHIUSO
+     * - Default: ATTIVO
+     * - Giallo: IN_SCADENZA
      *
-     * @param[inout] t La tabella di cui impostare il RowFactory.
+     * @param t La tabella di cui impostare il RowFactory.
      */
     private void setRigheTabella(TableView<Prestito> t) {
         t.setRowFactory(tv -> new TableRow() {

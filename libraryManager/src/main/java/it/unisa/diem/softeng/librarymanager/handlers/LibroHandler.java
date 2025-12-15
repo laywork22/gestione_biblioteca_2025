@@ -29,9 +29,6 @@ import java.util.*;
  * e di caricamento FXML del file del di inserimento o
  * modifica di un Libro.
  *
- * @invariant La TableView visualizza sempre una SortedList che avvolge una FilteredList.
- * Questo garantisce che le operazioni di filtraggio e ordinamento non modifichino
- * l'ordine o il contenuto della lista dati originale nel Manager.
  *
  * @see GestoreLibro
  * @see FormLibroController
@@ -162,7 +159,7 @@ public class LibroHandler implements AreaHandler<Libro> {
      * Imposta le colonne per i dati anagrafici e la colonna calcolata per i prestiti attivi.
      * Utilizza Platform.runLater per garantire la coerenza del layout al caricamento della vista.
      *
-     * @param[inout] table La TableView da configurare.
+     * @param table La TableView da configurare.
      */
     @Override
     public void setTableView(TableView<Libro> table) {
@@ -236,8 +233,10 @@ public class LibroHandler implements AreaHandler<Libro> {
      * @brief Imposta il RowFactory della
      * tabella per evidenziare libri cancellati
      * logicamente.
+     * -Arancione: non attivo
+     * -Default: attivo
      *
-     * @param[inout] t La tabella di cui impostare il RowFactory.
+     * @param table La tabella di cui impostare il RowFactory.
      */
     private void setRigheTabella(TableView<Libro> table) {
         table.setRowFactory(tv -> new TableRow() {
@@ -295,7 +294,7 @@ public class LibroHandler implements AreaHandler<Libro> {
      * @brief Mostra su schermo l'alert con il messaggio
      * passato come parametro
      *
-     * @param[in] msg Il messaggio di errore/avviso da mostrare su schermo.
+     * @param msg Il messaggio di errore/avviso da mostrare su schermo.
      */
     private void mostraAlert(String msg) {
         Alert alert = new Alert(Alert.AlertType.WARNING);

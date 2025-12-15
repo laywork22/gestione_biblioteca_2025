@@ -40,6 +40,11 @@ public class GestoreLibro implements Gestore<Libro> {
      * Se non è già presente allora viene aggiunto all'archivio.
      *
      * @pre l != null
+     * @pre l.getCopieTotali() >= 0
+     *
+     * @post Se nuovo: listaLibri.size() = listaLibri.size() + 1
+     * @post Se esistente attivo: l.getCopieTotali() = vecchieCopie + nuoveCopie
+     * @post Se esistente non attivo: l.isAttivo() = true
      *
      * @param l il Libro da aggiungere o aggiornare
      *
@@ -75,6 +80,20 @@ public class GestoreLibro implements Gestore<Libro> {
         }
     }
 
+
+    /**
+     * @param l il Libro da rimuovere
+     * @brief Rimuove logicamente un libro (lo marca come non attivo).
+     *
+     * @pre l != null
+     * @pre l.isAttivo() == true
+     * @pre l.getCopieDisponibili() == l.getCopieTotali() (Nessuna copia in prestito)
+     *
+     * @post l.isAttivo() = false
+     * @post listaLibri.size() invariata
+     *
+     * @throws LibroException
+     */
     @Override
     public void remove(Libro l) throws LibroException {
         if(l == null) return;
@@ -93,6 +112,22 @@ public class GestoreLibro implements Gestore<Libro> {
         return listaLibri;
     }
 
+
+    /**
+     * @param vecchio il libro da modificare
+     * @param nuovo   il libro con i nuovi dati
+     * @brief Permette di modificare i dati di un libro esistente.
+     *
+     * @pre listaLibri.contains(vecchio) == true
+     * @pre vecchio.isAttivo() == true
+     * @pre nuovo != null
+     * @pre nuovo.getCopieTotali() >= (vecchio.getCopieTotali() - vecchio.getCopieDisponibili())
+     *
+     * @post vecchio aggiornato con i valori di nuovo (Titolo, Autore, Anno, ISBN, Copie)
+     * @post listaLibri.size() invariata
+     *
+     * @throws LibroException
+     */
     @Override
     public void modifica(Libro vecchio, Libro nuovo) throws IllegalArgumentException,LibroException {
         int index = listaLibri.indexOf(vecchio);
@@ -142,33 +177,6 @@ public class GestoreLibro implements Gestore<Libro> {
                     libro.getAutore().toLowerCase().contains(filtro) ||
                     libro.getIsbn().toLowerCase().contains(filtro);
         };
-    }
-
-
-    /** @brief Inizializza il gestore con la lista di osservabili di libri caricata dal file
-     *
-     * @pre Il file deve esistere
-     *
-     * @post La lista è caricata in memoria nel GestoreLibro
-     *
-     * @return GestoreLibro con listaLibri non vuota
-     *
-     * @param nomeFile Il nome del file da cui caricare la lista
-      */
-    public static GestoreLibro caricaListaLibri(String nomeFile) {
-        GestoreLibro gl = new GestoreLibro();
-
-        try (ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(Files.newInputStream(Paths.get(nomeFile))))) {
-            List<Libro> listaCaricata = (List<Libro>) ois.readObject();
-
-            gl.setLista(listaCaricata);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        return gl;
     }
 
 }

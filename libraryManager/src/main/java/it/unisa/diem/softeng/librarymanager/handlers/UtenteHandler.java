@@ -153,7 +153,7 @@ public class UtenteHandler implements AreaHandler<Utente> {
      * * Imposta le colonne per i dati anagrafici e la colonna calcolata per i prestiti attivi.
      * Utilizza Platform.runLater per garantire la coerenza del layout al caricamento della vista.
      *
-     * @param[inout] table La TableView da configurare.
+     * @param table La TableView da configurare.
      */
     @Override
     public void setTableView(TableView<Utente> table) {
@@ -219,7 +219,7 @@ public class UtenteHandler implements AreaHandler<Utente> {
 
     /**
      * @brief Aggiorna il predicato della FilteredList in base al testo di ricerca.
-     * @param[in] filtro La stringa da cercare (match parziale su nome, cognome o matricola).
+     * @param filtro La stringa da cercare (match parziale su nome, cognome o matricola).
      */
     @Override
     public void filtraTabella(String filtro) {
@@ -235,7 +235,7 @@ public class UtenteHandler implements AreaHandler<Utente> {
 
     /**
      *
-     * @param[in] criterio Il nome del criterio di ordinamento da applicare
+     * @param criterio Il nome del criterio di ordinamento da applicare
      * (ordinamento su nome o cognome).
      */
     @Override
@@ -253,8 +253,10 @@ public class UtenteHandler implements AreaHandler<Utente> {
      * @brief Imposta il RowFactory della
      * tabella per evidenziare utenti cancellati
      * logicamente.
+     * -Arancione: non attivo
+     * -Default: attivo
      *
-     * @param[inout] t La tabella di cui impostare il RowFactory.
+     * @param t La tabella di cui impostare il RowFactory.
      */
     private void setRigheTabella(TableView<Utente> t) {
         t.setRowFactory(tv -> new TableRow() { 
@@ -286,7 +288,7 @@ public class UtenteHandler implements AreaHandler<Utente> {
      * @brief Mostra su schermo l'alert con il messaggio
      * passato come parametro
      *
-     * @param[in] msg Il messaggio di errore/avviso da mostrare su schermo.
+     * @param msg Il messaggio di errore/avviso da mostrare su schermo.
      */
     private void mostraAlert(String msg) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
